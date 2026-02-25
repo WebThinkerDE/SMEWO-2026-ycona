@@ -1,12 +1,12 @@
 <?php
-$currentLangCode = "";
+$current_lang_code = "";
 if (defined('ICL_LANGUAGE_CODE'))
 {
-    $currentLangCode = ICL_LANGUAGE_CODE;
+    $current_lang_code = ICL_LANGUAGE_CODE;
 }
 	
-	$theme_options            = get_option('ycona_theme_options_' . $currentLangCode);
-$theme_options_all        = get_option('ycona_theme_options_all');
+	$theme_options            = get_option('wt_shop_theme_options_' . $current_lang_code);
+$theme_options_all        = get_option('wt_shop_theme_options_all');
 
 $mega_menu_headline = $theme_options['mega_menu_title'] ?? "";
 
@@ -26,9 +26,17 @@ $social_title                   = $theme_options['social_title'] ?? "";
 $social_title        = str_replace("[*", "<br/><span>", $social_title);
 $social_title        = str_replace("*]", "</span>", $social_title);
 
-$linked_in_link                 = $theme_options_all['linkedin_link'] ?? "";
-$instagram_link                 = $theme_options_all['instagram_link'] ?? "";
-$facebook_link                  = $theme_options_all['facebook_link'] ?? "";
+$opts_all = $theme_options_all;
+$admin_opts = get_option( 'wt_shop_theme_options_all', array() );
+if ( isset( $admin_opts['social_links'] ) && ( ! isset( $opts_all['social_links'] ) || ! is_array( $opts_all['social_links'] ) || empty( $opts_all['social_links'] ) ) ) {
+	$opts_all['social_links'] = $admin_opts['social_links'];
+}
+$social_links = $opts_all['social_links'] ?? array();
+if ( ! is_array( $social_links ) ) {
+	$social_links = array();
+}
+$template_uri = get_template_directory_uri();
+$base_url = ( parse_url( home_url(), PHP_URL_SCHEME ) ?: 'https' ) . '://' . ( parse_url( home_url(), PHP_URL_HOST ) ?: ( $_SERVER['HTTP_HOST'] ?? '' ) );
 	
 	$button_login_in          = $theme_options['button_login_in'] ?? "";
 	$button_registration      = $theme_options['button_registration'] ?? "";
@@ -50,47 +58,54 @@ $facebook_link                  = $theme_options_all['facebook_link'] ?? "";
 		: strtoupper($client_currency);
 ?>
 
-<div class="d-flex d-xxl-none open-mega-menu" id="openMegaMenu">
-    <!-- Open Hamburger SVG -->
-    <div class="svg-icon open-icon">
-        <img src="/wp-content/themes/ycona/assets/img/vectors/openMenu.svg" width="30" height="27.23" alt="Close">
-    </div>
+<!-- Mobile search trigger (visible below xxl) -->
+<button type="button" class="d-md-none wt-shop-search-trigger d-flex d-xxl-none" id="wt-shop-search-trigger-mobile" aria-label="<?php esc_attr_e( 'Search by Product Name or SKU', 'ycona' ); ?>">
+    <i class="bi bi-search" aria-hidden="true"></i>
+</button>
 
-    <!-- Close (X) SVG -->
-    <div class="svg-icon close-icon">
-        <img src="/wp-content/themes/ycona/assets/img/vectors/closeMenu.svg" width="30" height="27.23" alt="Close">
+<div class="d-flex d-xxl-none open-mega-menu" id="open-mega-menu" aria-label="<?php esc_attr_e( 'Open menu', 'ycona' ); ?>">
+    <div class="svg-icon open-icon">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/vectors/openMenu.svg" width="30" height="27.23" alt="">
     </div>
 </div>
 <div class="overflow-hidden">
-    <div class="split-panel panel-left d-none" id="panelLeft">
+    <div class="split-panel panel-left d-none" id="panel-left">
         <div class="panel-content container">
 
         </div>
     </div>
-    <div class="split-panel panel-right d-block d-xxl-none " id="panelRight">
-
+    <div class="split-panel panel-right d-block d-xxl-none " id="panel-right">
 
         <div class="mega-socials">
-            <div>
-                <a href="<?php echo $facebook_link ?>">
-                    <img src="/wp-content/themes/ycona/assets/img/vectors/fb.svg" alt="social facebook">
-                </a>
-            </div>
-            <div>
-                <a href="<?php echo $linked_in_link ?>">
-                    <img src="/wp-content/themes/ycona/assets/img/vectors/linkedin.svg" alt="social facebook">
-                </a>
-            </div>
-            <div>
-                <a href="<?php echo $instagram_link ?>">
-                    <img src="/wp-content/themes/ycona/assets/img/vectors/ig.svg" alt="social facebook">
-                </a>
-            </div>
+            <?php
+            if ( ! empty( $social_links ) ) {
+                foreach ( $social_links as $item ) {
+                    $url = is_array( $item ) ? ( $item['url'] ?? '' ) : '';
+                    $img = is_array( $item ) ? ( $item['image'] ?? '' ) : '';
+                    $alt = is_array( $item ) ? ( $item['alt'] ?? '' ) : '';
+                    if ( $url === '' && $img === '' ) continue;
+                    if ( $img === '' ) {
+                        $src = $template_uri . '/assets/img/vectors/twitter.svg';
+                    } elseif ( strpos( $img, 'http' ) === 0 || strpos( $img, '//' ) === 0 ) {
+                        $src = $img;
+                    } elseif ( isset( $img[0] ) && $img[0] === '/' ) {
+                        $src = $base_url . $img;
+                    } else {
+                        $src = $template_uri . '/' . $img;
+                    }
+                    if ( $url === '' ) $url = '#';
+                    echo '<div><a href="' . esc_url( $url ) . '"><img src="' . esc_url( $src ) . '" alt="' . esc_attr( $alt ?: 'social' ) . '" width="40" height="40" /></a></div>';
+                }
+            }
+            ?>
             <div class="mega-social-description">
                 <p><?php echo $social_title ?></p>
             </div>
         </div>
-        <div class="panel-content container">
+        <div class="panel-content container mega-menu-panel-content">
+            <button type="button" class="mega-menu-close" id="mega-menu-close" aria-label="<?php esc_attr_e( 'Close menu', 'ycona' ); ?>">
+                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/vectors/closeMenu.svg" width="30" height="27.23" alt="">
+            </button>
             <div class="mega-menu-main d-flex flex-column justify-content-between">
                 <div class="mega-menu-right-top">
 <!--                    <p class="wt-h1">--><?php //echo $mega_menu_headline ?><!--</p>-->
@@ -122,12 +137,12 @@ $facebook_link                  = $theme_options_all['facebook_link'] ?? "";
                             </div>
 		                <?php else : ?>
                             <div class="mt-2 button-login-mobile">
-                                <a class="btn-full btn-full-white" data-bs-toggle="modal" data-bs-target="#ycona-login">
+                                <a class="btn-full btn-full-white" data-bs-toggle="modal" data-bs-target="#wt-shop-login">
 					                <?php echo $button_login_in; ?>
                                 </a>
                             </div>
                             <div class="mt-4 button-register-mobile">
-                                <a class="btn-full btn-full-outline-white" data-bs-toggle="modal" data-bs-target="#ycona-register">
+                                <a class="btn-full btn-full-outline-white" data-bs-toggle="modal" data-bs-target="#wt-shop-register">
 					                <?php echo $button_registration; ?>
                                 </a>
                             </div>
@@ -138,7 +153,7 @@ $facebook_link                  = $theme_options_all['facebook_link'] ?? "";
                         <div class="mt-4">
                             <a class="lang-mobile btn-full btn-full-outline-white d-flex align-items-center gap-2 text-center"
                                data-bs-toggle="modal"
-                               data-bs-target="#langCurrencyModal"
+                               data-bs-target="#lang-currency-modal"
                                data-start-tab="#tab-lang">
 				                <?php if (!empty($current_lang['country_flag_url'])): ?>
                                     <img src="<?php echo esc_url($current_lang['country_flag_url']); ?>" alt="" width="20" height="20">

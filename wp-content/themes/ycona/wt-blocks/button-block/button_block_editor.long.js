@@ -4,15 +4,17 @@
     var el                  = element.createElement,
         Fragment            = element.Fragment,
         InspectorControls   = blockEditor.InspectorControls,
+        useBlockProps       = blockEditor.useBlockProps,
         SelectControl       = components.SelectControl;
 
     //register block
     blocks.registerBlockType('wt/button-block', {
-
+        apiVersion: 3,
         //set basic info
         title: 'Button Block',
         icon: 'button',
-        category: 'ycona-blocks',
+
+        category: 'wt-shop-blocks',
         example: {},
 
         //define required attributes
@@ -135,7 +137,7 @@
 
             return (
                 el(Fragment, null,
-                    el(InspectorControls, {class: "ycona-SelectControl"},
+                    el(InspectorControls, {class: "wt-shop-SelectControl"},
 
                         el("div", { class: "webthiker-block-sidebar-element" },
                             
@@ -283,11 +285,10 @@
                         ),
                     ),
 
-                    el("div", {
+                    el("div", useBlockProps( {
                             id: "button-block",
-                            class: "webthiker-block text-color-" + props.attributes.text_color  + " bg-color-" + props.attributes.background_color
-                            
-                        },
+                            className: "webthiker-block text-color-" + props.attributes.text_color + " bg-color-" + props.attributes.background_color
+                        } ),
                         el("h3", null, "Button Block"),
 
                         el("dl", null,

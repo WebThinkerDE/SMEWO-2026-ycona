@@ -25,17 +25,17 @@
 			'featured_image' => __( 'Accordion Image', 'ycona' ),
 			'set_featured_image' => __( 'Set Accordion image', 'ycona' ),
 			'remove_featured_image' => __( 'Remove Accordion image', 'ycona' ),
-			'use_featured_image' => __( 'Use as Accordion image', 'ycona' ),
-			'insert_into_item' => __( 'Insert into Accordion', 'ycona' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this Accordion', 'ycona' ),
-			'items_list' => __( 'Accordions list', 'ycona' ),
-			'items_list_navigation' => __( 'Accordions list navigation', 'ycona' ),
-			'filter_items_list' => __( 'Filter Accordion list', 'ycona' ),
+			'use_featured_image' => __( 'Use as Accordion image', 'webthinkershop' ),
+			'insert_into_item' => __( 'Insert into Accordion', 'webthinkershop' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Accordion', 'webthinkershop' ),
+			'items_list' => __( 'Accordions list', 'webthinkershop' ),
+			'items_list_navigation' => __( 'Accordions list navigation', 'webthinkershop' ),
+			'filter_items_list' => __( 'Filter Accordion list', 'webthinkershop' ),
 		);
 		
 		$args = array(
-			'label' => __( 'Accordion', 'ycona' ),
-			'description' => __( 'Accordion', 'ycona' ),
+			'label' => __( 'Accordion', 'webthinkershop' ),
+			'description' => __( 'Accordion', 'webthinkershop' ),
 			'labels' => $labels,
 			'supports' => array( 'title' ),
 			'public' => true,
@@ -56,7 +56,7 @@
 	// add HTML for Accordion CPT
 	function add_accordion_meta_box() {
 		
-		$text = __( 'Accordion information', 'ycona' );
+		$text = __( 'Accordion information', 'webthinkershop' );
 		
 		add_meta_box(
 			'accordion_fields_meta_box',
@@ -69,45 +69,45 @@
 	
 	function save_custom_post_accordion_metas( $post_id ) {
 		
-		$metaNonce    = "accordionMetaNonce";
-		$saveFields   = "saveAccordionFields";
+		$meta_nonce    = "accordionMetaNonce";
+		$save_fields   = "saveAccordionFields";
 		$fields       = "accordion_fields";
 		
-		return save_custom_post_metas($post_id, $metaNonce, $saveFields, $fields);
+		return save_custom_post_metas($post_id, $meta_nonce, $save_fields, $fields);
 	}
 	add_action( 'save_post', 'save_custom_post_accordion_metas' );
 	/* END - Add Custom Post Type - Accordion */
 	
 	function add_custom_post_type_testimonials() {
 		$labels = array(
-			'name' => _x( 'Testimonials', 'Post Type General Name', "ycona" ),
-			'singular_name' => _x( 'Testimonials', 'Post Type Singular Name', "ycona" ),
-			'menu_name' => __( 'Testimonials', "ycona" ),
-			'name_admin_bar' => __( 'Testimonials', "ycona" ),
-			'archives' => __( 'Testimonials Archives', "ycona" ),
-			'attributes' => __( 'Testimonials Attributes', "ycona" ),
-			'parent_item_colon' => __( 'Parent Testimonials:', "ycona" ),
-			'all_items' => __( 'All Testimonials', "ycona" ),
-			'add_new_item' => __( 'Add New Testimonials', "ycona" ),
-			'add_new' => __( 'Add New', "ycona" ),
-			'new_item' => __( 'New Testimonials', "ycona" ),
-			'edit_item' => __( 'Edit Testimonials', "ycona" ),
-			'update_item' => __( 'Update Testimonials', "ycona" ),
-			'view_item' => __( 'View Testimonials', "ycona" ),
-			'view_items' => __( 'View Testimonials', "ycona" ),
-			'search_items' => __( 'Search Testimonials', "ycona" ),
-			'not_found' => __( 'Not found', "ycona" ),
-			'not_found_in_trash' => __( 'Not found in Trash', "ycona" ),
-			'insert_into_item' => __( 'Insert into Testimonials', "ycona" ),
-			'uploaded_to_this_item' => __( 'Uploaded to this Testimonials', "ycona" ),
-			'items_list' => __( 'Testimonials list', "ycona" ),
-			'items_list_navigation' => __( 'Testimonials list navigation', "ycona" ),
-			'filter_items_list' => __( 'Filter Testimonials list', "ycona" ),
+			'name' => _x( 'Testimonials', 'Post Type General Name', "webthinkershop" ),
+			'singular_name' => _x( 'Testimonials', 'Post Type Singular Name', "webthinkershop" ),
+			'menu_name' => __( 'Testimonials', "webthinkershop" ),
+			'name_admin_bar' => __( 'Testimonials', "webthinkershop" ),
+			'archives' => __( 'Testimonials Archives', "webthinkershop" ),
+			'attributes' => __( 'Testimonials Attributes', "webthinkershop" ),
+			'parent_item_colon' => __( 'Parent Testimonials:', "webthinkershop" ),
+			'all_items' => __( 'All Testimonials', "webthinkershop" ),
+			'add_new_item' => __( 'Add New Testimonials', "webthinkershop" ),
+			'add_new' => __( 'Add New', "webthinkershop" ),
+			'new_item' => __( 'New Testimonials', "webthinkershop" ),
+			'edit_item' => __( 'Edit Testimonials', "webthinkershop" ),
+			'update_item' => __( 'Update Testimonials', "webthinkershop" ),
+			'view_item' => __( 'View Testimonials', "webthinkershop" ),
+			'view_items' => __( 'View Testimonials', "webthinkershop" ),
+			'search_items' => __( 'Search Testimonials', "webthinkershop" ),
+			'not_found' => __( 'Not found', "webthinkershop" ),
+			'not_found_in_trash' => __( 'Not found in Trash', "webthinkershop" ),
+			'insert_into_item' => __( 'Insert into Testimonials', "webthinkershop" ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Testimonials', "webthinkershop" ),
+			'items_list' => __( 'Testimonials list', "webthinkershop" ),
+			'items_list_navigation' => __( 'Testimonials list navigation', "webthinkershop" ),
+			'filter_items_list' => __( 'Filter Testimonials list', "webthinkershop" ),
 		);
 		
 		$args = array(
-			'label' => __( 'Testimonials', "ycona" ),
-			'description' => __( 'Testimonials', "ycona" ),
+			'label' => __( 'Testimonials', "webthinkershop" ),
+			'description' => __( 'Testimonials', "webthinkershop" ),
 			'labels' => $labels,
 			'supports' => array( 'title' ),
 			'public' => true,
@@ -128,7 +128,7 @@
 	// add HTML for Testimonials CPT
 	function add_testimonials_meta_box() {
 		
-		$text = __( 'Testimonials information', "ycona" );
+		$text = __( 'Testimonials information', "webthinkershop" );
 		
 		add_meta_box(
 			'testimonials_fields_meta_box',
@@ -142,11 +142,11 @@
 	// saves metas for CPT Testimonials
 	function save_custom_post_testimonials_metas( $post_id ) {
 		
-		$metaNonce    = "testimonialsMetaNonce";
-		$saveFields   = "testimonialsFields";
+		$meta_nonce    = "testimonialsMetaNonce";
+		$save_fields   = "testimonialsFields";
 		$fields       = "testimonials_fields";
 		
-		return save_custom_post_metas($post_id, $metaNonce, $saveFields, $fields);
+		return save_custom_post_metas($post_id, $meta_nonce, $save_fields, $fields);
 	}
 	add_action( 'save_post', 'save_custom_post_testimonials_metas' );
 	/* END - Add Custom Post Type - Testimonials */
@@ -155,38 +155,38 @@
 	function add_custom_post_type_cards() {
 		
 		$labels = array(
-			'name' => _x( 'Cards', 'Post Type General Name', 'ycona' ),
-			'singular_name' => _x( 'Card', 'Post Type Singular Name', 'ycona' ),
-			'menu_name' => __( 'Cards', 'ycona' ),
-			'name_admin_bar' => __( 'Cards', 'ycona' ),
-			'archives' => __( 'Cards Archives', 'ycona' ),
-			'attributes' => __( 'Cards Attributes', 'ycona' ),
-			'parent_item_colon' => __( 'Parent Card:', 'ycona' ),
-			'all_items' => __( 'All Cards', 'ycona' ),
-			'add_new_item' => __( 'Add New Card', 'ycona' ),
-			'add_new' => __( 'Add New', 'ycona' ),
-			'new_item' => __( 'New Card', 'ycona' ),
-			'edit_item' => __( 'Edit Card', 'ycona' ),
-			'update_item' => __( 'Update Card', 'ycona' ),
-			'view_item' => __( 'View Card', 'ycona' ),
-			'view_items' => __( 'View Cards', 'ycona' ),
-			'search_items' => __( 'Search Cards', 'ycona' ),
-			'not_found' => __( 'Not found', 'ycona' ),
-			'not_found_in_trash' => __( 'Not found in Trash', 'ycona' ),
-			'featured_image' => __( 'Card Image', 'ycona' ),
-			'set_featured_image' => __( 'Set Card image', 'ycona' ),
-			'remove_featured_image' => __( 'Remove Card image', 'ycona' ),
-			'use_featured_image' => __( 'Use as Card image', 'ycona' ),
-			'insert_into_item' => __( 'Insert into Card', 'ycona' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this Card', 'ycona' ),
-			'items_list' => __( 'Cards list', 'ycona' ),
-			'items_list_navigation' => __( 'Cards list navigation', 'ycona' ),
-			'filter_items_list' => __( 'Filter Cards list', 'ycona' ),
+			'name' => _x( 'Cards', 'Post Type General Name', 'webthinkershop' ),
+			'singular_name' => _x( 'Card', 'Post Type Singular Name', 'webthinkershop' ),
+			'menu_name' => __( 'Cards', 'webthinkershop' ),
+			'name_admin_bar' => __( 'Cards', 'webthinkershop' ),
+			'archives' => __( 'Cards Archives', 'webthinkershop' ),
+			'attributes' => __( 'Cards Attributes', 'webthinkershop' ),
+			'parent_item_colon' => __( 'Parent Card:', 'webthinkershop' ),
+			'all_items' => __( 'All Cards', 'webthinkershop' ),
+			'add_new_item' => __( 'Add New Card', 'webthinkershop' ),
+			'add_new' => __( 'Add New', 'webthinkershop' ),
+			'new_item' => __( 'New Card', 'webthinkershop' ),
+			'edit_item' => __( 'Edit Card', 'webthinkershop' ),
+			'update_item' => __( 'Update Card', 'webthinkershop' ),
+			'view_item' => __( 'View Card', 'webthinkershop' ),
+			'view_items' => __( 'View Cards', 'webthinkershop' ),
+			'search_items' => __( 'Search Cards', 'webthinkershop' ),
+			'not_found' => __( 'Not found', 'webthinkershop' ),
+			'not_found_in_trash' => __( 'Not found in Trash', 'webthinkershop' ),
+			'featured_image' => __( 'Card Image', 'webthinkershop' ),
+			'set_featured_image' => __( 'Set Card image', 'webthinkershop' ),
+			'remove_featured_image' => __( 'Remove Card image', 'webthinkershop' ),
+			'use_featured_image' => __( 'Use as Card image', 'webthinkershop' ),
+			'insert_into_item' => __( 'Insert into Card', 'webthinkershop' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Card', 'webthinkershop' ),
+			'items_list' => __( 'Cards list', 'webthinkershop' ),
+			'items_list_navigation' => __( 'Cards list navigation', 'webthinkershop' ),
+			'filter_items_list' => __( 'Filter Cards list', 'webthinkershop' ),
 		);
 		
 		$args = array(
-			'label' => __( 'Cards', 'ycona' ),
-			'description' => __( 'Cards', 'ycona' ),
+			'label' => __( 'Cards', 'webthinkershop' ),
+			'description' => __( 'Cards', 'webthinkershop' ),
 			'labels' => $labels,
 			'supports' => array( 'title' ),
 			'public' => true,
@@ -207,7 +207,7 @@
 	// add HTML for Cards CPT
 	function add_cards_meta_box() {
 		
-		$text = __( 'Cards information', 'ycona' );
+		$text = __( 'Cards information', 'webthinkershop' );
 		
 		add_meta_box(
 			'cards_fields_meta_box',
@@ -221,12 +221,93 @@
 	// saves metas for CPT Cards
 	function save_custom_post_cards_metas( $post_id ) {
 		
-		$metaNonce    = "cardsMetaNonce";
-		$saveFields   = "saveCardsFields";
+		$meta_nonce    = "cardsMetaNonce";
+		$save_fields   = "saveCardsFields";
 		$fields       = "cards_fields";
 		
-		return save_custom_post_metas($post_id, $metaNonce, $saveFields, $fields);
+		return save_custom_post_metas($post_id, $meta_nonce, $save_fields, $fields);
 	}
 	add_action( 'save_post', 'save_custom_post_cards_metas' );
 	/* END - Add Custom Post Type - Cards */
+
+
+/* Add Custom Post Type - Slider */
+function add_custom_post_type_slider() {
+
+    $labels = array(
+        'name' => _x( 'Slider', 'Post Type General Name', 'webthinkershop' ),
+        'singular_name' => _x( 'Slider', 'Post Type Singular Name', 'webthinkershop' ),
+        'menu_name' => __( 'Slider', 'webthinkershop' ),
+        'name_admin_bar' => __( 'Slider', 'webthinkershop' ),
+        'archives' => __( 'Slider Archives', 'webthinkershop' ),
+        'attributes' => __( 'Slider Attributes', 'webthinkershop' ),
+        'parent_item_colon' => __( 'Parent Slider:', 'webthinkershop' ),
+        'all_items' => __( 'All Sliders', 'webthinkershop' ),
+        'add_new_item' => __( 'Add New Slider', 'webthinkershop' ),
+        'add_new' => __( 'Add New', 'webthinkershop' ),
+        'new_item' => __( 'New Slider', 'webthinkershop' ),
+        'edit_item' => __( 'Edit Slider', 'webthinkershop' ),
+        'update_item' => __( 'Update Slider', 'webthinkershop' ),
+        'view_item' => __( 'View Slider', 'webthinkershop' ),
+        'view_items' => __( 'View Sliders', 'webthinkershop' ),
+        'search_items' => __( 'Search Slider', 'webthinkershop' ),
+        'not_found' => __( 'Not found', 'webthinkershop' ),
+        'not_found_in_trash' => __( 'Not found in Trash', 'webthinkershop' ),
+        'featured_image' => __( 'Slide Image', 'webthinkershop' ),
+        'set_featured_image' => __( 'Set slide image', 'webthinkershop' ),
+        'remove_featured_image' => __( 'Remove slide image', 'webthinkershop' ),
+        'use_featured_image' => __( 'Use as slide image', 'webthinkershop' ),
+        'insert_into_item' => __( 'Insert into Slider', 'webthinkershop' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this Slider', 'webthinkershop' ),
+        'items_list' => __( 'Sliders list', 'webthinkershop' ),
+        'items_list_navigation' => __( 'Sliders list navigation', 'webthinkershop' ),
+        'filter_items_list' => __( 'Filter Slider list', 'webthinkershop' ),
+    );
+
+    $args = array(
+        'label' => __( 'Slider', 'webthinkershop' ),
+        'description' => __( 'Slider', 'webthinkershop' ),
+        'labels' => $labels,
+        'supports' => array( 'title' ),
+        'public' => true,
+        'show_in_rest' => true,
+        'show_ui' => true,
+        'menu_position' => 41,
+        'menu_icon' => 'dashicons-slides',
+        'has_archive' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
+        'show_in_nav_menus' => false,
+    );
+
+    register_post_type( 'slider', $args );
+}
+add_action( 'init', 'add_custom_post_type_slider' );
+
+// add HTML for Slider CPT
+function add_slider_meta_box() {
+
+    $text = __( 'Slider information', 'webthinkershop' );
+
+    add_meta_box(
+        'slider_fields_meta_box',
+        $text,
+        'show_slider_custom_fields',
+        'slider'
+    );
+}
+add_action( 'add_meta_boxes', 'add_slider_meta_box' );
+
+// saves metas for CPT Slider
+function save_custom_post_slider_metas( $post_id ) {
+
+    $meta_nonce    = 'slider_meta_nonce';
+    $save_fields   = 'save_slider_fields';
+    $fields        = 'slider_fields';
+
+    return save_custom_post_metas( $post_id, $meta_nonce, $save_fields, $fields );
+}
+add_action( 'save_post', 'save_custom_post_slider_metas' );
+/* END - Add Custom Post Type - Slider */
+
 	

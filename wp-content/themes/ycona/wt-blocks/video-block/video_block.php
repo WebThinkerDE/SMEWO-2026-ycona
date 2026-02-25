@@ -26,12 +26,12 @@ function wt_video_block_rc( $attributes, $content ) {
 	}
 
 	if ( empty( $video_url ) ) {
-		return '<section class="video-block video-block--no-src"><p class="video-block__empty">' . esc_html__( 'Please set a video URL in the block settings.', 'ycona' ) . '</p></section>';
+		return '<section class="video-block video-block-no-src"><p class="video-block-empty">' . esc_html__( 'Please set a video URL in the block settings.', 'ycona' ) . '</p></section>';
 	}
 
 	$title_html = '';
 	if ( $title !== '' ) {
-		$title_html = '<h2 class="video-block__title">' . esc_html( $title ) . '</h2>';
+		$title_html = '<h2 class="video-block-title">' . esc_html( $title ) . '</h2>';
 	}
 
 	$poster_attr = $poster_url !== '' ? ' poster="' . esc_url( $poster_url ) . '"' : '';
@@ -78,7 +78,7 @@ function wt_video_block_rc( $attributes, $content ) {
 	// Skin class — defaults to none (= Default skin).
 	// Allowed values: '' | 'ocean' | 'cinema' | 'minimal'
 	$skin    = isset( $attributes['skin'] ) ? sanitize_html_class( $attributes['skin'] ) : '';
-	$skin_class = $skin !== '' ? ' video-player--skin-' . $skin : '';
+	$skin_class = $skin !== '' ? ' video-player-skin-' . $skin : '';
 
 	// Width & height — accept any CSS value (px, %, vw, auto, etc.)
 	$width  = isset( $attributes['width'] )  ? trim( $attributes['width'] )  : '';
@@ -94,19 +94,19 @@ function wt_video_block_rc( $attributes, $content ) {
 	$style_attr = $dimension_styles !== '' ? ' style="' . $dimension_styles . '"' : '';
 
 	$markup = '<section class="video-block container">' . $title_html . '
-	<div class="video-player video-player--skeleton' . $skin_class . '" data-player' . $style_attr . $audio_tracks_attr . '>
+	<div class="video-player video-player-skeleton' . $skin_class . '" data-player' . $style_attr . $audio_tracks_attr . '>
 
 		<!-- Skeleton Loader (visible until video is ready) -->
 		<div class="vp-skeleton" aria-hidden="true">
-			<div class="vp-skeleton__shimmer"></div>
-			<div class="vp-skeleton__play"></div>
-			<div class="vp-skeleton__controls">
-				<div class="vp-skeleton__btn"></div>
-				<div class="vp-skeleton__bar"></div>
-				<div class="vp-skeleton__time"></div>
-				<div class="vp-skeleton__btn"></div>
-				<div class="vp-skeleton__btn-sm"></div>
-				<div class="vp-skeleton__btn"></div>
+			<div class="vp-skeleton-shimmer"></div>
+			<div class="vp-skeleton-play"></div>
+			<div class="vp-skeleton-controls">
+				<div class="vp-skeleton-btn"></div>
+				<div class="vp-skeleton-bar"></div>
+				<div class="vp-skeleton-time"></div>
+				<div class="vp-skeleton-btn"></div>
+				<div class="vp-skeleton-btn-sm"></div>
+				<div class="vp-skeleton-btn"></div>
 			</div>
 		</div>
 
@@ -125,36 +125,36 @@ function wt_video_block_rc( $attributes, $content ) {
 			<button type="button" class="video-player-btn" data-play aria-label="' . esc_attr__( 'Play', 'ycona' ) . '">
 				<i class="bi bi-play-fill" aria-hidden="true"></i>
 				<i class="bi bi-pause-fill" aria-hidden="true"></i>
-				<span class="sr-only">' . esc_html__( 'Play / Pause', 'ycona' ) . '</span>
+				<span class="sr-only">' . esc_html__( 'Play / Pause', 'webthinkershop' ) . '</span>
 			</button>
 			<div class="video-player-progress-wrap" data-progress-wrap>
-				<input type="range" class="video-player-progress" data-progress min="0" max="100" value="0" step="0.1" aria-label="' . esc_attr__( 'Seek', 'ycona' ) . '">
+				<input type="range" class="video-player-progress" data-progress min="0" max="100" value="0" step="0.1" aria-label="' . esc_attr__( 'Seek', 'webthinkershop' ) . '">
 			</div>
 			<span class="video-player-time" data-time aria-live="off">0:00</span>
-			<button type="button" class="video-player-btn" data-mute aria-label="' . esc_attr__( 'Mute', 'ycona' ) . '">
+			<button type="button" class="video-player-btn" data-mute aria-label="' . esc_attr__( 'Mute', 'webthinkershop' ) . '">
 				<i class="bi bi-volume-up-fill" aria-hidden="true"></i>
 				<i class="bi bi-volume-mute-fill" aria-hidden="true"></i>
-				<span class="sr-only">' . esc_html__( 'Mute / Unmute', 'ycona' ) . '</span>
+				<span class="sr-only">' . esc_html__( 'Mute / Unmute', 'webthinkershop' ) . '</span>
 			</button>
-			<input type="range" class="video-player-volume" data-volume min="0" max="100" value="100" step="1" aria-label="' . esc_attr__( 'Volume', 'ycona' ) . '">
-			<button type="button" class="video-player-btn" data-cc aria-label="' . esc_attr__( 'Captions', 'ycona' ) . '">
+			<input type="range" class="video-player-volume" data-volume min="0" max="100" value="100" step="1" aria-label="' . esc_attr__( 'Volume', 'webthinkershop' ) . '">
+			<button type="button" class="video-player-btn" data-cc aria-label="' . esc_attr__( 'Captions', 'webthinkershop' ) . '">
 				<span>CC</span>
-				<span class="sr-only">' . esc_html__( 'Toggle Captions', 'ycona' ) . '</span>
+				<span class="sr-only">' . esc_html__( 'Toggle Captions', 'webthinkershop' ) . '</span>
 			</button>
-			<button type="button" class="video-player-btn" data-quality aria-label="' . esc_attr__( 'Quality', 'ycona' ) . '" style="display:none">
+			<button type="button" class="video-player-btn" data-quality aria-label="' . esc_attr__( 'Quality', 'webthinkershop' ) . '" style="display:none">
 				<i class="bi bi-gear-fill" aria-hidden="true"></i>
 				<span class="vp-quality-label">AUTO</span>
 			</button>
-			<button type="button" class="video-player-btn" data-fullscreen aria-label="' . esc_attr__( 'Fullscreen', 'ycona' ) . '">
+			<button type="button" class="video-player-btn" data-fullscreen aria-label="' . esc_attr__( 'Fullscreen', 'webthinkershop' ) . '">
 				<i class="bi bi-fullscreen" aria-hidden="true"></i>
 				<i class="bi bi-fullscreen-exit" aria-hidden="true"></i>
-				<span class="sr-only">' . esc_html__( 'Toggle Fullscreen', 'ycona' ) . '</span>
+				<span class="sr-only">' . esc_html__( 'Toggle Fullscreen', 'webthinkershop' ) . '</span>
 			</button>
 		</div>
 		
 		<!-- Loading Indicator -->
 		<div class="video-player-loading" data-loading aria-hidden="true" role="status">
-			<span class="sr-only">' . esc_html__( 'Loading...', 'ycona' ) . '</span>
+			<span class="sr-only">' . esc_html__( 'Loading...', 'webthinkershop' ) . '</span>
 		</div>
 		
 		<!-- Error Display -->

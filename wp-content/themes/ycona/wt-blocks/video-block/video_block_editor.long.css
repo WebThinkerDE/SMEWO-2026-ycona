@@ -13,7 +13,7 @@
   margin-bottom: 1rem;
 }
 
-.video-block-editor .video-block-editor__preview {
+.video-block-editor .video-block-editor-preview {
   max-width: 100%;
   aspect-ratio: 16/9;
   background: #1a1a1a;
@@ -21,12 +21,13 @@
   align-items: center;
   justify-content: center;
   color: #999;
+
   font-size: 0.875rem;
   border-radius: 4px;
   margin-top: 0.5rem;
 }
 
-.video-block-editor .video-block-editor__preview video {
+.video-block-editor .video-block-editor-preview video {
   max-width: 100%;
   max-height: 100%;
 }
@@ -64,13 +65,13 @@
 /* ============================================
    Skin Selector
    ============================================ */
-.video-block-editor__skin-field {
+.video-block-editor-skin-field {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.video-block-editor__skin-select {
+.video-block-editor-skin-select {
   padding: 6px 8px;
   border: 1px solid #8c8f94;
   border-radius: 4px;
@@ -80,13 +81,13 @@
   cursor: pointer;
 }
 
-.video-block-editor__skin-select:focus {
+.video-block-editor-skin-select:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__skin-preview {
+.video-block-editor-skin-preview {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -94,7 +95,7 @@
   color: #757575;
 }
 
-.video-block-editor__skin-dot {
+.video-block-editor-skin-dot {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -105,19 +106,19 @@
 }
 
 /* Ocean skin dot */
-.video-block-editor__skin-preview--ocean .video-block-editor__skin-dot {
+.video-block-editor-skin-preview-ocean .video-block-editor-skin-dot {
   background: linear-gradient(135deg, #3ea8ff 50%, #0a1e3c 50%);
   border-color: #3ea8ff;
 }
 
 /* Cinema skin dot */
-.video-block-editor__skin-preview--cinema .video-block-editor__skin-dot {
+.video-block-editor-skin-preview-cinema .video-block-editor-skin-dot {
   background: linear-gradient(135deg, #f5c842 50%, #1a0a00 50%);
   border-color: #f5c842;
 }
 
 /* Minimal skin dot */
-.video-block-editor__skin-preview--minimal .video-block-editor__skin-dot {
+.video-block-editor-skin-preview-minimal .video-block-editor-skin-dot {
   background: linear-gradient(135deg, #aaaaaa 50%, #1a1a1a 50%);
   border-color: #aaaaaa;
 }
@@ -125,13 +126,13 @@
 /* ============================================
    Width & Height Fields
    ============================================ */
-.video-block-editor__dimensions-field {
+.video-block-editor-dimensions-field {
   display: flex;
   gap: 12px;
   align-items: flex-end;
 }
 
-.video-block-editor__dim-label {
+.video-block-editor-dim-label {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -141,7 +142,7 @@
   flex: 1;
 }
 
-.video-block-editor__dim-input {
+.video-block-editor-dim-input {
   width: 100%;
   padding: 6px 8px;
   border: 1px solid #8c8f94;
@@ -149,7 +150,7 @@
   font-size: 13px;
 }
 
-.video-block-editor__dim-input:focus {
+.video-block-editor-dim-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
@@ -158,13 +159,13 @@
 /* ============================================
    Subtitles Section
    ============================================ */
-.video-block-editor__subtitles-field {
+.video-block-editor-subtitles-field {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.video-block-editor__subtitle-row {
+.video-block-editor-subtitle-row {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -174,13 +175,13 @@
   background: #fafafa;
 }
 
-.video-block-editor__subtitle-url-row {
+.video-block-editor-subtitle-url-row {
   display: flex;
   gap: 6px;
   align-items: center;
 }
 
-.video-block-editor__subtitle-input {
+.video-block-editor-subtitle-input {
   flex: 1;
   padding: 6px 8px;
   border: 1px solid #8c8f94;
@@ -189,24 +190,24 @@
   min-width: 0;
 }
 
-.video-block-editor__subtitle-input:focus {
+.video-block-editor-subtitle-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__subtitle-upload-btn {
+.video-block-editor-subtitle-upload-btn {
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.video-block-editor__subtitle-meta-row {
+.video-block-editor-subtitle-meta-row {
   display: flex;
   gap: 6px;
   align-items: center;
 }
 
-.video-block-editor__subtitle-meta-input {
+.video-block-editor-subtitle-meta-input {
   flex: 1;
   padding: 6px 8px;
   border: 1px solid #8c8f94;
@@ -215,13 +216,13 @@
   min-width: 0;
 }
 
-.video-block-editor__subtitle-meta-input:focus {
+.video-block-editor-subtitle-meta-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__subtitle-lang-input {
+.video-block-editor-subtitle-lang-input {
   width: 70px;
   min-width: 70px;
   flex: 0 0 70px;
@@ -231,13 +232,13 @@
   font-size: 13px;
 }
 
-.video-block-editor__subtitle-lang-input:focus {
+.video-block-editor-subtitle-lang-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__subtitle-remove-btn {
+.video-block-editor-subtitle-remove-btn {
   width: 28px;
   height: 28px;
   min-width: 28px;
@@ -254,12 +255,12 @@
   flex-shrink: 0;
 }
 
-.video-block-editor__subtitle-remove-btn:hover {
+.video-block-editor-subtitle-remove-btn:hover {
   background: #cc1818;
   color: #fff;
 }
 
-.video-block-editor__subtitle-add-btn {
+.video-block-editor-subtitle-add-btn {
   align-self: flex-start;
   margin-top: 4px;
 }
@@ -267,13 +268,13 @@
 /* ============================================
    Audio Tracks Section
    ============================================ */
-.video-block-editor__audio-tracks-field {
+.video-block-editor-audio-tracks-field {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.video-block-editor__audio-track-row {
+.video-block-editor-audio-track-row {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -283,13 +284,13 @@
   background: #f5f9ff;
 }
 
-.video-block-editor__audio-track-url-row {
+.video-block-editor-audio-track-url-row {
   display: flex;
   gap: 6px;
   align-items: center;
 }
 
-.video-block-editor__audio-track-input {
+.video-block-editor-audio-track-input {
   flex: 1;
   padding: 6px 8px;
   border: 1px solid #8c8f94;
@@ -298,24 +299,24 @@
   min-width: 0;
 }
 
-.video-block-editor__audio-track-input:focus {
+.video-block-editor-audio-track-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__audio-track-upload-btn {
+.video-block-editor-audio-track-upload-btn {
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.video-block-editor__audio-track-meta-row {
+.video-block-editor-audio-track-meta-row {
   display: flex;
   gap: 6px;
   align-items: center;
 }
 
-.video-block-editor__audio-track-meta-input {
+.video-block-editor-audio-track-meta-input {
   flex: 1;
   padding: 6px 8px;
   border: 1px solid #8c8f94;
@@ -324,13 +325,13 @@
   min-width: 0;
 }
 
-.video-block-editor__audio-track-meta-input:focus {
+.video-block-editor-audio-track-meta-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__audio-track-lang-input {
+.video-block-editor-audio-track-lang-input {
   width: 70px;
   min-width: 70px;
   flex: 0 0 70px;
@@ -340,13 +341,13 @@
   font-size: 13px;
 }
 
-.video-block-editor__audio-track-lang-input:focus {
+.video-block-editor-audio-track-lang-input:focus {
   border-color: #2271b1;
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
 }
 
-.video-block-editor__audio-track-remove-btn {
+.video-block-editor-audio-track-remove-btn {
   width: 28px;
   height: 28px;
   min-width: 28px;
@@ -363,12 +364,12 @@
   flex-shrink: 0;
 }
 
-.video-block-editor__audio-track-remove-btn:hover {
+.video-block-editor-audio-track-remove-btn:hover {
   background: #cc1818;
   color: #fff;
 }
 
-.video-block-editor__audio-track-add-btn {
+.video-block-editor-audio-track-add-btn {
   align-self: flex-start;
   margin-top: 4px;
 }

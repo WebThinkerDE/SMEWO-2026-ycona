@@ -5,15 +5,17 @@
         withSelect          = data.withSelect,
         SelectControl       = wp.components.SelectControl,
         Fragment            = wp.element.Fragment,
-        InspectorControls   = wp.blockEditor.InspectorControls;
+        InspectorControls   = wp.blockEditor.InspectorControls,
+        useBlockProps       = wp.blockEditor.useBlockProps;
 
     registerBlockType( 'wt/cards-block', {
+        apiVersion: 3,
         title: 'Cards Block',
         icon: 'index-card',
-
-        category: 'ycona-blocks',
+        category: 'wt-shop-blocks',
         description: "Cards Block",
         example: {},
+
 
         attributes: {
             post_id: {
@@ -115,7 +117,7 @@
 
             return (
                 el(Fragment, null,
-                    el(InspectorControls, {class: "ycona-SelectControl"},
+                    el(InspectorControls, {class: "wt-shop-SelectControl"},
 
                         el("div",
                             {
@@ -165,9 +167,9 @@
                         )
                     ),
 
-                    el("div", {
-                            class: "webthiker-block worker-block count-"+ props.attributes.number
-                        },
+                    el("div", useBlockProps( {
+                            className: "webthiker-block worker-block count-" + props.attributes.number
+                        } ),
                         el("h3", null, "Cards Block"),
 
                         el("dl", null,

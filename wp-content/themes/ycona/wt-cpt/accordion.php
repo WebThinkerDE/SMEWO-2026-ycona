@@ -32,7 +32,7 @@ function show_accordion_custom_fields() {
                     $headline_type          = $track["headline_type"] ?? "p";
                     $content                = $track["content"] ?? "";
                     $add_content_position   = $track["add_content_position"] ?? "";
-                    $add_content            = $track["add_content"];
+                    $add_content            = $track["add_content"] ?? "";
 
                     if ($headline == "o")
                     {
@@ -41,7 +41,7 @@ function show_accordion_custom_fields() {
 
                     echo '<div class="accordion cpt-element" data-count="'.$c.'">
 
-                            <div class="sortButtons">
+                            <div class="sort-buttons">
                                 <button type="button" class="btn btn-sm btn-primary float-right mr-1 sort-down">
                                     <span class="dashicons dashicons-arrow-down-alt2"></span>
                                 </button>
@@ -53,7 +53,7 @@ function show_accordion_custom_fields() {
                             <div id="box-wrapper-'.$c.'" class="accordion-box cpt-box">
                                 
                                 <div class="click-area">
-                                    <h3>Accordion #'.($c+1).'</h3>
+                                    <h3>' . esc_html( sprintf( __( 'Accordion #%d', 'ycona' ), $c + 1 ) ) . '</h3>
                                 </div>
                                 
                                 <div class="content-area">
@@ -81,7 +81,7 @@ function show_accordion_custom_fields() {
                     
                                         <dt>'.__('Content','ycona').'</dt>
                                         <dd>
-                                            '.getWpEditor($content, "accordion_fields_" . $c . "_content", "accordion_fields[accordions][" . $c . "][content]").'
+                                            '.get_wp_editor($content, "accordion_fields_" . $c . "_content", "accordion_fields[accordions][" . $c . "][content]").'
                                         </dd>
                                         
                                         <div class="cpt-remove">
@@ -107,15 +107,15 @@ function show_accordion_custom_fields() {
 
             jQuery("#wt-wrapper-accordion + .add").click(function() {
 
-                var $addBtn = jQuery(this);
-                var $wrapper = $addBtn.prev(".wt-wrapper-cpt");
-                $addBtn.hide();
+                var $add_btn = jQuery(this);
+                var $wrapper = $add_btn.prev(".wt-wrapper-cpt");
+                $add_btn.hide();
 
-                let count = getExistingElements(".accordion");
+                let count = get_existing_elements(".accordion");
 
-                var accordionHTML = `<div class="accordion cpt-element" data-count="${count}">
+                var accordion_html = `<div class="accordion cpt-element" data-count="${count}">
 
-                <div class="sortButtons">
+                <div class="sort-buttons">
                     <button type="button" class="btn btn-sm btn-primary float-right mr-1 sort-down">
                         <span class="dashicons dashicons-arrow-down-alt2"></span>
                     </button>
@@ -127,7 +127,7 @@ function show_accordion_custom_fields() {
                 <div id="box-wrapper-${count}" class="accordion-box cpt-box">
 
                     <div class="click-area">
-                        <h3>Accordion #${count}</h3>
+                        <h3><?php echo esc_html__( 'Accordion', 'ycona' ); ?> #${count}</h3>
                     </div>
 
                     <div class="content-area">
@@ -170,11 +170,11 @@ function show_accordion_custom_fields() {
             </div>`;
 
 
-                $wrapper.append(accordionHTML);
+                $wrapper.append(accordion_html);
 
                 let target = "<?php echo admin_url('admin-ajax.php'); ?>";
 
-                let createWpEditor = function(editor_id, editor_name, $addBtn) {
+                let create_wp_editor = function(editor_id, editor_name, $add_btn) {
                     let data_text = {
                         'action': 'wt_get_text_editor',
                         'text_editor_id': editor_id,
@@ -189,21 +189,21 @@ function show_accordion_custom_fields() {
                             if (typeof quicktags !== "undefined") quicktags({id: editor_id});
                         })
                         .always(function() {
-                            $addBtn.show();
+                            $add_btn.show();
                         });
                 }
 
                 // Content Editor
                 let content_id = "accordion_fields_" + count + "_content";
                 let content_name = "accordion_fields[accordions][" + count + "][content]";
-                createWpEditor(content_id, content_name, $addBtn);
+                create_wp_editor(content_id, content_name, $add_btn);
 
-                setButtons();
-                resetSort();
+                set_buttons();
+                reset_sort();
 
             });
 
-            setButtons();
+            set_buttons();
         });
     </script>
 <?php }

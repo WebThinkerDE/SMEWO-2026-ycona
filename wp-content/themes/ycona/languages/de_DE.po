@@ -1,0 +1,1343 @@
+# German translation for the WebThinker Shop  theme.
+# Copyright (C) 2026 WebThinker Shop
+# This file is distributed under the same license as the webthinkershop  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: webthinkershop  1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-13 12:00+0000\n"
+"PO-Revision-Date: 2026-02-13 12:00+0000\n"
+"Last-Translator: Granit Nebiu\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Cursor IDE\n"
+"X-Domain: webthinkershop \n"
+
+# ──────────────────────────────────────────
+#  Theme Options – General
+# ──────────────────────────────────────────
+
+msgid "Theme Options"
+msgstr "Theme-Optionen"
+
+msgid "Customize your website appearance and functionality"
+msgstr "Passen Sie das Aussehen und die Funktionalität Ihrer Website an"
+
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+msgid "Configure basic theme settings and branding"
+msgstr "Grundlegende Theme-Einstellungen und Branding konfigurieren"
+
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+# ── Logos & Uploads ──
+
+msgid "Main Logo"
+msgstr "Hauptlogo"
+
+msgid "Upload your main website logo (recommended: 200x60px)"
+msgstr "Laden Sie Ihr Hauptlogo hoch (empfohlen: 200x60px)"
+
+msgid "Active Logo"
+msgstr "Aktives Logo"
+
+msgid "Logo shown when menu is active or hovered (optional)"
+msgstr "Logo, das bei aktivem oder hervorgehobenem Menü angezeigt wird (optional)"
+
+msgid "Mobile Logo"
+msgstr "Mobiles Logo"
+
+msgid "Logo optimized for mobile devices (recommended: 150x45px)"
+msgstr "Logo optimiert für mobile Geräte (empfohlen: 150x45px)"
+
+msgid "Header Slider Background"
+msgstr "Header-Slider-Hintergrund"
+
+msgid "Background image for the header slider (recommended: 1920x600px)"
+msgstr "Hintergrundbild für den Header-Slider (empfohlen: 1920x600px)"
+
+msgid "Upload Logo"
+msgstr "Logo hochladen"
+
+msgid "Upload Active Logo"
+msgstr "Aktives Logo hochladen"
+
+msgid "Upload Mobile Logo"
+msgstr "Mobiles Logo hochladen"
+
+msgid "Upload Background"
+msgstr "Hintergrund hochladen"
+
+msgid "Upload"
+msgstr "Hochladen"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "No image selected"
+msgstr "Kein Bild ausgewählt"
+
+# ── Top Header / Buttons ──
+
+msgid "Top Header Text"
+msgstr "Oberer Header-Text"
+
+msgid "Text displayed in the top header area"
+msgstr "Text, der im oberen Header-Bereich angezeigt wird"
+
+msgid "Enter top header text..."
+msgstr "Oberen Header-Text eingeben..."
+
+msgid "Mega Menu Title"
+msgstr "Mega-Menü-Titel"
+
+msgid "Title for the mega menu navigation"
+msgstr "Titel für die Mega-Menü-Navigation"
+
+msgid "Enter mega menu title..."
+msgstr "Mega-Menü-Titel eingeben..."
+
+msgid "Login Button Text"
+msgstr "Login-Button-Text"
+
+msgid "Text displayed on the login button"
+msgstr "Text auf dem Login-Button"
+
+msgid "Enter login button text..."
+msgstr "Login-Button-Text eingeben..."
+
+msgid "Login Button Link"
+msgstr "Login-Button-Link"
+
+msgid "URL for the login button"
+msgstr "URL für den Login-Button"
+
+msgid "Registration Button Text"
+msgstr "Registrierungs-Button-Text"
+
+msgid "Text displayed on the registration button"
+msgstr "Text auf dem Registrierungs-Button"
+
+msgid "Enter registration button text..."
+msgstr "Registrierungs-Button-Text eingeben..."
+
+msgid "Registration Button Link"
+msgstr "Registrierungs-Button-Link"
+
+msgid "URL for the registration button"
+msgstr "URL für den Registrierungs-Button"
+
+msgid "Search Link"
+msgstr "Such-Link"
+
+msgid "URL for the search functionality"
+msgstr "URL für die Suchfunktion"
+
+msgid "https://example.com/login"
+msgstr "https://example.com/anmelden"
+
+msgid "https://example.com/register"
+msgstr "https://example.com/registrieren"
+
+msgid "https://example.com/search"
+msgstr "https://example.com/suche"
+
+# ──────────────────────────────────────────
+#  Header / Navigation
+# ──────────────────────────────────────────
+
+msgid "My Account"
+msgstr "Mein Konto"
+
+msgid "Open cart"
+msgstr "Warenkorb öffnen"
+
+msgid "View cart"
+msgstr "Warenkorb anzeigen"
+
+msgid "Login"
+msgstr "Anmelden"
+
+msgid "Register"
+msgstr "Registrieren"
+
+msgid "Close"
+msgstr "Schließen"
+
+# ──────────────────────────────────────────
+#  Product Search
+# ──────────────────────────────────────────
+
+msgid "Product search"
+msgstr "Produktsuche"
+
+msgid "Close search"
+msgstr "Suche schließen"
+
+msgid "Search results"
+msgstr "Suchergebnisse"
+
+msgid "Search by Product Name or SKU"
+msgstr "Nach Produktname oder Art.-Nr. suchen"
+
+msgid "Search by Product Name or SKU..."
+msgstr "Nach Produktname oder Art.-Nr. suchen..."
+
+msgid "to navigate"
+msgstr "navigieren"
+
+msgid "to open"
+msgstr "öffnen"
+
+msgid "to close"
+msgstr "schließen"
+
+msgid "Searching..."
+msgstr "Suche läuft..."
+
+msgid "No products found"
+msgstr "Keine Produkte gefunden"
+
+msgid "Something went wrong. Please try again."
+msgstr "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+
+msgid "SKU"
+msgstr "Art.-Nr."
+
+msgid "Security check failed."
+msgstr "Sicherheitsprüfung fehlgeschlagen."
+
+# ──────────────────────────────────────────
+#  Login / Register Modals
+# ──────────────────────────────────────────
+
+msgid "Don\u2019t have an account yet?"
+msgstr "Noch kein Konto?"
+
+msgid "or"
+msgstr "oder"
+
+msgid "Create your account"
+msgstr "Erstellen Sie Ihr Konto"
+
+msgid "Create account"
+msgstr "Konto erstellen"
+
+msgid "Already have an account?"
+msgstr "Haben Sie bereits ein Konto?"
+
+msgid "Show password"
+msgstr "Passwort anzeigen"
+
+msgid "Name and Surname"
+msgstr "Vor- und Nachname"
+
+msgid "Submit"
+msgstr "Absenden"
+
+msgid "You are already logged in."
+msgstr "Sie sind bereits angemeldet."
+
+msgid "Registration is currently disabled."
+msgstr "Die Registrierung ist derzeit deaktiviert."
+
+msgid "WooCommerce is required for registration."
+msgstr "WooCommerce ist für die Registrierung erforderlich."
+
+msgid "Username and password are required."
+msgstr "Benutzername und Passwort sind erforderlich."
+
+msgid "Invalid username or password."
+msgstr "Ungültiger Benutzername oder Passwort."
+
+msgid "Registration is not available."
+msgstr "Die Registrierung ist nicht verfügbar."
+
+msgid "Username is required."
+msgstr "Benutzername ist erforderlich."
+
+msgid "Email is required."
+msgstr "E-Mail-Adresse ist erforderlich."
+
+msgid "Please enter a valid email address (e.g. name@example.com)."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@example.com)."
+
+msgid "Password is required."
+msgstr "Passwort ist erforderlich."
+
+msgid "First name is required."
+msgstr "Vorname ist erforderlich."
+
+msgid "Last name is required."
+msgstr "Nachname ist erforderlich."
+
+msgid "Registration complete. Redirecting…"
+msgstr "Registrierung abgeschlossen. Weiterleitung…"
+
+# ──────────────────────────────────────────
+#  Language Switcher
+# ──────────────────────────────────────────
+
+msgid "Albanian"
+msgstr "Albanisch"
+
+msgid "German"
+msgstr "Deutsch"
+
+msgid "French"
+msgstr "Französisch"
+
+msgid "English"
+msgstr "Englisch"
+
+# ──────────────────────────────────────────
+#  Social Media / Payments
+# ──────────────────────────────────────────
+
+msgid "Social links"
+msgstr "Soziale Links"
+
+msgid "These links and icons are shown in the footer. Add, remove, or reorder items. Each: URL, icon (upload), and alt text."
+msgstr "Diese Links und Icons werden im Footer angezeigt. Hinzufügen, entfernen oder neu anordnen. Jeweils: URL, Icon (hochladen) und Alt-Text."
+
+msgid "Link URL"
+msgstr "Link-URL"
+
+msgid "Icon"
+msgstr "Symbol"
+
+msgid "Alt text"
+msgstr "Alt-Text"
+
+msgid "Add social"
+msgstr "Soziales hinzufügen"
+
+msgid "Payment icons"
+msgstr "Zahlungssymbole"
+
+msgid "Icons shown in the footer. Add, remove, or reorder. Each item: image (upload) and alt text."
+msgstr "Symbole im Footer. Hinzufügen, entfernen oder neu anordnen. Jeweils: Bild (hochladen) und Alt-Text."
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Add payment icon"
+msgstr "Zahlungssymbol hinzufügen"
+
+# ──────────────────────────────────────────
+#  Other Settings
+# ──────────────────────────────────────────
+
+msgid "Other Settings"
+msgstr "Weitere Einstellungen"
+
+msgid "Title"
+msgstr "Titel"
+
+# ──────────────────────────────────────────
+#  Thank You Page
+# ──────────────────────────────────────────
+
+msgid "Thank you page"
+msgstr "Danke-Seite"
+
+msgid "Edit the text shown on the order confirmation (thank you) page. These strings are translatable per language."
+msgstr "Bearbeiten Sie den Text auf der Bestellbestätigungsseite (Danke-Seite). Diese Texte sind pro Sprache übersetzbar."
+
+msgid "Thank You!"
+msgstr "Vielen Dank!"
+
+msgid "Your order is confirmed."
+msgstr "Ihre Bestellung ist bestätigt."
+
+msgid "Thank you for your purchase!"
+msgstr "Vielen Dank für Ihren Einkauf!"
+
+msgid "Order #%s"
+msgstr "Bestellung #%s"
+
+msgid "Confirmation sent to: %s"
+msgstr "Bestätigung gesendet an: %s"
+
+msgid "Estimated delivery: %s"
+msgstr "Voraussichtliche Lieferung: %s"
+
+msgid "Continue shopping"
+msgstr "Weiter einkaufen"
+
+msgid "If you have any issues, contact us."
+msgstr "Bei Fragen kontaktieren Sie uns."
+
+msgid "Contact us"
+msgstr "Kontakt"
+
+msgid "Select page"
+msgstr "Seite auswählen"
+
+msgid "Order"
+msgstr "Bestellung"
+
+msgid "Total:"
+msgstr "Gesamt:"
+
+msgid "Heading"
+msgstr "Überschrift"
+
+msgid "Main headline (e.g. \"Thank You!\")"
+msgstr "Hauptüberschrift (z.B. „Vielen Dank!")"
+
+msgid "Subheading"
+msgstr "Unterüberschrift"
+
+msgid "Line below the heading (e.g. \"Your order is confirmed.\")"
+msgstr "Zeile unter der Überschrift (z.B. „Ihre Bestellung ist bestätigt.")"
+
+msgid "Order message"
+msgstr "Bestellnachricht"
+
+msgid "Message in the order card (e.g. \"Thank you for your purchase!\")"
+msgstr "Nachricht in der Bestellkarte (z.B. „Vielen Dank für Ihren Einkauf!")"
+
+msgid "Confirmation sent to (label)"
+msgstr "Bestätigung gesendet an (Label)"
+
+msgid "Use %s where the email appears (e.g. \"Confirmation sent to: %s\")"
+msgstr "Verwenden Sie %s, wo die E-Mail erscheint (z.B. „Bestätigung gesendet an: %s")"
+
+msgid "Estimated delivery (label)"
+msgstr "Voraussichtliche Lieferung (Label)"
+
+msgid "Use %s where the delivery text appears (e.g. \"Estimated delivery: %s\")"
+msgstr "Verwenden Sie %s, wo der Liefertext erscheint (z.B. „Voraussichtliche Lieferung: %s")"
+
+msgid "Button text"
+msgstr "Button-Text"
+
+msgid "Primary button (e.g. \"Continue shopping\")"
+msgstr "Primärer Button (z.B. „Weiter einkaufen")"
+
+msgid "Estimated delivery text"
+msgstr "Text für voraussichtliche Lieferung"
+
+msgid "Shown in the order card (e.g. \"3–5 business days\")"
+msgstr "Wird in der Bestellkarte angezeigt (z.B. „3–5 Werktage")"
+
+msgid "3–5 business days"
+msgstr "3–5 Werktage"
+
+msgid "Contact intro text"
+msgstr "Kontakt-Einleitung"
+
+msgid "Text before the contact link (e.g. \"If you have any issues, contact us.\")"
+msgstr "Text vor dem Kontakt-Link (z.B. „Bei Fragen kontaktieren Sie uns.")"
+
+msgid "Contact page"
+msgstr "Kontaktseite"
+
+msgid "Page used for the \"Contact us\" link (same for all languages)."
+msgstr "Seite für den „Kontakt"-Link (gleich für alle Sprachen)."
+
+# ──────────────────────────────────────────
+#  Footer
+# ──────────────────────────────────────────
+
+msgid "What you see is what you get — edit the footer description below and it appears as-is on the site."
+msgstr "Was Sie sehen, ist was Sie bekommen – bearbeiten Sie die Footer-Beschreibung unten und sie erscheint so auf der Website."
+
+msgid "Footer description"
+msgstr "Footer-Beschreibung"
+
+msgid "What you see is what you get. This text appears in the footer under the logo and first title. You can use HTML (e.g. &lt;p&gt; tags)."
+msgstr "Was Sie sehen, ist was Sie bekommen. Dieser Text erscheint im Footer unter dem Logo und dem ersten Titel. Sie können HTML verwenden (z.B. &lt;p&gt; Tags)."
+
+msgid "Footer Logo"
+msgstr "Footer-Logo"
+
+msgid "Footer Android Logo"
+msgstr "Footer Android-Logo"
+
+msgid "Footer Apple Logo"
+msgstr "Footer Apple-Logo"
+
+msgid "Footer Android Link"
+msgstr "Footer Android-Link"
+
+msgid "Footer Apple Link"
+msgstr "Footer Apple-Link"
+
+msgid "Footer Title 1"
+msgstr "Footer-Titel 1"
+
+msgid "Footer Title 2"
+msgstr "Footer-Titel 2"
+
+msgid "Footer Title 3"
+msgstr "Footer-Titel 3"
+
+msgid "Footer Title 4"
+msgstr "Footer-Titel 4"
+
+msgid "Footer column 3 subtext (e.g. Support response time)"
+msgstr "Footer Spalte 3 Untertext (z.B. Support-Antwortzeit)"
+
+msgid "e.g. Support response: 24–48h"
+msgstr "z.B. Support-Antwortzeit: 24–48 Std."
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Address 2"
+msgstr "Adresse 2"
+
+msgid "Footer Address Link"
+msgstr "Footer-Adresslink"
+
+msgid "Phone number title"
+msgstr "Telefonnummer-Titel"
+
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+msgid "Phone number link"
+msgstr "Telefonnummer-Link"
+
+msgid "Social icons in the footer are managed in the Social Media tab. Payment icons are in the Payments tab."
+msgstr "Soziale Icons im Footer werden im Social-Media-Tab verwaltet. Zahlungssymbole befinden sich im Zahlungen-Tab."
+
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+# ──────────────────────────────────────────
+#  Empty Cart
+# ──────────────────────────────────────────
+
+msgid "Your cart is empty"
+msgstr "Ihr Warenkorb ist leer"
+
+msgid "Your cart is empty."
+msgstr "Ihr Warenkorb ist leer."
+
+msgid "Looks like you haven't added anything to your cart yet. Start exploring and find something you love!"
+msgstr "Sie haben noch nichts in Ihren Warenkorb gelegt. Stöbern Sie los und finden Sie etwas, das Ihnen gefällt!"
+
+msgid "Back to homepage"
+msgstr "Zurück zur Startseite"
+
+msgid "Discover something new"
+msgstr "Entdecken Sie etwas Neues"
+
+# ──────────────────────────────────────────
+#  404 Page
+# ──────────────────────────────────────────
+
+msgid "Page not found"
+msgstr "Seite nicht gefunden"
+
+msgid "The page you're looking for doesn't exist or has been moved. Don't worry, let's get you back on track."
+msgstr "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. Keine Sorge, wir bringen Sie zurück auf den richtigen Weg."
+
+msgid "Visit the shop"
+msgstr "Zum Shop"
+
+msgid "While you're here, check these out"
+msgstr "Schauen Sie sich auch diese Produkte an"
+
+# ──────────────────────────────────────────
+#  WooCommerce – Cart / Checkout
+# ──────────────────────────────────────────
+
+msgid "Go to cart"
+msgstr "Zum Warenkorb"
+
+msgid "Cart"
+msgstr "Warenkorb"
+
+msgid "Remove this item"
+msgstr "Diesen Artikel entfernen"
+
+msgid "Checkout steps"
+msgstr "Bestellschritte"
+
+msgid "Warenkorb"
+msgstr "Warenkorb"
+
+msgid "Kasse"
+msgstr "Kasse"
+
+msgid "Bestellung abgeschlossen"
+msgstr "Bestellung abgeschlossen"
+
+msgid "Das passt dazu"
+msgstr "Das passt dazu"
+
+msgid "Das könnte dir auch gefallen"
+msgstr "Das könnte Ihnen auch gefallen"
+
+msgid "You may also like"
+msgstr "Das könnte Ihnen auch gefallen"
+
+msgid "Loading..."
+msgstr "Wird geladen..."
+
+msgid "Empty"
+msgstr "Leer"
+
+# ──────────────────────────────────────────
+#  Shop / Filters
+# ──────────────────────────────────────────
+
+msgid "Product categories"
+msgstr "Produktkategorien"
+
+msgid "Categories"
+msgstr "Kategorien"
+
+msgid "All Products"
+msgstr "Alle Produkte"
+
+msgid "Product filters"
+msgstr "Produktfilter"
+
+msgid "Filters"
+msgstr "Filter"
+
+msgid "Price"
+msgstr "Preis"
+
+msgid "Availability"
+msgstr "Verfügbarkeit"
+
+msgid "In Stock only"
+msgstr "Nur auf Lager"
+
+msgid "Offers"
+msgstr "Angebote"
+
+msgid "On Sale"
+msgstr "Im Angebot"
+
+msgid "Rating"
+msgstr "Bewertung"
+
+msgid "All ratings"
+msgstr "Alle Bewertungen"
+
+msgid "Tags"
+msgstr "Schlagwörter"
+
+msgid "Apply Filters"
+msgstr "Filter anwenden"
+
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgid "Toggle %s subcategories"
+msgstr "%s Unterkategorien ein-/ausblenden"
+
+msgid "%d & up"
+msgstr "%d & mehr"
+
+msgid "%d stars & up"
+msgstr "%d Sterne & mehr"
+
+msgid "Most Popular"
+msgstr "Beliebteste"
+
+msgid "No image"
+msgstr "Kein Bild"
+
+# ──────────────────────────────────────────
+#  Video Player
+# ──────────────────────────────────────────
+
+msgid "Play"
+msgstr "Abspielen"
+
+msgid "Play / Pause"
+msgstr "Abspielen / Pause"
+
+msgid "Play Video"
+msgstr "Video abspielen"
+
+msgid "Mute"
+msgstr "Stummschalten"
+
+msgid "Mute / Unmute"
+msgstr "Stumm / Laut"
+
+msgid "Volume"
+msgstr "Lautstärke"
+
+msgid "Seek"
+msgstr "Vorspulen"
+
+msgid "Captions"
+msgstr "Untertitel"
+
+msgid "Quality"
+msgstr "Qualität"
+
+msgid "Fullscreen"
+msgstr "Vollbild"
+
+msgid "Toggle Fullscreen"
+msgstr "Vollbild umschalten"
+
+msgid "Toggle Captions"
+msgstr "Untertitel umschalten"
+
+msgid "Please provide a video URL (src)."
+msgstr "Bitte geben Sie eine Video-URL (src) an."
+
+msgid "Please set a video URL in the block settings."
+msgstr "Bitte setzen Sie eine Video-URL in den Block-Einstellungen."
+
+# ──────────────────────────────────────────
+#  Licenses (My Account)
+# ──────────────────────────────────────────
+
+msgid "Licenses"
+msgstr "Lizenzen"
+
+msgid "License key"
+msgstr "Lizenzschlüssel"
+
+msgid "Package"
+msgstr "Paket"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Domains"
+msgstr "Domains"
+
+msgid "Expires"
+msgstr "Läuft ab"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Expired"
+msgstr "Abgelaufen"
+
+msgid "Revoked"
+msgstr "Widerrufen"
+
+msgid "Active websites"
+msgstr "Aktive Websites"
+
+msgid "View websites"
+msgstr "Websites anzeigen"
+
+msgid "View active websites"
+msgstr "Aktive Websites anzeigen"
+
+msgid "No websites activated for this license."
+msgstr "Keine Websites für diese Lizenz aktiviert."
+
+msgid "You have no licenses yet. Licenses are created when you purchase an IsoFloor product."
+msgstr "Sie haben noch keine Lizenzen. Lizenzen werden erstellt, wenn Sie ein IsoFloor-Produkt kaufen."
+
+msgid "Location"
+msgstr "Standort"
+
+msgid "View"
+msgstr "Ansehen"
+
+# License tier contexts
+msgctxt "license tier"
+msgid "Starter"
+msgstr "Starter"
+
+msgctxt "license tier"
+msgid "Professional"
+msgstr "Professional"
+
+msgctxt "license tier"
+msgid "Enterprise"
+msgstr "Enterprise"
+
+msgctxt "license tier"
+msgid "Free"
+msgstr "Kostenlos"
+
+msgctxt "license expiry"
+msgid "Lifetime"
+msgstr "Unbegrenzt"
+
+msgctxt "domains"
+msgid "Unlimited"
+msgstr "Unbegrenzt"
+
+# ──────────────────────────────────────────
+#  CPT: Accordion
+# ──────────────────────────────────────────
+
+msgctxt "Post Type General Name"
+msgid "Accordion"
+msgstr "Akkordeon"
+
+msgctxt "Post Type Singular Name"
+msgid "Accordion"
+msgstr "Akkordeon"
+
+msgid "Accordion"
+msgstr "Akkordeon"
+
+msgid "Add New Accordion"
+msgstr "Neues Akkordeon hinzufügen"
+
+msgid "Add Accordion"
+msgstr "Akkordeon hinzufügen"
+
+msgid "New Accordion"
+msgstr "Neues Akkordeon"
+
+msgid "Edit Accordion"
+msgstr "Akkordeon bearbeiten"
+
+msgid "Update Accordion"
+msgstr "Akkordeon aktualisieren"
+
+msgid "View Accordion"
+msgstr "Akkordeon anzeigen"
+
+msgid "View Accordions"
+msgstr "Akkordeons anzeigen"
+
+msgid "Search Accordion"
+msgstr "Akkordeon suchen"
+
+msgid "All Accordions "
+msgstr "Alle Akkordeons"
+
+msgid "Not found"
+msgstr "Nicht gefunden"
+
+msgid "Not found in Trash"
+msgstr "Nicht im Papierkorb gefunden"
+
+msgid "Accordion Archives"
+msgstr "Akkordeon-Archiv"
+
+msgid "Accordion Attributes"
+msgstr "Akkordeon-Attribute"
+
+msgid "Parent Accordion:"
+msgstr "Übergeordnetes Akkordeon:"
+
+msgid "Filter Accordion list"
+msgstr "Akkordeon-Liste filtern"
+
+msgid "Accordion information"
+msgstr "Akkordeon-Informationen"
+
+msgid "Insert into Accordion"
+msgstr "In Akkordeon einfügen"
+
+msgid "Uploaded to this Accordion"
+msgstr "Zu diesem Akkordeon hochgeladen"
+
+msgid "Accordions list"
+msgstr "Akkordeon-Liste"
+
+msgid "Accordions list navigation"
+msgstr "Akkordeon-Liste Navigation"
+
+msgid "Accordion Title"
+msgstr "Akkordeon-Titel"
+
+msgid "Accordion Image"
+msgstr "Akkordeon-Bild"
+
+msgid "Set Accordion image"
+msgstr "Akkordeon-Bild festlegen"
+
+msgid "Remove Accordion image"
+msgstr "Akkordeon-Bild entfernen"
+
+msgid "Use as Accordion image"
+msgstr "Als Akkordeon-Bild verwenden"
+
+msgid "Remove Accordion"
+msgstr "Akkordeon entfernen"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Content"
+msgstr "Inhalt"
+
+msgid "Add New"
+msgstr "Neu hinzufügen"
+
+msgid "Überschriftentyp"
+msgstr "Überschriftentyp"
+
+# ──────────────────────────────────────────
+#  CPT: Cards
+# ──────────────────────────────────────────
+
+msgctxt "Post Type General Name"
+msgid "Cards"
+msgstr "Karten"
+
+msgctxt "Post Type Singular Name"
+msgid "Card"
+msgstr "Karte"
+
+msgid "Cards"
+msgstr "Karten"
+
+msgid "Add New Card"
+msgstr "Neue Karte hinzufügen"
+
+msgid "Add Card"
+msgstr "Karte hinzufügen"
+
+msgid "New Card"
+msgstr "Neue Karte"
+
+msgid "Edit Card"
+msgstr "Karte bearbeiten"
+
+msgid "Update Card"
+msgstr "Karte aktualisieren"
+
+msgid "View Card"
+msgstr "Karte anzeigen"
+
+msgid "View Cards"
+msgstr "Karten anzeigen"
+
+msgid "Search Cards"
+msgstr "Karten suchen"
+
+msgid "All Cards"
+msgstr "Alle Karten"
+
+msgid "Cards Archives"
+msgstr "Karten-Archiv"
+
+msgid "Cards Attributes"
+msgstr "Karten-Attribute"
+
+msgid "Parent Card:"
+msgstr "Übergeordnete Karte:"
+
+msgid "Filter Cards list"
+msgstr "Karten-Liste filtern"
+
+msgid "Cards information"
+msgstr "Karten-Informationen"
+
+msgid "Insert into Card"
+msgstr "In Karte einfügen"
+
+msgid "Uploaded to this Card"
+msgstr "Zu dieser Karte hochgeladen"
+
+msgid "Cards list"
+msgstr "Karten-Liste"
+
+msgid "Cards list navigation"
+msgstr "Karten-Liste Navigation"
+
+msgid "Card Title"
+msgstr "Karten-Titel"
+
+msgid "Card Image"
+msgstr "Karten-Bild"
+
+msgid "Set Card image"
+msgstr "Karten-Bild festlegen"
+
+msgid "Remove Card image"
+msgstr "Karten-Bild entfernen"
+
+msgid "Use as Card image"
+msgstr "Als Karten-Bild verwenden"
+
+msgid "Remove Card"
+msgstr "Karte entfernen"
+
+msgid "Link Text"
+msgstr "Link-Text"
+
+msgid "Link URL"
+msgstr "Link-URL"
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Image Profile"
+msgstr "Profilbild"
+
+msgid "Image profile"
+msgstr "Profilbild"
+
+msgid "Image Preview"
+msgstr "Bild-Vorschau"
+
+msgid "Browse"
+msgstr "Durchsuchen"
+
+msgid "Write here"
+msgstr "Hier schreiben"
+
+msgid "Read more"
+msgstr "Mehr erfahren"
+
+# ──────────────────────────────────────────
+#  CPT: Testimonials
+# ──────────────────────────────────────────
+
+msgid "Testimonials"
+msgstr "Kundenstimmen"
+
+msgid "Add New Testimonials"
+msgstr "Neue Kundenstimme hinzufügen"
+
+msgid "Add Testimonial"
+msgstr "Kundenstimme hinzufügen"
+
+msgid "New Testimonials"
+msgstr "Neue Kundenstimme"
+
+msgid "Update Testimonials"
+msgstr "Kundenstimme aktualisieren"
+
+msgid "View Testimonials"
+msgstr "Kundenstimmen anzeigen"
+
+msgid "Search Testimonials"
+msgstr "Kundenstimmen suchen"
+
+msgid "Testimonials Archives"
+msgstr "Kundenstimmen-Archiv"
+
+msgid "Testimonials Attributes"
+msgstr "Kundenstimmen-Attribute"
+
+msgid "Parent Testimonials:"
+msgstr "Übergeordnete Kundenstimme:"
+
+msgid "Filter Testimonials list"
+msgstr "Kundenstimmen-Liste filtern"
+
+msgid "Testimonials information"
+msgstr "Kundenstimmen-Informationen"
+
+msgid "Insert into Testimonials"
+msgstr "In Kundenstimme einfügen"
+
+msgid "Uploaded to this Testimonials"
+msgstr "Zu dieser Kundenstimme hochgeladen"
+
+msgid "Remove Testimonial"
+msgstr "Kundenstimme entfernen"
+
+msgid "Tick Type"
+msgstr "Häkchen-Typ"
+
+msgid "Tick Type Type"
+msgstr "Häkchen-Typ"
+
+msgid "Icon Preview"
+msgstr "Symbol-Vorschau"
+
+# ──────────────────────────────────────────
+#  Archive Titles
+# ──────────────────────────────────────────
+
+msgid "Author Archives"
+msgstr "Autoren-Archiv"
+
+msgid "Category Archives"
+msgstr "Kategorie-Archiv"
+
+msgid "Monthly Archives"
+msgstr "Monatsarchiv"
+
+msgid "Yearly Archives"
+msgstr "Jahresarchiv"
+
+# ──────────────────────────────────────────
+#  Blog / Single Post Navigation
+# ──────────────────────────────────────────
+
+msgid "Plus récents"
+msgstr "Neuere Beiträge"
+
+msgid "Plus anciens"
+msgstr "Ältere Beiträge"
+
+msgid "Lire la suite"
+msgstr "Weiterlesen"
+
+# ──────────────────────────────────────────
+#  Swiper Navigation
+# ──────────────────────────────────────────
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid "Previous"
+msgstr "Zurück"
+
+# ──────────────────────────────────────────
+#  Search Form
+# ──────────────────────────────────────────
+
+msgid "Search"
+msgstr "Suche"
+
+# ──────────────────────────────────────────
+#  Misc / Theme text domain slug
+# ──────────────────────────────────────────
+
+msgid "webthinkershop"
+msgstr "webthinkershop"
+
+# ──────────────────────────────────────────
+#  Theme Options – Sidebar Navigation
+# ──────────────────────────────────────────
+
+msgid "General"
+msgstr "Allgemein"
+
+msgid "Design Settings"
+msgstr "Design-Einstellungen"
+
+msgid "Social Media"
+msgstr "Soziale Medien"
+
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgid "Footer"
+msgstr "Footer"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+# ──────────────────────────────────────────
+#  Theme Options – Design Settings
+# ──────────────────────────────────────────
+
+msgid "Customize colors, typography, and visual appearance"
+msgstr "Farben, Typografie und visuelles Erscheinungsbild anpassen"
+
+msgid "Theme Colors (Live Preview)"
+msgstr "Theme-Farben (Live-Vorschau)"
+
+msgid "Customize your color palette. Changes are applied instantly for preview."
+msgstr "Passen Sie Ihre Farbpalette an. Änderungen werden sofort als Vorschau angewendet."
+
+msgid "Primary Colors"
+msgstr "Primärfarben"
+
+msgid "Main brand colors used throughout the theme"
+msgstr "Hauptmarkenfarben, die im gesamten Theme verwendet werden"
+
+msgid "Primary"
+msgstr "Primär"
+
+msgid "Primary Dark"
+msgstr "Primär Dunkel"
+
+msgid "Primary Hover"
+msgstr "Primär Hover"
+
+msgid "Secondary Colors"
+msgstr "Sekundärfarben"
+
+msgid "Accent colors for highlights and call-to-actions"
+msgstr "Akzentfarben für Hervorhebungen und Call-to-Actions"
+
+msgid "Secondary"
+msgstr "Sekundär"
+
+msgid "Secondary Darker"
+msgstr "Sekundär Dunkler"
+
+msgid "Neutral Colors"
+msgstr "Neutrale Farben"
+
+msgid "Text and background colors for content"
+msgstr "Text- und Hintergrundfarben für Inhalte"
+
+msgid "Black"
+msgstr "Schwarz"
+
+msgid "White"
+msgstr "Weiß"
+
+msgid "Gray"
+msgstr "Grau"
+
+msgid "Light Gray"
+msgstr "Hellgrau"
+
+msgid "Additional Colors"
+msgstr "Zusätzliche Farben"
+
+msgid "Special colors for specific elements"
+msgstr "Spezielle Farben für bestimmte Elemente"
+
+msgid "Tertiary"
+msgstr "Tertiär"
+
+msgid "Accent"
+msgstr "Akzent"
+
+msgid "Background"
+msgstr "Hintergrund"
+
+msgid "Save Colors"
+msgstr "Farben speichern"
+
+msgid "Reset to Defaults"
+msgstr "Auf Standard zurücksetzen"
+
+# ──────────────────────────────────────────
+#  Theme Options – Custom CSS / JS
+# ──────────────────────────────────────────
+
+msgid "Custom CSS"
+msgstr "Benutzerdefiniertes CSS"
+
+msgid "Add your custom CSS code to override theme styles"
+msgstr "Fügen Sie Ihren benutzerdefinierten CSS-Code hinzu, um Theme-Stile zu überschreiben"
+
+msgid "Format"
+msgstr "Formatieren"
+
+msgid "Clear"
+msgstr "Leeren"
+
+msgid "Save CSS"
+msgstr "CSS speichern"
+
+msgid "Download CSS"
+msgstr "CSS herunterladen"
+
+msgid "Reset CSS"
+msgstr "CSS zurücksetzen"
+
+msgid "Custom JavaScript"
+msgstr "Benutzerdefiniertes JavaScript"
+
+msgid "Add your custom JavaScript code for enhanced functionality"
+msgstr "Fügen Sie Ihren benutzerdefinierten JavaScript-Code für erweiterte Funktionen hinzu"
+
+msgid "Save JS"
+msgstr "JS speichern"
+
+msgid "Download JS"
+msgstr "JS herunterladen"
+
+msgid "Reset JS"
+msgstr "JS zurücksetzen"
+
+# ──────────────────────────────────────────
+#  Theme Options – Social Media Panel
+# ──────────────────────────────────────────
+
+msgid "Social Media Settings"
+msgstr "Social-Media-Einstellungen"
+
+msgid "Configure your social media links and profiles"
+msgstr "Konfigurieren Sie Ihre Social-Media-Links und Profile"
+
+msgid "Social Media Section Title"
+msgstr "Social-Media-Bereichstitel"
+
+msgid "Enter the title for your social media section"
+msgstr "Geben Sie den Titel für Ihren Social-Media-Bereich ein"
+
+msgid "Follow Us"
+msgstr "Folgen Sie uns"
+
+# ──────────────────────────────────────────
+#  Theme Options – Other / Additional Settings
+# ──────────────────────────────────────────
+
+msgid "Configure additional settings"
+msgstr "Zusätzliche Einstellungen konfigurieren"
+
+msgid "Additional Settings"
+msgstr "Zusätzliche Einstellungen"
+
+msgid "Advanced configuration and additional options"
+msgstr "Erweiterte Konfiguration und zusätzliche Optionen"
+
+msgid "Coming Soon"
+msgstr "Demnächst verfügbar"
+
+msgid "Additional settings and advanced configuration options will be available in future updates."
+msgstr "Zusätzliche Einstellungen und erweiterte Konfigurationsoptionen werden in zukünftigen Updates verfügbar sein."
+
+# ──────────────────────────────────────────
+#  Theme Options – Footer
+# ──────────────────────────────────────────
+
+msgid "Footer Settings"
+msgstr "Footer-Einstellungen"
+
+# ──────────────────────────────────────────
+#  Theme Options – Save Footer
+# ──────────────────────────────────────────
+
+msgid "Don't forget to save your changes"
+msgstr "Vergessen Sie nicht, Ihre Änderungen zu speichern"
+
+msgid "Preview Changes"
+msgstr "Änderungen vorschauen"
+
+# ──────────────────────────────────────────
+#  Theme Options – Footer Upload Descriptions
+# ──────────────────────────────────────────
+
+msgid "Upload your footer logo image"
+msgstr "Laden Sie Ihr Footer-Logo hoch"
+
+msgid "Upload your Android app logo for the footer"
+msgstr "Laden Sie Ihr Android-App-Logo für den Footer hoch"
+
+msgid "Upload your Apple app logo for the footer"
+msgstr "Laden Sie Ihr Apple-App-Logo für den Footer hoch"
+
+# ──────────────────────────────────────────
+#  CPT – Numbered Items (backend editor)
+# ──────────────────────────────────────────
+
+msgid "Accordion #%d"
+msgstr "Akkordeon #%d"
+
+msgid "Card #%d"
+msgstr "Karte #%d"
+
+msgid "Card"
+msgstr "Karte"
+
+msgid "Testimonial #%d"
+msgstr "Kundenstimme #%d"
+
+msgid "Testimonial"
+msgstr "Kundenstimme"
+
+msgid "Tick Green"
+msgstr "Häkchen Grün"
+
+msgid "Tick Orange"
+msgstr "Häkchen Orange"
+
+msgid "Tick Blue"
+msgstr "Häkchen Blau"

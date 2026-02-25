@@ -55,29 +55,29 @@ function initialize_default_colors() {
     if (!get_option('background_color')) {
         update_option('background_color', '#ffffff');
     }
-    if (!get_option('ycona_primary_dark')) {
-        update_option('ycona_primary_dark', '#05063F');
+    if (!get_option('wt_shop_primary_dark')) {
+        update_option('wt_shop_primary_dark', '#05063F');
     }
-    if (!get_option('ycona_primary_hover')) {
-        update_option('ycona_primary_hover', '#1326A1');
+    if (!get_option('wt_shop_primary_hover')) {
+        update_option('wt_shop_primary_hover', '#1326A1');
     }
-    if (!get_option('ycona_secondary_darker')) {
-        update_option('ycona_secondary_darker', '#CC4B02');
+    if (!get_option('wt_shop_secondary_darker')) {
+        update_option('wt_shop_secondary_darker', '#CC4B02');
     }
-    if (!get_option('ycona_black')) {
-        update_option('ycona_black', '#111111');
+    if (!get_option('wt_shop_black')) {
+        update_option('wt_shop_black', '#111111');
     }
-    if (!get_option('ycona_white')) {
-        update_option('ycona_white', '#ffffff');
+    if (!get_option('wt_shop_white')) {
+        update_option('wt_shop_white', '#ffffff');
     }
-    if (!get_option('ycona_gray')) {
-        update_option('ycona_gray', '#737373');
+    if (!get_option('wt_shop_gray')) {
+        update_option('wt_shop_gray', '#737373');
     }
-    if (!get_option('ycona_light_gray')) {
-        update_option('ycona_light_gray', '#F7F7F8');
+    if (!get_option('wt_shop_light_gray')) {
+        update_option('wt_shop_light_gray', '#F7F7F8');
     }
-    if (!get_option('ycona_tertiary')) {
-        update_option('ycona_tertiary', '#0077FF');
+    if (!get_option('wt_shop_tertiary')) {
+        update_option('wt_shop_tertiary', '#0077FF');
     }
 }
 add_action('init', 'initialize_default_colors');
@@ -98,14 +98,14 @@ function theme_generate_dynamic_files() {
     $background = get_option('background_color', '#ffffff');
     
     // Get ycona specific colors
-    $primary_dark = get_option('ycona_primary_dark', '#05063F');
-    $primary_hover = get_option('ycona_primary_hover', '#1326A1');
-    $secondary_darker = get_option('ycona_secondary_darker', '#CC4B02');
-    $black = get_option('ycona_black', '#111111');
-    $white = get_option('ycona_white', '#ffffff');
-    $gray = get_option('ycona_gray', '#737373');
-    $light_gray = get_option('ycona_light_gray', '#F7F7F8');
-    $tertiary = get_option('ycona_tertiary', '#0077FF');
+    $primary_dark = get_option('wt_shop_primary_dark', '#05063F');
+    $primary_hover = get_option('wt_shop_primary_hover', '#1326A1');
+    $secondary_darker = get_option('wt_shop_secondary_darker', '#CC4B02');
+    $black = get_option('wt_shop_black', '#111111');
+    $white = get_option('wt_shop_white', '#ffffff');
+    $gray = get_option('wt_shop_gray', '#737373');
+    $light_gray = get_option('wt_shop_light_gray', '#F7F7F8');
+    $tertiary = get_option('wt_shop_tertiary', '#0077FF');
     
     $custom_css = get_option('custom_css', '');
     $custom_js  = get_option('custom_js', '');
@@ -113,21 +113,21 @@ function theme_generate_dynamic_files() {
     // Generate CSS for all colors
     $colors_css = ":root {
         /* === Primary (Blue Shades) === */
-        --ycona-primary: {$primary};
-        --ycona-primary-dark: {$primary_dark};
-        --ycona-primary-hover: {$primary_hover};
+        --wt-shop-primary: {$primary};
+        --wt-shop-primary-dark: {$primary_dark};
+        --wt-shop-primary-hover: {$primary_hover};
 
         /* === Secondary (Orange Shades) === */
-        --ycona-secondary: {$secondary};
-        --ycona-secondary-darker: {$secondary_darker};
+        --wt-shop-secondary: {$secondary};
+        --wt-shop-secondary-darker: {$secondary_darker};
 
         /* === Neutral Colors === */
-        --ycona-black: {$black};
-        --ycona-white: {$white};
-        --ycona-gray: {$gray};
-        --ycona-light-gray: {$light_gray};
+        --wt-shop-black: {$black};
+        --wt-shop-white: {$white};
+        --wt-shop-gray: {$gray};
+        --wt-shop-light-gray: {$light_gray};
 
-        --ycona-tertiary: {$tertiary};
+        --wt-shop-tertiary: {$tertiary};
         
         /* === Legacy Color Support === */
         --primary-color: {$primary};
@@ -136,7 +136,7 @@ function theme_generate_dynamic_files() {
         --background-color: {$background};
         
         /* === Gradient === */
-        --ycona-gradient-90: linear-gradient(0deg, {$primary_hover} 0%, {$primary_dark} 50%, {$primary} 100%);
+        --wt-shop-gradient-90: linear-gradient(0deg, {$primary_hover} 0%, {$primary_dark} 50%, {$primary} 100%);
     }";
 
     // Save files physically
@@ -164,14 +164,14 @@ add_action('wp_ajax_save_design_colors', function() {
     update_option('background_color', sanitize_hex_color($_POST['background_color']));
     
     // Save ycona specific colors
-    update_option('ycona_primary_dark', sanitize_hex_color($_POST['primary_dark']));
-    update_option('ycona_primary_hover', sanitize_hex_color($_POST['primary_hover']));
-    update_option('ycona_secondary_darker', sanitize_hex_color($_POST['secondary_darker']));
-    update_option('ycona_black', sanitize_hex_color($_POST['black']));
-    update_option('ycona_white', sanitize_hex_color($_POST['white']));
-    update_option('ycona_gray', sanitize_hex_color($_POST['gray']));
-    update_option('ycona_light_gray', sanitize_hex_color($_POST['light_gray']));
-    update_option('ycona_tertiary', sanitize_hex_color($_POST['tertiary']));
+    update_option('wt_shop_primary_dark', sanitize_hex_color($_POST['primary_dark']));
+    update_option('wt_shop_primary_hover', sanitize_hex_color($_POST['primary_hover']));
+    update_option('wt_shop_secondary_darker', sanitize_hex_color($_POST['secondary_darker']));
+    update_option('wt_shop_black', sanitize_hex_color($_POST['black']));
+    update_option('wt_shop_white', sanitize_hex_color($_POST['white']));
+    update_option('wt_shop_gray', sanitize_hex_color($_POST['gray']));
+    update_option('wt_shop_light_gray', sanitize_hex_color($_POST['light_gray']));
+    update_option('wt_shop_tertiary', sanitize_hex_color($_POST['tertiary']));
     
     theme_generate_dynamic_files();
     wp_die();
@@ -230,14 +230,14 @@ add_action('wp_ajax_reset_design_defaults', function() {
     update_option('background_color', '#ffffff');
     
     // Reset ycona specific colors
-    update_option('ycona_primary_dark', '#05063F');
-    update_option('ycona_primary_hover', '#1326A1');
-    update_option('ycona_secondary_darker', '#CC4B02');
-    update_option('ycona_black', '#111111');
-    update_option('ycona_white', '#ffffff');
-    update_option('ycona_gray', '#737373');
-    update_option('ycona_light_gray', '#F7F7F8');
-    update_option('ycona_tertiary', '#0077FF');
+    update_option('wt_shop_primary_dark', '#05063F');
+    update_option('wt_shop_primary_hover', '#1326A1');
+    update_option('wt_shop_secondary_darker', '#CC4B02');
+    update_option('wt_shop_black', '#111111');
+    update_option('wt_shop_white', '#ffffff');
+    update_option('wt_shop_gray', '#737373');
+    update_option('wt_shop_light_gray', '#F7F7F8');
+    update_option('wt_shop_tertiary', '#0077FF');
     
     update_option('custom_css', '');
     update_option('custom_js', '');

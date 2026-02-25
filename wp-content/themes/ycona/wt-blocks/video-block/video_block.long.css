@@ -6,16 +6,17 @@
   margin-bottom: 1.5rem;
 }
 
-.video-block__title {
+.video-block-title {
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
 }
 
-.video-block--no-src .video-block__empty {
+.video-block-no-src .video-block-empty {
   padding: 1rem;
   background: #f0f0f0;
   color: #666;
   border-radius: 4px;
+
 }
 
 .video-block .video-player {

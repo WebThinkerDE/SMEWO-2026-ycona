@@ -1,50 +1,66 @@
 // native dom ready function
-var domRdy = function (fn) {
+var dom_rdy = function (fn) {
+   //sanity check
+   if (typeof fn !== "function") {
+      return;
+   }
 
-    //sanity check
-    if (typeof fn !== "function") {
-        return;
-    }
+   //if document is already loaded, run method
+   if (document.readyState === "complete") {
+      return fn();
+   }
 
-    //if document is already loaded, run method
-    if (document.readyState === "complete") {
-        return fn();
-    }
-
-    //otherwise, wait until document is loaded
-    document.addEventListener("DOMContentLoaded", fn, false);
+   //otherwise, wait until document is loaded
+   document.addEventListener("DOMContentLoaded", fn, false);
 };
 
 //native on dom ready
-domRdy(function () {
+dom_rdy(function () {});
 
+document.addEventListener("DOMContentLoaded", function () {
+   var header = document.querySelector("header.header-wt-shop");
+   var logo_default = document.querySelector(".logo-desktop");
+   var logo_active = document.querySelector(".logo-desktop-active");
+
+   // Create a spacer to prevent content jump when header becomes fixed.
+   var header_spacer = document.createElement("div");
+   header_spacer.className = "wt-shop-header-spacer";
+   header_spacer.style.display = "none";
+   header.parentNode.insertBefore(header_spacer, header.nextSibling);
+
+   var is_fixed = false;
+   var scroll_threshold = 300;
+   window.addEventListener("scroll", function () {
+      if (window.scrollY > scroll_threshold) {
+         if (!is_fixed) {
+            header_spacer.style.height = header.offsetHeight + "px";
+            header_spacer.style.display = "block";
+            is_fixed = true;
+         }
+         header.classList.add("active");
+         if (logo_default) logo_default.classList.add("d-none");
+         if (logo_active) logo_active.classList.remove("d-none");
+      } else {
+         if (is_fixed) {
+            header_spacer.style.display = "none";
+            is_fixed = false;
+         }
+         header.classList.remove("active");
+         if (logo_default) logo_default.classList.remove("d-none");
+         if (logo_active) logo_active.classList.add("d-none");
+      }
+   });
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    const header = document.querySelector('header.header-ycona');
-    const logoDefault = document.querySelector('.logo-desktop');
-    const logoActive = document.querySelector('.logo-desktop-active');
-
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 0) {
-            header.classList.add('active');
-            logoDefault.classList.add('d-none');
-            logoActive.classList.remove('d-none');
-        } else {
-            header.classList.remove('active');
-            logoDefault.classList.remove('d-none');
-            logoActive.classList.add('d-none');
-        }
-    });
-});
-
 
 //change border of required fields
 jQuery(document).ready(function ($) {
-    $('form').find('input[required]').on('invalid', function (e) {
-        e.preventDefault();
-        $(this).css('border', '1px solid #0BD876');
-    })
+   $("form")
+      .find("input[required]")
+      .on("invalid", function (e) {
+         e.preventDefault();
+         $(this).css("border", "1px solid #0BD876");
+      });
+
 });
 
 // language switcher
@@ -66,240 +82,91 @@ jQuery(document).ready(function ($) {
 //     });
 // });
 
-
 //contact form 7
 document.addEventListener("DOMContentLoaded", function () {
-    const cf7Btn = document.querySelector('.wpcf7 .wpcf7-submit');
-    if (cf7Btn) {
-        const btnText = cf7Btn.value;
-        const customButton = document.createElement('button');
-        customButton.type = 'submit';
-        customButton.className = 'wpcf7-submit btn-full btn-full-primary';
-        customButton.innerHTML = `${btnText}`;
+   var cf7_btn = document.querySelector(".wpcf7 .wpcf7-submit");
+   if (cf7_btn) {
+      var btn_text = cf7_btn.value;
+      var custom_button = document.createElement("button");
+      custom_button.type = "submit";
+      custom_button.className = "wpcf7-submit btn-full btn-full-primary";
+      custom_button.innerHTML = "" + btn_text;
 
-        cf7Btn.parentNode.replaceChild(customButton, cf7Btn);
-    }
+      cf7_btn.parentNode.replaceChild(custom_button, cf7_btn);
+   }
 });
 
 /*Contact form Opening and closing Tab*/
-document.addEventListener('DOMContentLoaded', function() {
-    const openMegaMenu = document.getElementById('openMegaMenu');
-    const panelLeft = document.getElementById('panelLeft');
-    const panelRight = document.getElementById('panelRight');
+document.addEventListener("DOMContentLoaded", function () {
+   var open_mega_menu = document.getElementById("open-mega-menu");
+   var panel_left = document.getElementById("panel-left");
+   var panel_right = document.getElementById("panel-right");
 
-    openMegaMenu.addEventListener('click', function() {
-        console.log('click mega menu');
-        this.classList.toggle('active');
-        panelLeft.classList.toggle('open-left');
-        panelRight.classList.toggle('open-right');
-    });
+   open_mega_menu.addEventListener("click", function () {
+      this.classList.toggle("active");
+      panel_left.classList.toggle("open-left");
+      panel_right.classList.toggle("open-right");
+   });
+
+   var mega_close = document.getElementById("mega-menu-close");
+   if (mega_close) {
+      mega_close.addEventListener("click", function () {
+         open_mega_menu.classList.remove("active");
+         panel_left.classList.remove("open-left");
+         panel_right.classList.remove("open-right");
+      });
+   }
 });
 
 // Wait for DOM
-document.addEventListener('DOMContentLoaded', () => {
-    // Select all arrow wrappers
-    const arrow_wrappers = document.querySelectorAll('.mega-menu-mobile-arrow');
+document.addEventListener("DOMContentLoaded", () => {
+   // Select all arrow wrappers (top-level, sub, and sub-sub menu arrows)
+   const arrow_wrappers = document.querySelectorAll(
+      ".mega-menu-mobile-arrow, .sub-mega-menu-mobile-arrowe, .sub-sub-mega-menu-mobile-arrow",
+   );
 
-    arrow_wrappers.forEach(arrow_wrapper => {
-        // Grab the two arrow images
-        const arrow_menu_open = arrow_wrapper.querySelector('.arrow-menu-open');
-        const arrow_menu_close = arrow_wrapper.querySelector('.arrow-menu-close');
+   arrow_wrappers.forEach((arrow_wrapper) => {
+      // Grab the two arrow images
+      const arrow_menu_open = arrow_wrapper.querySelector(".arrow-menu-open");
+      const arrow_menu_close = arrow_wrapper.querySelector(".arrow-menu-close");
 
-        // Find the corresponding submenu in the same <li>
-        const parent_li = arrow_wrapper.closest('li');
-        const sub_menu = parent_li.querySelector('.dropdown-menu.sub-menu.depth_0');
+      // Find the direct child submenu <ul> in the same <li> (works for any depth)
+      const parent_li = arrow_wrapper.closest("li");
+      const sub_menu = parent_li.querySelector(":scope > ul.dropdown-menu");
+      if (!sub_menu) return;
 
-        // Ensure submenu is hidden by default
-        sub_menu.classList.add('d-none');
+      // Ensure submenu is hidden by default
+      sub_menu.classList.add("d-none");
 
-        // Bind click
-        arrow_wrapper.addEventListener('click', () => {
-            // Toggle open/close icons
-            arrow_menu_open.classList.toggle('d-none');
-            arrow_menu_close.classList.toggle('d-none');
+      // Bind click
+      arrow_wrapper.addEventListener("click", () => {
+         // Toggle open/close icons
+         arrow_menu_open.classList.toggle("d-none");
+         arrow_menu_close.classList.toggle("d-none");
 
-            // Toggle submenu visibility
-            sub_menu.classList.toggle('d-none');
-        });
-    });
+         // Toggle submenu visibility
+         sub_menu.classList.toggle("d-none");
+      });
+   });
 });
 
-
-/* custom header search product */
-jQuery(document).ready(function($) {
-    var delay_timer; // Set a timer
-    var delay_time = 500; // Set delay time in milliseconds
-    
-    // Function to perform the AJAX request
-    function performSearch() {
-        var search_term = $('#search_term').val().trim();
-        
-        // If search_term is empty, clear the results and exit from this function
-        if (!search_term) {
-            $('#search_term').removeClass('active-border');
-            $('.submit-button').removeClass('active-border');
-            $('#search-results').html("");
-            return;
-        }
-        
-        $.ajax({
-            url: wtAjax.ajaxurl,
-            type: 'GET',
-            data: {
-                action: 'custom_woocommerce_product_search',
-                search_term: search_term,
-            },
-            success: function(response) {
-                if(response.trim() === '') {
-                    $('#search-results').html("No results found");
-                } else {
-                    $('#search_term').addClass('active-border');
-                    $('.submit-button').addClass('active-border');
-                    $('#search-results').html(response + '<span class="close-icon-search"></span>');
-                }
-            }
-        });
-    }
-    
-    // Trigger search on input
-    $('#search_term').on('input', function() {
-        // Clear existing timer on each input event
-        clearTimeout(delay_timer);
-        
-        // Set the new timer
-        delay_timer = setTimeout(performSearch, delay_time);
-    });
-    
-    // Trigger search on form submit
-    $('#ycona-custom-search-form').on('submit', function(e) {
-        e.preventDefault();
-        performSearch();
-    });
-    
-    // Clear search results when clicked on close icon
-    $('#search-results').on('click', '.close-icon-search', function(e) {
-        $('#search-results').html("");
-    });
-});
-
-/* custom header search mobil product */
-
-jQuery(document).ready(function($) {
-    var delay_timer_mobile; // Set a timer for mobile
-    var delay_time = 500; // Set delay time in milliseconds
-    
-    // Function to perform the AJAX request
-    function perform_search_mobile() {
-        var search_term_mobile = $('#search_term-mobile').val().trim();
-        
-        // Check if search_term is empty
-        if (!search_term_mobile) {
-            $('#search-results-mobile').html("");
-            return;
-        }
-        
-        // Perform AJAX request
-        $.ajax({
-            url: wtAjax.ajaxurl,
-            type: 'GET',
-            data: {
-                action: 'custom_woocommerce_product_search_mobile',
-                search_term_mobile: search_term_mobile,
-                
-            },
-            success: function(response) {
-                $('#search-results-mobile').html(response + '<span class="close-icon-search"></span>');
-            }
-        });
-    }
-    
-    // Trigger search on input
-    $('#search_term-mobile').on('input', function() {
-        clearTimeout(delay_timer_mobile); // Clear existing timer on each input event
-        delay_timer_mobile = setTimeout(perform_search_mobile, delay_time);  // Set the new timer
-    });
-    
-    // Trigger search on form submit
-    $('#ycona-custom-search-form-mobile').on('submit', function(e) {
-        e.preventDefault();
-        perform_search_mobile();
-    });
-    
-    // Clear search results when clicked on close icon
-    $('#search-results-mobile').on('click', '.close-icon-search', function(e) {
-        $('#search-results-mobile').html("");
-    });
-});
-
-
-
-//autoupdate cart number
-jQuery(document).ready(function($) {
-    // Function to update the cart count
-    function update_cart_count() {
-        $.ajax({
-            url: wc_add_to_cart_params.ajax_url, // WooCommerce's AJAX URL
-            type: 'POST',
-            data: {
-                action: 'woocommerce_get_refreshed_fragments'
-            },
-            success: function(response) {
-                if (response && response.fragments) {
-                    // Extract the updated cart count and replace only the number
-                    var newCartCount = $(response.fragments['span.menu-basket-items-total']).text();
-                    $('.menu-basket-items-total').text(newCartCount); // Update the cart count
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log('AJAX error:', status, error); // Log the error for debugging
-            }
-        });
-    }
-    
-    // Listen for WooCommerce events when an item is added to the cart
-    $(document.body).on('added_to_cart', function() {
-        update_cart_count();
-    });
-    
-    // Listen for WooCommerce events when an item is removed from the cart
-    $(document.body).on('removed_from_cart', function() {
-        update_cart_count();
-    });
-    
-    // Listen for WooCommerce events when the cart is updated
-    $(document.body).on('updated_cart_totals', function() {
-        update_cart_count();
-    });
-    
-    // Listen for the click event on the "Remove" button (× link) in the cart
-    $(document).on('click', '.product-remove .remove', function(e) {
-        e.preventDefault(); // Prevent default link behavior (full page reload)
-        
-        var $this = $(this);
-        var product_id = $this.data('product_id');
-        var cart_item_key = $this.attr('href').split('remove_item=')[1].split('&')[0]; // Extract the cart item key from the href
-        
-        // Use WooCommerce's default removal link handling
-        $.ajax({
-            url: wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%", "remove_item"),
-            type: 'POST',
-            data: {
-                cart_item_key: cart_item_key
-            },
-            success: function(response) {
-                // Remove the item row from the cart
-                $this.closest('tr.cart_item').remove();
-                
-                // Refresh the cart fragments and totals
-                update_cart_count();
-                $(document.body).trigger('wc_fragment_refresh'); // Update other cart details
-            },
-            error: function(xhr, status, error) {
-                console.log('AJAX error:', status, error); // Log any errors for debugging
-            }
-        });
-    });
-});
-
-
+(function () {
+   var el = document.getElementById('<?php echo esc_js( $root_id ); ?>');
+   if (!el || el.dataset.init === '1') return;
+   el.dataset.init = '1';
+   var btn = el.querySelector('.wt-lang-dd__trigger');
+   if (btn) {
+      btn.addEventListener('click', function (e) {
+         e.preventDefault();
+         el.classList.toggle('is-open');
+         btn.setAttribute('aria-expanded', el.classList.contains('is-open') ? 'true' : 'false');
+      });
+   }
+   document.addEventListener('click', function (e) {
+      if (!el.contains(e.target)) {
+         el.classList.remove('is-open');
+         if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+   });
+})();
 

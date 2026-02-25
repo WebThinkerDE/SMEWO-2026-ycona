@@ -111,27 +111,27 @@
    ============================================ */
 
 /* Wrapper reserves 16:9 space while skeleton is active */
-.video-player--skeleton {
+.video-player-skeleton {
   aspect-ratio: 16 / 9;
 }
 
 /* When an explicit height is set, aspect-ratio is not needed */
-.video-player--skeleton[style*="height"] {
+.video-player-skeleton[style*="height"] {
   aspect-ratio: unset;
 }
 
 /* Video stays in flow but invisible — it loads in the background */
-.video-player--skeleton video {
+.video-player-skeleton video {
   opacity: 0;
   pointer-events: none;
 }
 
 /* Hide all other player chrome while skeleton is visible */
-.video-player--skeleton .video-player-play-overlay,
-.video-player--skeleton .video-player-controls,
-.video-player--skeleton .video-player-captions,
-.video-player--skeleton .video-player-loading,
-.video-player--skeleton .video-player-error {
+.video-player-skeleton .video-player-play-overlay,
+.video-player-skeleton .video-player-controls,
+.video-player-skeleton .video-player-captions,
+.video-player-skeleton .video-player-loading,
+.video-player-skeleton .video-player-error {
   opacity: 0;
   pointer-events: none;
 }
@@ -147,7 +147,7 @@
 }
 
 /* Shimmer sweep animation */
-.vp-skeleton__shimmer {
+.vp-skeleton-shimmer {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -168,7 +168,7 @@
 }
 
 /* Faux play button — centered circle */
-.vp-skeleton__play {
+.vp-skeleton-play {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -180,7 +180,7 @@
 }
 
 /* Faux controls bar at bottom */
-.vp-skeleton__controls {
+.vp-skeleton-controls {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -192,7 +192,7 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
 }
 
-.vp-skeleton__btn {
+.vp-skeleton-btn {
   width: 30px;
   height: 30px;
   border-radius: 6px;
@@ -200,7 +200,7 @@
   flex-shrink: 0;
 }
 
-.vp-skeleton__btn-sm {
+.vp-skeleton-btn-sm {
   width: 24px;
   height: 24px;
   border-radius: 6px;
@@ -208,7 +208,7 @@
   flex-shrink: 0;
 }
 
-.vp-skeleton__bar {
+.vp-skeleton-bar {
   flex: 1;
   height: 4px;
   border-radius: 2px;
@@ -216,7 +216,7 @@
   min-width: 0;
 }
 
-.vp-skeleton__time {
+.vp-skeleton-time {
   width: 60px;
   height: 12px;
   border-radius: 4px;
@@ -227,13 +227,13 @@
 /* ——— Skin overrides for skeleton ——— */
 
 /* Ocean */
-.video-player--skin-ocean .vp-skeleton {
+.video-player-skin-ocean .vp-skeleton {
   background: #0a1e3c;
 }
-.video-player--skin-ocean .vp-skeleton__play {
+.video-player-skin-ocean .vp-skeleton-play {
   background: rgba(62, 168, 255, 0.12);
 }
-.video-player--skin-ocean .vp-skeleton__shimmer {
+.video-player-skin-ocean .vp-skeleton-shimmer {
   background: linear-gradient(
     105deg,
     transparent 35%,
@@ -246,18 +246,18 @@
 }
 
 /* Cinema */
-.video-player--skin-cinema .vp-skeleton {
+.video-player-skin-cinema .vp-skeleton {
   background: #140000;
   border-radius: 0;
 }
-.video-player--skin-cinema .vp-skeleton__play {
+.video-player-skin-cinema .vp-skeleton-play {
   background: rgba(229, 9, 20, 0.12);
 }
-.video-player--skin-cinema .vp-skeleton__btn,
-.video-player--skin-cinema .vp-skeleton__btn-sm {
+.video-player-skin-cinema .vp-skeleton-btn,
+.video-player-skin-cinema .vp-skeleton-btn-sm {
   border-radius: 4px;
 }
-.video-player--skin-cinema .vp-skeleton__shimmer {
+.video-player-skin-cinema .vp-skeleton-shimmer {
   background: linear-gradient(
     105deg,
     transparent 35%,
@@ -270,31 +270,30 @@
 }
 
 /* Minimal */
-.video-player--skin-minimal .vp-skeleton {
+.video-player-skin-minimal .vp-skeleton {
   background: #0a0a0a;
   border-radius: 0;
 }
-.video-player--skin-minimal .vp-skeleton__play {
+.video-player-skin-minimal .vp-skeleton-play {
   width: 56px;
   height: 56px;
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid rgba(255, 255, 255, 0.08);
 }
-.video-player--skin-minimal .vp-skeleton__btn,
-.video-player--skin-minimal .vp-skeleton__btn-sm {
+.video-player-skin-minimal .vp-skeleton-btn,
+.video-player-skin-minimal .vp-skeleton-btn-sm {
   border-radius: 0;
 }
-.video-player--skin-minimal .vp-skeleton__bar {
+.video-player-skin-minimal .vp-skeleton-bar {
   height: 3px;
 }
 
 /* Reduced motion — stop shimmer animation */
 @media (prefers-reduced-motion: reduce) {
-  .vp-skeleton__shimmer {
+  .vp-skeleton-shimmer {
     animation: none;
   }
 }
-
 /* ============================================
    Centered Play Button Overlay
    ============================================ */
@@ -1062,9 +1061,9 @@
 
 /* ============================================
    SKIN: Ocean (blue accent)
-   Apply with: <div class="video-player video-player--skin-ocean">
+   Apply with: <div class="video-player video-player-skin-ocean">
    ============================================ */
-.video-player--skin-ocean {
+.video-player-skin-ocean {
   --vp-accent: #e0f0ff;
   --vp-accent-dim: rgba(160, 210, 255, 0.9);
   --vp-track: rgba(100, 180, 255, 0.2);
@@ -1076,38 +1075,38 @@
   --vp-surface-active: rgba(62, 168, 255, 0.4);
 }
 
-.video-player--skin-ocean .video-player-play-overlay {
+.video-player-skin-ocean .video-player-play-overlay {
   background: rgba(62, 168, 255, 0.95);
   box-shadow: 0 4px 24px rgba(62, 168, 255, 0.4);
 }
 
-.video-player--skin-ocean .video-player-play-overlay:hover {
+.video-player-skin-ocean .video-player-play-overlay:hover {
   background: #3ea8ff;
   box-shadow: 0 6px 30px rgba(62, 168, 255, 0.55);
 }
 
-.video-player--skin-ocean .video-player-play-overlay i {
+.video-player-skin-ocean .video-player-play-overlay i {
   color: #fff;
 }
 
-.video-player--skin-ocean .video-player-captions {
+.video-player-skin-ocean .video-player-captions {
   background: rgba(10, 30, 60, 0.9);
 }
 
-.video-player--skin-ocean .video-player-captions-menu {
+.video-player-skin-ocean .video-player-captions-menu {
   background: rgba(10, 30, 60, 0.95);
 }
 
-.video-player--skin-ocean .video-player-error {
+.video-player-skin-ocean .video-player-error {
   background: rgba(62, 168, 255, 0.9);
 }
 
 
 /* ============================================
    SKIN: Cinema (red accent, dark background)
-   Apply with: <div class="video-player video-player--skin-cinema">
+   Apply with: <div class="video-player video-player-skin-cinema">
    ============================================ */
-.video-player--skin-cinema {
+.video-player-skin-cinema {
   --vp-accent: #fff;
   --vp-accent-dim: rgba(255, 230, 230, 0.9);
   --vp-track: rgba(255, 255, 255, 0.2);
@@ -1120,44 +1119,44 @@
   --vp-radius: 0;
 }
 
-.video-player--skin-cinema .video-player-play-overlay {
+.video-player-skin-cinema .video-player-play-overlay {
   background: rgba(229, 9, 20, 0.95);
   box-shadow: 0 4px 24px rgba(229, 9, 20, 0.4);
 }
 
-.video-player--skin-cinema .video-player-play-overlay:hover {
+.video-player-skin-cinema .video-player-play-overlay:hover {
   background: #e50914;
   box-shadow: 0 6px 30px rgba(229, 9, 20, 0.55);
 }
 
-.video-player--skin-cinema .video-player-play-overlay i {
+.video-player-skin-cinema .video-player-play-overlay i {
   color: #fff;
 }
 
-.video-player--skin-cinema .video-player-captions {
+.video-player-skin-cinema .video-player-captions {
   background: rgba(20, 0, 0, 0.92);
   font-weight: 600;
 }
 
-.video-player--skin-cinema .video-player-captions-menu {
+.video-player-skin-cinema .video-player-captions-menu {
   background: rgba(20, 0, 0, 0.95);
 }
 
-.video-player--skin-cinema .video-player-error {
+.video-player-skin-cinema .video-player-error {
   background: rgba(229, 9, 20, 0.95);
   border-radius: 0;
 }
 
-.video-player--skin-cinema .video-player-progress-track {
+.video-player-skin-cinema .video-player-progress-track {
   border-radius: 0;
 }
 
-.video-player--skin-cinema .video-player-progress-buffered,
-.video-player--skin-cinema .video-player-progress-played {
+.video-player-skin-cinema .video-player-progress-buffered,
+.video-player-skin-cinema .video-player-progress-played {
   border-radius: 0;
 }
 
-.video-player--skin-cinema .video-player-btn {
+.video-player-skin-cinema .video-player-btn {
   border-radius: 4px;
 }
 
@@ -1165,9 +1164,9 @@
 /* ============================================
    SKIN: Minimal (invisible controls until hover,
    monochrome, no overlay, ultra-clean)
-   Apply with: <div class="video-player video-player--skin-minimal">
+   Apply with: <div class="video-player video-player-skin-minimal">
    ============================================ */
-.video-player--skin-minimal {
+.video-player-skin-minimal {
   --vp-accent: rgba(255, 255, 255, 0.9);
   --vp-accent-dim: rgba(255, 255, 255, 0.7);
   --vp-track: rgba(255, 255, 255, 0.15);
@@ -1180,7 +1179,7 @@
   --vp-radius: 0;
 }
 
-.video-player--skin-minimal .video-player-play-overlay {
+.video-player-skin-minimal .video-player-play-overlay {
   width: 60px;
   height: 60px;
   background: rgba(0, 0, 0, 0.5);
@@ -1188,50 +1187,50 @@
   border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
-.video-player--skin-minimal .video-player-play-overlay:hover {
+.video-player-skin-minimal .video-player-play-overlay:hover {
   background: rgba(0, 0, 0, 0.7);
   box-shadow: none;
   border-color: #fff;
 }
 
-.video-player--skin-minimal .video-player-play-overlay i {
+.video-player-skin-minimal .video-player-play-overlay i {
   color: #fff;
   font-size: 24px;
 }
 
-.video-player--skin-minimal .video-player-controls {
+.video-player-skin-minimal .video-player-controls {
   padding: 12px 16px 12px;
   gap: 6px;
 }
 
-.video-player--skin-minimal .video-player-btn {
+.video-player-skin-minimal .video-player-btn {
   width: 32px;
   height: 32px;
   font-size: 16px;
   border-radius: 0;
 }
 
-.video-player--skin-minimal .video-player-time {
+.video-player-skin-minimal .video-player-time {
   font-size: 12px;
   font-weight: 400;
   min-width: 80px;
 }
 
-.video-player--skin-minimal .video-player-progress-track {
+.video-player-skin-minimal .video-player-progress-track {
   height: 3px;
   border-radius: 0;
 }
 
-.video-player--skin-minimal .video-player-progress-wrap:hover .video-player-progress-track {
+.video-player-skin-minimal .video-player-progress-wrap:hover .video-player-progress-track {
   height: 4px;
 }
 
-.video-player--skin-minimal .video-player-progress-buffered,
-.video-player--skin-minimal .video-player-progress-played {
+.video-player-skin-minimal .video-player-progress-buffered,
+.video-player-skin-minimal .video-player-progress-played {
   border-radius: 0;
 }
 
-.video-player--skin-minimal .video-player-captions {
+.video-player-skin-minimal .video-player-captions {
   background: rgba(0, 0, 0, 0.7);
   font-size: 1rem;
   border-radius: 2px;

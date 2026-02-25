@@ -23,7 +23,7 @@
 		wp_enqueue_style("wt_cards_block");
 		
 		$post_ID            = $attributes["post_id"] ?? "";
-		$class_name         = $attributes["className"] ?? "default-ycona";
+		$class_name         = $attributes["className"] ?? "default-wt-shop";
 		$section_layout     = $attributes["layout"] ?? "container";
 		$columns            = $attributes["columns"] ?? "3";
 		$uid                = uniqid('cards_');

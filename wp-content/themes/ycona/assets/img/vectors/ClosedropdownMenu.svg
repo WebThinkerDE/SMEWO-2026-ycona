@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256.5" height="25" viewBox="0 0 256.5 25">
+	<g transform="translate(-61.5 -238.5)">
+		<!-- Line -->
+		<path d="M0,0H205.918" transform="translate(61.5 251.5)" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+		<!-- Minus -->
+		<path d="M0,0H8.544" transform="translate(302.902 251)" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+	</g>
+</svg>

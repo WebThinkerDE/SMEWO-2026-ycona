@@ -5,15 +5,16 @@
         registerBlockType   = blocks.registerBlockType,
         MediaUpload         = wp.blockEditor.MediaUpload,
         TextControl         = wp.components.TextControl,
-        InspectorControls   = wp.blockEditor.InspectorControls;
+        InspectorControls   = wp.blockEditor.InspectorControls,
+        useBlockProps       = wp.blockEditor.useBlockProps;
 
     registerBlockType( 'wt/video-block', {
+        apiVersion: 3,
         title: 'Video-Block',
         icon: 'video-alt',
-        category: 'ycona-blocks',
+        category: 'wt-shop-blocks',
         description: 'Video with optional title. Uses custom video player (no native controls).',
         example: {},
-
 
         attributes: {
             title: {
@@ -51,6 +52,7 @@
             audio_tracks: {
                 type: 'array',
                 default: []
+
             }
 
         },
@@ -174,9 +176,9 @@
             var current_skin = props.attributes.skin || '';
 
             // Build the skin preview classes
-            var skin_preview_class = 'video-block-editor__skin-preview';
+            var skin_preview_class = 'video-block-editor-skin-preview';
             if ( current_skin ) {
-                skin_preview_class += ' video-block-editor__skin-preview--' + current_skin;
+                skin_preview_class += ' video-block-editor-skin-preview-' + current_skin;
             }
 
             return (
@@ -186,10 +188,10 @@
 
                         )
                     ),
-                    el( 'div', {
+                    el( 'div', useBlockProps( {
                             key: 'video-block-edit',
-                            class: 'webthiker-block video-block-editor ' + video_not_present_class
-                        },
+                            className: 'webthiker-block video-block-editor ' + video_not_present_class
+                        } ),
                         el( 'h3', null, 'Video-Block' ),
                         el( 'dl', null,
                             el( 'dt', null, 'Titel (optional)' ),
@@ -253,55 +255,55 @@
                                 }, 'Poster entfernen' ) : null
                             ),
                             el( 'dt', null, 'Player-Skin' ),
-                            el( 'dd', { class: 'video-block-editor__skin-field' },
+                            el( 'dd', { class: 'video-block-editor-skin-field' },
                                 el( 'select', {
                                     value: current_skin,
                                     onChange: update_skin,
-                                    className: 'video-block-editor__skin-select'
+                                    className: 'video-block-editor-skin-select'
                                 },
                                     skin_options.map( function ( opt ) {
                                         return el( 'option', { key: opt.value, value: opt.value }, opt.label );
                                     } )
                                 ),
                                 el( 'div', { class: skin_preview_class },
-                                    el( 'span', { class: 'video-block-editor__skin-dot' } ),
+                                    el( 'span', { class: 'video-block-editor-skin-dot' } ),
                                     el( 'span', null, current_skin ? current_skin.charAt(0).toUpperCase() + current_skin.slice(1) : 'Default' )
                                 )
                             ),
                             el( 'dt', null, 'Breite & Höhe (optional)' ),
-                            el( 'dd', { class: 'video-block-editor__dimensions-field' },
-                                el( 'label', { class: 'video-block-editor__dim-label' },
+                            el( 'dd', { class: 'video-block-editor-dimensions-field' },
+                                el( 'label', { class: 'video-block-editor-dim-label' },
                                     'Breite',
                                     el( 'input', {
                                         type: 'text',
                                         value: props.attributes.width || '',
                                         placeholder: 'z.B. 800px, 100%, 50vw',
                                         onChange: update_width,
-                                        className: 'video-block-editor__dim-input'
+                                        className: 'video-block-editor-dim-input'
                                     } )
                                 ),
-                                el( 'label', { class: 'video-block-editor__dim-label' },
+                                el( 'label', { class: 'video-block-editor-dim-label' },
                                     'Höhe',
                                     el( 'input', {
                                         type: 'text',
                                         value: props.attributes.height || '',
                                         placeholder: 'z.B. 450px, auto',
                                         onChange: update_height,
-                                        className: 'video-block-editor__dim-input'
+                                        className: 'video-block-editor-dim-input'
                                     } )
                                 )
                             ),
                             el( 'dt', null, 'Untertitel / Subtitles (optional)' ),
-                            el( 'dd', { class: 'video-block-editor__subtitles-field' },
+                            el( 'dd', { class: 'video-block-editor-subtitles-field' },
                                 subtitles_list.map( function ( sub, idx ) {
                                     return ( function ( i ) {
-                                        return el( 'div', { key: 'sub-' + i, class: 'video-block-editor__subtitle-row' },
-                                            el( 'div', { class: 'video-block-editor__subtitle-url-row' },
+                                        return el( 'div', { key: 'sub-' + i, class: 'video-block-editor-subtitle-row' },
+                                            el( 'div', { class: 'video-block-editor-subtitle-url-row' },
                                                 el( 'input', {
                                                     type: 'text',
                                                     value: sub.url || '',
                                                     placeholder: 'https://example.com/subs.vtt',
-                                                    className: 'video-block-editor__subtitle-input',
+                                                    className: 'video-block-editor-subtitle-input',
                                                     onChange: function ( e ) { update_subtitle( i, 'url', e.target.value ); }
                                                 } ),
                                                 el( MediaUpload, {
@@ -310,30 +312,30 @@
                                                     render: function ( ref ) {
                                                         return el( 'button', {
                                                             type: 'button',
-                                                            className: 'btn video-block-editor__subtitle-upload-btn',
+                                                            className: 'btn video-block-editor-subtitle-upload-btn',
                                                             onClick: ref.open
                                                         }, 'Upload .vtt' );
                                                     }
                                                 } )
                                             ),
-                                            el( 'div', { class: 'video-block-editor__subtitle-meta-row' },
+                                            el( 'div', { class: 'video-block-editor-subtitle-meta-row' },
                                                 el( 'input', {
                                                     type: 'text',
                                                     value: sub.label || '',
                                                     placeholder: 'Label (z.B. English)',
-                                                    className: 'video-block-editor__subtitle-meta-input',
+                                                    className: 'video-block-editor-subtitle-meta-input',
                                                     onChange: function ( e ) { update_subtitle( i, 'label', e.target.value ); }
                                                 } ),
                                                 el( 'input', {
                                                     type: 'text',
                                                     value: sub.srclang || '',
                                                     placeholder: 'Lang (z.B. en)',
-                                                    className: 'video-block-editor__subtitle-lang-input',
+                                                    className: 'video-block-editor-subtitle-lang-input',
                                                     onChange: function ( e ) { update_subtitle( i, 'srclang', e.target.value ); }
                                                 } ),
                                                 el( 'button', {
                                                     type: 'button',
-                                                    className: 'btn-remove-video video-block-editor__subtitle-remove-btn',
+                                                    className: 'btn-remove-video video-block-editor-subtitle-remove-btn',
                                                     onClick: function () { remove_subtitle( i ); }
                                                 }, '\u2715' )
                                             )
@@ -342,21 +344,21 @@
                                 } ),
                                 el( 'button', {
                                     type: 'button',
-                                    className: 'btn video-block-editor__subtitle-add-btn',
+                                    className: 'btn video-block-editor-subtitle-add-btn',
                                     onClick: add_subtitle
                                 }, '+ Untertitel hinzufügen' )
                             ),
                             el( 'dt', null, 'Audio-Tracks (optional)' ),
-                            el( 'dd', { class: 'video-block-editor__audio-tracks-field' },
+                            el( 'dd', { class: 'video-block-editor-audio-tracks-field' },
                                 audio_tracks_list.map( function ( track, idx ) {
                                     return ( function ( i ) {
-                                        return el( 'div', { key: 'audio-' + i, class: 'video-block-editor__audio-track-row' },
-                                            el( 'div', { class: 'video-block-editor__audio-track-url-row' },
+                                        return el( 'div', { key: 'audio-' + i, class: 'video-block-editor-audio-track-row' },
+                                            el( 'div', { class: 'video-block-editor-audio-track-url-row' },
                                                 el( 'input', {
                                                     type: 'text',
                                                     value: track.url || '',
                                                     placeholder: 'https://example.com/audio-de.mp3',
-                                                    className: 'video-block-editor__audio-track-input',
+                                                    className: 'video-block-editor-audio-track-input',
                                                     onChange: function ( e ) { update_audio_track( i, 'url', e.target.value ); }
                                                 } ),
                                                 el( MediaUpload, {
@@ -365,30 +367,30 @@
                                                     render: function ( ref ) {
                                                         return el( 'button', {
                                                             type: 'button',
-                                                            className: 'btn video-block-editor__audio-track-upload-btn',
+                                                            className: 'btn video-block-editor-audio-track-upload-btn',
                                                             onClick: ref.open
                                                         }, 'Upload Audio' );
                                                     }
                                                 } )
                                             ),
-                                            el( 'div', { class: 'video-block-editor__audio-track-meta-row' },
+                                            el( 'div', { class: 'video-block-editor-audio-track-meta-row' },
                                                 el( 'input', {
                                                     type: 'text',
                                                     value: track.label || '',
                                                     placeholder: 'Label (z.B. Deutsch)',
-                                                    className: 'video-block-editor__audio-track-meta-input',
+                                                    className: 'video-block-editor-audio-track-meta-input',
                                                     onChange: function ( e ) { update_audio_track( i, 'label', e.target.value ); }
                                                 } ),
                                                 el( 'input', {
                                                     type: 'text',
                                                     value: track.lang || '',
                                                     placeholder: 'Lang (z.B. de)',
-                                                    className: 'video-block-editor__audio-track-lang-input',
+                                                    className: 'video-block-editor-audio-track-lang-input',
                                                     onChange: function ( e ) { update_audio_track( i, 'lang', e.target.value ); }
                                                 } ),
                                                 el( 'button', {
                                                     type: 'button',
-                                                    className: 'btn-remove-video video-block-editor__audio-track-remove-btn',
+                                                    className: 'btn-remove-video video-block-editor-audio-track-remove-btn',
                                                     onClick: function () { remove_audio_track( i ); }
                                                 }, '\u2715' )
                                             )
@@ -397,12 +399,12 @@
                                 } ),
                                 el( 'button', {
                                     type: 'button',
-                                    className: 'btn video-block-editor__audio-track-add-btn',
+                                    className: 'btn video-block-editor-audio-track-add-btn',
                                     onClick: add_audio_track
                                 }, '+ Audio-Track hinzufügen' )
                             )
                         ),
-                        el( 'div', { class: 'video-block-editor__preview' },
+                        el( 'div', { class: 'video-block-editor-preview' },
                             video_url_value
                                 ? el( 'video', {
                                     src: video_url_value,

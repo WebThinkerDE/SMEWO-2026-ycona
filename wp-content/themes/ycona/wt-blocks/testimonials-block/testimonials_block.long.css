@@ -5,16 +5,16 @@ section.testimonials-section{
 
 section.testimonials-section .testimonial-card {
     position: relative;
-    background-image: url('/wp-content/themes/ycona/assets/img/background-card.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
     z-index: 0;
     height: 380px;
-    color: white;
+    color: black;
     border-radius: 15px;
     padding: 30px;
+    border: 2px solid var(--wt-shop-black, #1a1a2e);
 }
 
 
@@ -22,7 +22,7 @@ section.testimonials-section .testimonial-card::after {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: white;
     z-index: 1;
     opacity: 0.85;
 }

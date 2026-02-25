@@ -21,8 +21,8 @@ function show_cards_custom_fields() {
 
         <input type="hidden" name="cardsMetaNonce" value="<?php echo wp_create_nonce( "saveCardsFields" ); ?>">
 
-        <div class="cardsSettings">
-            <h3>Cards</h3>
+        <div class="cards-settings">
+            <h3><?php _e( 'Cards', 'ycona' ); ?></h3>
         </div>
 
         <div id="wt-wrapper-cards" class="wt-wrapper-cpt">
@@ -37,12 +37,12 @@ function show_cards_custom_fields() {
                     $description        = $card["description"] ?? '';
                     $link_url           = $card["link_url"] ?? '';
                     $link_text          = $card["link_text"] ?? '';
-                    $imgSrc             = $card["image"] ?? '';
-                    $imgId              = $card["imageId"] ?? '';
+                    $img_src             = $card["image"] ?? '';
+                    $img_id              = $card["imageId"] ?? '';
 
                     echo '<div class="card-item cpt-element" data-count="'.$c.'">
 
-            <div class="sortButtons">
+            <div class="sort-buttons">
                 <button type="button" class="btn btn-sm btn-primary float-right mr-1 sort-down">
                     <span class="dashicons dashicons-arrow-down-alt2"></span>
                 </button>
@@ -54,7 +54,7 @@ function show_cards_custom_fields() {
             <div id="box-wrapper-'.$c.'" class="cards-box cpt-box">
                 
                 <div class="click-area">
-                    <h3>Card #'.($c+1).'</h3>
+                    <h3>' . esc_html( sprintf( __( 'Card #%d', 'ycona' ), $c + 1 ) ) . '</h3>
                 </div>
                 
                 <div class="content-area">
@@ -66,43 +66,43 @@ function show_cards_custom_fields() {
                         
                         <dt>'.__('Image','ycona').'</dt>
                         <dd>
-                            <input type="hidden" name="cards_fields[cards]['.$c.'][image]" class="meta-image" value="'.$imgSrc.'">
-                            <input type="hidden" name="cards_fields[cards]['.$c.'][imageId]" class="meta-image-id" value="'.$imgId.'">
-                            <input type="button" data-id="'.$c.'" class="button image-upload" value="'.__('Browse','ycona').'">
-                            <input type="button" class="button image-upload-remove" data-id="'.$c.'" value="'.__('Remove','ycona').'">
+                            <input type="hidden" name="cards_fields[cards]['.$c.'][image]" class="meta-image" value="'.$img_src.'">
+                            <input type="hidden" name="cards_fields[cards]['.$c.'][imageId]" class="meta-image-id" value="'.$img_id.'">
+                            <input type="button" data-id="'.$c.'" class="button image-upload" value="'.__('Browse','webthinkershop').'">
+                            <input type="button" class="button image-upload-remove" data-id="'.$c.'" value="'.__('Remove','webthinkershop').'">
                         </dd>
                         
-                        <dt>'.__('Image Preview','ycona').'</dt>
+                        <dt>'.__('Image Preview','webthinkershop').'</dt>
                         <dd>
-                            <div class="image-preview"><img src="'.$imgSrc.'" alt=""></div>
+                            <div class="image-preview"><img src="'.$img_src.'" alt=""></div>
                         </dd>
                         
                         <dd>
                             <hr>
                         </dd>
                         
-                        <dt>'.__('Card Title','ycona').'</dt>
+                        <dt>'.__('Card Title','webthinkershop').'</dt>
                         <dd>
-                            <input type="text" name="cards_fields[cards]['.$c.'][card_title]" placeholder="'.__('Write here','ycona').'..." class="regular-text" value="'.$card_title.'">
+                            <input type="text" name="cards_fields[cards]['.$c.'][card_title]" placeholder="'.__('Write here','webthinkershop').'..." class="regular-text" value="'.$card_title.'">
                         </dd>
 
                         <div class="elements-hexagon-style">
-                            <dt>' . __('Description', 'ycona') . '</dt>
-                            ' . getWpEditor($description, "cards_fields_description_$c", "cards_fields[cards][" . $c . "][description]") . '
+                            <dt>' . __('Description', 'webthinkershop') . '</dt>
+                            ' . get_wp_editor($description, "cards_fields_description_$c", "cards_fields[cards][" . $c . "][description]") . '
                         </div>
                         
-                        <dt>'.__('Link URL','ycona').'</dt>
+                        <dt>'.__('Link URL','webthinkershop').'</dt>
                         <dd>
                             <input type="text" name="cards_fields[cards]['.$c.'][link_url]" placeholder="https://..." class="regular-text" value="'.$link_url.'">
                         </dd>
                         
-                        <dt>'.__('Link Text','ycona').'</dt>
+                        <dt>'.__('Link Text','webthinkershop').'</dt>
                         <dd>
-                            <input type="text" name="cards_fields[cards]['.$c.'][link_text]" placeholder="'.__('Write here','ycona').'..." class="regular-text" value="'.$link_text.'">
+                            <input type="text" name="cards_fields[cards]['.$c.'][link_text]" placeholder="'.__('Write here','webthinkershop').'..." class="regular-text" value="'.$link_text.'">
                         </dd>
                         
                         <div class="cpt-remove">
-                            <button type="button" class="remove">'.__('Remove Card', 'ycona').'</button>
+                            <button type="button" class="remove">'.__('Remove Card', 'webthinkershop').'</button>
                         </div>
                     </dl>
                 </div>
@@ -114,7 +114,7 @@ function show_cards_custom_fields() {
 
             ?>
         </div>
-        <button type="button" class="add"><?php _e('Add Card','ycona'); ?></button>
+        <button type="button" class="add"><?php _e('Add Card','webthinkershop'); ?></button>
     </div>
 
     <script>
@@ -122,15 +122,15 @@ function show_cards_custom_fields() {
         jQuery(document).ready(function() {
 
             jQuery("#wt-wrapper-cards + .add").click(function() {
-                var $addBtn = jQuery(this);
-                var $wrapper = $addBtn.prev(".wt-wrapper-cpt");
-                $addBtn.hide();
+                var $add_btn = jQuery(this);
+                var $wrapper = $add_btn.prev(".wt-wrapper-cpt");
+                $add_btn.hide();
 
-                let count = getExistingElements(".card-item");
+                let count = get_existing_elements(".card-item");
 
-                var cardHTML = `<div class="card-item cpt-element" data-count="${count}">
+                var card_html = `<div class="card-item cpt-element" data-count="${count}">
 
-                        <div class="sortButtons">
+                        <div class="sort-buttons">
                         <button type="button" class="btn btn-sm btn-primary float-right mr-1 sort-down">
                             <span class="dashicons dashicons-arrow-down-alt2"></span>
                         </button>
@@ -142,7 +142,7 @@ function show_cards_custom_fields() {
                     <div id="box-wrapper-${count}" class="cards-box cpt-box">
 
                         <div class="click-area">
-                            <h3>Card #${count}</h3>
+                            <h3><?php echo esc_html__( 'Card', 'webthinkershop' ); ?> #${count}</h3>
                         </div>
 
                         <div class="content-area link">
@@ -152,15 +152,15 @@ function show_cards_custom_fields() {
                                     <hr>
                                 </dd>
 
-                                <dt><?php _e('Image','ycona'); ?></dt>
+                                <dt><?php _e('Image','webthinkershop'); ?></dt>
                                 <dd>
                                     <input type="hidden" name="cards_fields[cards][${count}][image]" class="meta-image" value="">
                                     <input type="hidden" name="cards_fields[cards][${count}][imageId]" class="meta-image-id" value="">
-                                    <input type="button" data-id="${count}" class="button image-upload" value="<?php _e('Browse','ycona'); ?>">
-                                    <input type="button" data-id="${count}" class="button image-upload-remove" value="<?php _e('Remove','ycona'); ?>">
+                                    <input type="button" data-id="${count}" class="button image-upload" value="<?php _e('Browse','webthinkershop'); ?>">
+                                    <input type="button" data-id="${count}" class="button image-upload-remove" value="<?php _e('Remove','webthinkershop'); ?>">
                                 </dd>
 
-                                <dt><?php _e('Image Preview','ycona'); ?></dt>
+                                <dt><?php _e('Image Preview','webthinkershop'); ?></dt>
                                 <dd>
                                     <div class="image-preview"><img src="" alt=""></div>
                                 </dd>
@@ -169,28 +169,28 @@ function show_cards_custom_fields() {
                                     <hr>
                                 </dd>
 
-                                <dt><?php _e('Card Title','ycona'); ?></dt>
+                                <dt><?php _e('Card Title','webthinkershop'); ?></dt>
                                 <dd>
-                                    <input type="text" name="cards_fields[cards][${count}][card_title]" placeholder="<?php _e('Write here','ycona'); ?>..." class="regular-text" value="">
+                                    <input type="text" name="cards_fields[cards][${count}][card_title]" placeholder="<?php _e('Write here','webthinkershop'); ?>..." class="regular-text" value="">
                                 </dd>
 
                                <div class="elements-hexagon-style">
-                                      <dt><?php _e('Description', 'ycona'); ?></dt>
+                                      <dt><?php _e('Description', 'webthinkershop'); ?></dt>
                                       <span id="box-row2-${count}-cards_fields_${count}_description"></span>
                                </div>
 
-                                <dt><?php _e('Link URL','ycona'); ?></dt>
+                                <dt><?php _e('Link URL','webthinkershop'); ?></dt>
                                 <dd>
                                     <input type="text" name="cards_fields[cards][${count}][link_url]" placeholder="https://..." class="regular-text" value="">
                                 </dd>
 
-                                <dt><?php _e('Link Text','ycona'); ?></dt>
+                                <dt><?php _e('Link Text','webthinkershop'); ?></dt>
                                 <dd>
-                                    <input type="text" name="cards_fields[cards][${count}][link_text]" placeholder="<?php _e('Write here','ycona'); ?>..." class="regular-text" value="">
+                                    <input type="text" name="cards_fields[cards][${count}][link_text]" placeholder="<?php _e('Write here','webthinkershop'); ?>..." class="regular-text" value="">
                                 </dd>
 
                                 <div class="cpt-remove">
-                                    <button type="button" class="remove"><?php _e('Remove Card', 'ycona'); ?></button>
+                                    <button type="button" class="remove"><?php _e('Remove Card', 'webthinkershop'); ?></button>
                                 </div>
 
                             </dl>
@@ -199,11 +199,11 @@ function show_cards_custom_fields() {
 
                 </div>`;
 	            
-	            $wrapper.append(cardHTML);
+	            $wrapper.append(card_html);
 	            
 	            let target = "<?php echo admin_url('admin-ajax.php'); ?>";
 	            
-	            let createWpEditor = function(editor_id, editor_name, $addBtn) {
+	            let create_wp_editor = function(editor_id, editor_name, $add_btn) {
 		            let data_text = {
 			            'action': 'wt_get_text_editor',
 			            'text_editor_id': editor_id,
@@ -218,7 +218,7 @@ function show_cards_custom_fields() {
 			                if (typeof quicktags !== "undefined") quicktags({id: editor_id});
 		                })
 		                .always(function() {
-		                    $addBtn.show();
+		                    $add_btn.show();
 		                });
 	            }
 	            
@@ -226,13 +226,13 @@ function show_cards_custom_fields() {
 	            let description_id = "cards_fields_" + count + "_description";
 	            let description_name = "cards_fields[cards][" + count + "][description]";
 	            
-	            createWpEditor(description_id, description_name, $addBtn);
+	            create_wp_editor(description_id, description_name, $add_btn);
 				
-                setButtons();
-                resetSort();
+                set_buttons();
+                reset_sort();
             });
 
-            setButtons();
+            set_buttons();
         });
     </script>
 <?php }

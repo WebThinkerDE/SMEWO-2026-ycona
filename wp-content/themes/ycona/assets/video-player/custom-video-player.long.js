@@ -326,7 +326,6 @@
       });
 
       hls.loadSource(src);
-
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
         // Stream ready — user can press play
@@ -953,7 +952,6 @@
       this.audio_menu.appendChild(btn);
     }
   };
-
   /**
    * Select an audio track.
    * @param {number} index  -1 = default (video built-in), 0+ = external track
@@ -965,6 +963,7 @@
       if (audio_el) {
         audio_el.pause();
         audio_el.currentTime = 0;
+
       }
     }
 
@@ -1383,7 +1382,7 @@
     if (this._skeleton_removed) return;
     this._skeleton_removed = true;
 
-    this.wrapper.classList.remove('video-player--skeleton');
+    this.wrapper.classList.remove('video-player-skeleton');
 
     var skeleton = this.wrapper.querySelector('.vp-skeleton');
     if (!skeleton) return;

@@ -9,11 +9,13 @@
         InnerBlocks = blockEditor.InnerBlocks;
 
     blocks.registerBlockType('wt/text-block', {
+        apiVersion: 3,
         title: 'Text Block',
         icon: 'format-quote',
-        category: 'tripsim-blocks',
+        category: 'wt-shop-blocks',
         description: '',
         example: {},
+
 
         attributes: {
             // Simple RichText content (used when text_style === 'sRichText')
@@ -127,12 +129,6 @@
             ];
 
             // updaters
-            function update_content(newContent) {
-                props.setAttributes({ content: newContent });
-            }
-            function update_select_field(newValue) {
-                props.setAttributes({ select_field: newValue });
-            }
             function update_content(newValue) {
                 props.setAttributes({ content: newValue });
             }
@@ -160,6 +156,7 @@
             function update_text_select_field(newValue) {
                 props.setAttributes({ text_select_field: newValue, class_name: newValue });
             }
+
 
             function update_content_headline(newValue) {
                 props.setAttributes({ headline: newValue });
@@ -222,7 +219,7 @@
             }
 
             // Render the body editor area based on mode
-            function renderBodyEditor() {
+            function render_body_editor() {
                 if (mode === 'sInnerBlock') {
                     return el(Fragment, null,
                         el('dt', { class: 'TextRichText' }, 'Formatierter Inhalt (Absätze & Listen)'),
@@ -460,7 +457,7 @@
                             ),
 
                             // ========== BODY EDITOR (hidden/shown by text_style) ==========
-                            renderBodyEditor(),
+                            render_body_editor(),
 
                             // buttons section
                             props.attributes.show_button === 'yes' && el(

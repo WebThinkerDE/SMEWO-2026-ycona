@@ -24,7 +24,7 @@ function wt_text_block_rc($attributes, $content) {
     // vars
     $uniq_id                    = uniqid();
     $con                        = "";
-    $conHTML                    = "";
+    $con_html                    = "";
 
 
     $headline                   = $attributes["headline"] ?? "";
@@ -112,7 +112,7 @@ function wt_text_block_rc($attributes, $content) {
 
     if (!empty($con))
     {
-        $conHTML = '<div class="row text">
+        $con_html = '<div class="row text">
                     <div class="col">
                         <div class="text-'.$text_align.' text-block-text  text-block-html ' . ($content_two_columns == "1" ? "content-two-columns" : "") . '" style="margin-top: '.$margin_top.'px; ">
                             ' . $con . '
@@ -148,7 +148,7 @@ function wt_text_block_rc($attributes, $content) {
                         '.$headline_html.'
                         '.$sub_headline_html.'       
                         '.$content_image_html.'                       
-                        '.$conHTML.'                                              
+                        '.$con_html.'                                              
                     </div>                                
             </section>';
 }

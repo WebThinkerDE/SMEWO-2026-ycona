@@ -61,7 +61,7 @@ if ( is_home() && ! is_front_page() ) {
 
             <?php if ( have_posts() ) : ?>
 
-                <ul id="hexGrid" class="pb-5">
+                <ul id="hex-grid" class="pb-5">
                     <?php while ( have_posts() ) : the_post();
                         $url   = get_permalink();
                         $thumb = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
@@ -79,7 +79,7 @@ if ( is_home() && ! is_front_page() ) {
                         ?>
                         <li class="hex">
 
-                                <div class="hexIn">
+                                <div class="hex-in">
                                     <a href="<?php echo esc_url( $url ); ?>" class="hex-link">
                                     <?php if ( $thumb ) : ?>
                                         <img src="<?php echo esc_url( $thumb ); ?>"

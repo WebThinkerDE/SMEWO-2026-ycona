@@ -41,10 +41,10 @@
                     'next_text' =>
                         '<i class="bi bi-chevron-left"></i>'.
                         '<span class="meta-nav" aria-hidden="true">' . __( 'Plus récents', 'ycona' ) . '</span> ' .
-                        '<span class="screen-reader-text">' . __( 'Plus récents', 'ycona' ) . '</span> ',
+                        '<span class="screen-reader-text">' . __( 'Plus récents', 'webthinkershop' ) . '</span> ',
                     'prev_text' =>
-                        '<span class="meta-nav" aria-hidden="true">' . __( 'Plus anciens', 'ycona' ) . '</span> ' .
-                        '<span class="screen-reader-text">' . __( 'Plus anciens', 'ycona' ) . '</span> '.
+                        '<span class="meta-nav" aria-hidden="true">' . __( 'Plus anciens', 'webthinkershop' ) . '</span> ' .
+                        '<span class="screen-reader-text">' . __( 'Plus anciens', 'webthinkershop' ) . '</span> '.
                         '<i class="bi bi-chevron-right"></i>',
 
                 ));

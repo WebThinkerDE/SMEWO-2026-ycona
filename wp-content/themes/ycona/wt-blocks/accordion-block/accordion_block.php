@@ -62,9 +62,9 @@ function wt_accordion_block_rc($attributes, $content)
 		$con = $attributes["text_html"];
 	}
 
-	$conHTML = "";
+	$con_html = "";
 	if (!empty($con)) {
-		$conHTML = '
+		$con_html = '
                   <div class="text-block-text  text-block-html pb-4">
                             ' . $con . '
 			 	  </div>';
@@ -86,7 +86,7 @@ function wt_accordion_block_rc($attributes, $content)
             $headline_html = '<' . $acc_headline_type . ' class="title">' . $acc_headline . '</' . $acc_headline_type . '>';
         }
 
-        $accContent             = wpautop($acc["content"]);
+        $acc_content             = wpautop($acc["content"]);
 
         $html_acc .= '
             <div class="row">
@@ -100,7 +100,7 @@ function wt_accordion_block_rc($attributes, $content)
                         <div class="content-area">
                             
                             <div class="content">
-                                <div class="text-wrapper">' . $accContent . '</div>
+                                <div class="text-wrapper">' . $acc_content . '</div>
                             </div>
                             
                         </div>
@@ -111,7 +111,7 @@ function wt_accordion_block_rc($attributes, $content)
     }
 
     $html_accordion_wrapper .= '
-        <div class="accWrapper">                                                
+        <div class="acc-wrapper">                                                
             ' . $html_acc . '                                                
         </div>';
 
@@ -130,7 +130,7 @@ function wt_accordion_block_rc($attributes, $content)
                 <div class="container d-flex flex-column flex-lg-row gap-4">
 	                <div class="left col-12 col-lg-6">
 			                '.$headline_style_2_html.'
-			                '.$conHTML.'
+			                '.$con_html.'
 				            '.$button_html.'
 					</div>
 					

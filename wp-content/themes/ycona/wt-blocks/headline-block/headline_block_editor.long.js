@@ -5,18 +5,20 @@
         Fragment            = element.Fragment,
         RichText            = blockEditor.RichText,
         InspectorControls   = blockEditor.InspectorControls,
+        useBlockProps       = blockEditor.useBlockProps,
         MediaUpload         = blockEditor.MediaUpload,
         SelectControl       = components.SelectControl;
 
     //register block
     blocks.registerBlockType('wt/headline-block', {
-
+        apiVersion: 3,
         //set basic info
         title: 'Überschrift Block',
         icon: 'heading',
-        category: 'ycona-blocks',
+        category: 'wt-shop-blocks',
         description: '',
         example: {},
+
 
         //define required attributes
         attributes: {
@@ -163,7 +165,7 @@
 
             return (
                 el(Fragment, null,
-                    el(InspectorControls, {class: "ycona-SelectControl"},
+                    el(InspectorControls, {class: "wt-shop-SelectControl"},
 
                         el("div", { class: "webthiker-block-sidebar-element" },
                             
@@ -336,10 +338,9 @@
                         ),
                     ),
 
-                    el("div", {
-                            id: "headline-block",
-                            class: "webthiker-block " + props.attributes.text_style + " text-color-" +props.attributes.text_color  + " bg-color-" + props.attributes.background_color
-                        },
+                    el("div", useBlockProps( {
+                            className: "webthiker-block " + props.attributes.text_style + " text-color-" + props.attributes.text_color + " bg-color-" + props.attributes.background_color
+                        } ),
                         el("h3", null, "Überschrift-Block"),
 
                         el("dl", null,

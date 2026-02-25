@@ -6,12 +6,14 @@
         RichText            = wp.blockEditor.RichText,
         withSelect          = data.withSelect,
         SelectControl       = wp.components.SelectControl,
-        InspectorControls   = wp.blockEditor.InspectorControls;
+        InspectorControls   = wp.blockEditor.InspectorControls,
+        useBlockProps       = wp.blockEditor.useBlockProps;
 
     registerBlockType( 'wt/accordion-block', {
+        apiVersion: 3,
         title: 'Akkordeon',
         icon: 'editor-kitchensink',
-        category: 'ycona-blocks',
+        category: 'wt-shop-blocks',
         description: "Akkordeon",
         example: {},
 
@@ -178,7 +180,7 @@
 
             return (
                 el(Fragment, null,
-                    el(InspectorControls, {class: "ycona-SelectControl"},
+                    el(InspectorControls, {class: "wt-shop-SelectControl"},
 
                         el("div",
                             {
@@ -221,7 +223,7 @@
                             props.attributes.accordion_style === 'style_2' &&
                             el("div", { className: "accordion-style-2" },
                                 /* headline */
-                                
+
                                 el("strong", null, "Überschriftentyp"),
                                 el(SelectControl,
                                     {
@@ -306,9 +308,9 @@
                         ),
                     ),
 
-                    el("div", {
-                            class: "webthiker-block accordion-block count-"+  props.attributes.text_style
-                        },
+                    el("div", useBlockProps( {
+                            className: "webthiker-block accordion-block count-" + props.attributes.text_style
+                        } ),
                         el("h3", null, "Akkordeon-Block"),
 
                         el("dl", null,
@@ -415,10 +417,12 @@
             
         }),
 
-        //set save function
+        //set save function (className must match stored markup for block validation)
         save: function( props ) {
             return el( RichText.Content, {
-                tagName: 'p', value: props.attributes.content
+                tagName: 'p',
+                className: 'wp-block-wt-accordion-block',
+                value: props.attributes.content
             } );
         }
 

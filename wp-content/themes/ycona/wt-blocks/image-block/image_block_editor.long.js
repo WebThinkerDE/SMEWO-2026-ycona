@@ -7,14 +7,17 @@
         SelectControl       = wp.components.SelectControl,
         TextControl         = wp.components.TextControl,
         InspectorControls   = wp.blockEditor.InspectorControls,
+        useBlockProps       = wp.blockEditor.useBlockProps,
         PanelBody           = wp.components.PanelBody;
 
     registerBlockType( 'wt/image-block', {
+        apiVersion: 3,
         title: 'Bild-Block',
         icon: 'format-image',
-        category: 'ycona-blocks',
+        category: 'wt-shop-blocks',
         description: "Image Block",
         example: {},
+
 
         attributes: {
             img_1: {
@@ -152,7 +155,7 @@
 
             return (
                 el(Fragment, null,
-                    el(InspectorControls, {class: "ycona-SelectControl"},
+                    el(InspectorControls, {class: "wt-shop-SelectControl"},
 
                         el("div",
                             {
@@ -304,9 +307,9 @@
                         )
                     ),
 
-                    el("div", {
-                            class: "webthiker-block image-block bg-color-" + props.attributes.background_color
-                        },
+                    el("div", useBlockProps( {
+                            className: "webthiker-block image-block bg-color-" + props.attributes.background_color
+                        } ),
                         el("h3", null, "Bild-Block"),
 
                         el("dl", null,

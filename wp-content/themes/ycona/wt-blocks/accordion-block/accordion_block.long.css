@@ -13,7 +13,7 @@ section.acc-block {
 }
 
 .acc-block .acc-box.active .click-area{
-    border: 1px solid var(--ycona-primary);
+    border: 1px solid var(--wt-shop-primary);
     border-radius: 5px 5px 0 0;
 }
 
@@ -25,15 +25,15 @@ section.acc-block {
 }
 
 .acc-block .acc-box.active{
-    border-bottom: 1px solid var(--ycona-primary);
-    border-top: 1px solid var(--ycona-primary);
+    border-bottom: 1px solid var(--wt-shop-primary);
+    border-top: 1px solid var(--wt-shop-primary);
 
 }
 
 .acc-block .acc-box.active .click-area {
-    background-color: var(--ycona-primary);
+    background-color: var(--wt-shop-primary);
     border-bottom: 1px solid #828282;
-    border-bottom: 1px solid var(--ycona-primary);
+    border-bottom: 1px solid var(--wt-shop-primary);
     color: white;
 }
 
@@ -49,7 +49,7 @@ section.acc-block {
 .acc-block .acc-box.active .icon-open-close {
     transform: rotate(180deg) translateX(-5px);
     font-weight: 600;
-    color: var(--ycona-white);
+    color: var(--wt-shop-white);
 }
 
 .acc-block .acc-box .content-area {
@@ -149,7 +149,7 @@ section.acc-block {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    background: linear-gradient(var(--ycona-white) 0 0), linear-gradient(var(--ycona-white) 0 0), var(--ycona-black);
+    background: linear-gradient(var(--wt-shop-white) 0 0), linear-gradient(var(--wt-shop-white) 0 0), var(--wt-shop-black);
     background-position:center;
     background-size: 50% 3px,3px 50%;
     background-repeat:no-repeat;
@@ -159,11 +159,11 @@ section.acc-block {
     margin-left: 15px;
 }
 .acc-block .acc-box.active .plus {
-    background: linear-gradient(var(--ycona-white) 0 0), linear-gradient(var(--ycona-primary-dark) 0 0), var(--ycona-primary-dark);
+    background: linear-gradient(var(--wt-shop-white) 0 0), linear-gradient(var(--wt-shop-primary-dark) 0 0), var(--wt-shop-primary-dark);
     background-position:center;
     background-size: 50% 3px,3px 50%;
     background-repeat:no-repeat;
-    border: 1px solid var(--ycona-primary-dark);
+    border: 1px solid var(--wt-shop-primary-dark);
 }
 
 .acc-block ul {

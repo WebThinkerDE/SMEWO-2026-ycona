@@ -1,5 +1,5 @@
 // native dom ready function
-var domRdy = function(fn) {
+var dom_rdy = function(fn) {
 
     //sanity check
     if(typeof fn !== "function") {
@@ -15,26 +15,26 @@ var domRdy = function(fn) {
     document.addEventListener("DOMContentLoaded",fn,false);
 };
 
-domRdy(function() {
+dom_rdy(function() {
 
     /* Functions for CPT Slider */
     // click for slider accordions
     jQuery(document).on("click","div.postbox .cpt-element .click-area", function (e) {
 
         // vars
-        let sBox = jQuery(e.currentTarget.parentElement);
+        let s_box = jQuery(e.currentTarget.parentElement);
 
         // check if element has active class
-        let check = sBox.hasClass("active");
+        let check = s_box.hasClass("active");
 
         // toggle active class
         if(!check)
         {
-            sBox.addClass("active");
+            s_box.addClass("active");
         }
         else
         {
-            sBox.removeClass("active");
+            s_box.removeClass("active");
         }
     })
     ;
@@ -83,6 +83,7 @@ domRdy(function() {
         '#squares_fields_meta_box .image-upload-2, ' +
         '#teasers_fields_meta_box .image-upload, ' +
         '#icons_fields_meta_box .image-upload, ' +
+        '#slider_fields_meta_box .image-upload, ' +
         '#testimonials_fields_meta_box .image-upload, ' +
         '#cards_fields_meta_box .image-upload, ' +
         '#testimonials_fields_meta_box .image-upload-2, ' +
@@ -149,6 +150,7 @@ domRdy(function() {
         '#squares_fields_meta_box .image-upload-remove-2, ' +
         '#teasers_fields_meta_box .image-upload-remove, ' +
         '#icons_fields_meta_box .image-upload-remove, ' +
+        '#slider_fields_meta_box .image-upload-remove, ' +
         '#testimonials_fields_meta_box .image-upload-remove, ' +
         '#cards_fields_meta_box .image-upload-remove, ' +
         '#testimonials_fields_meta_box .image-upload-remove-2, ' +
@@ -157,10 +159,12 @@ domRdy(function() {
             console.log('button removed clicked');
             // prevents default action
             e.preventDefault();
+            
 
             // get/set data
             let meta_image_preview, meta_image_id, meta_image;
             let target = jQuery(e.currentTarget);
+
 
             // get data attributes
             let id          = target.data("id");
@@ -198,8 +202,8 @@ domRdy(function() {
 
         c_card.insertAfter(t_card);
 
-        setButtons();
-        resetSort();
+        set_buttons();
+        reset_sort();
     });
 
     // after click on up - generic selector for all CPTs
@@ -209,8 +213,8 @@ domRdy(function() {
 
         c_card.insertBefore(t_card);
 
-        setButtons();
-        resetSort();
+        set_buttons();
+        reset_sort();
     });
 
 
@@ -218,8 +222,8 @@ domRdy(function() {
     // remove element - works for all CPTs inside .wt-wrapper-cpt
     jQuery(document).on('click', '.wt-wrapper-cpt .remove', function() {
         jQuery(this).closest('.cpt-element').remove();
-        setButtons();
-        resetSort();
+        set_buttons();
+        reset_sort();
     });
 
     // remove element - for sliders/squares (legacy)
@@ -229,8 +233,8 @@ domRdy(function() {
         if(type === "cpt-element")
         {
             jQuery(this).closest('.cpt-element').remove();
-            setButtons();
-            resetSort();
+            set_buttons();
+            reset_sort();
 
         }
         else if (!jQuery(this).closest('.wt-wrapper-cpt').length)
@@ -245,17 +249,17 @@ domRdy(function() {
 });
 
 /* Functions for CPT */
-function getExistingElements(nameOfElement){
+function get_existing_elements(name_of_element){
 
-    let count = jQuery(nameOfElement).length;
+    let count = jQuery(name_of_element).length;
 
     return count+1;
 }
 
 // Generic setButtons - works for all CPTs
-function setButtons(){
+function set_buttons(){
     // Show all sort buttons first
-    jQuery('.wt-wrapper-cpt .sortButtons button').show();
+    jQuery('.wt-wrapper-cpt .sort-buttons button').show();
 
     // For each CPT wrapper, hide the first sort-up and last sort-down
     jQuery('.wt-wrapper-cpt').each(function() {
@@ -266,7 +270,7 @@ function setButtons(){
 }
 
 // Generic resetSort - works for all CPTs
-function resetSort(){
+function reset_sort(){
     jQuery('.wt-wrapper-cpt').each(function() {
         var i = 0;
         jQuery(this).find('.cpt-element').each(function(){
@@ -275,3 +279,49 @@ function resetSort(){
         });
     });
 }
+
+// Theme options: persist tab in URL (param) and restore on load/refresh
+(function theme_options_tab_url() {
+    function get_tab_from_url() {
+        var hash = (window.location.hash || '').replace(/^#/, '');
+        if (hash) return hash;
+        var url_params = new URLSearchParams(window.location.search);
+        return url_params.get('tab') || '';
+    }
+
+    function set_tab_in_url(tab_id) {
+        if (!tab_id) return;
+        var current_url = new URL(window.location.href);
+        current_url.searchParams.set('tab', tab_id);
+        if (window.history && window.history.replaceState) {
+
+            window.history.replaceState(null, '', current_url.pathname + (current_url.search ? current_url.search : '') + (current_url.hash || ''));
+        }
+    }
+    function switch_to_tab(tab_id) {
+        if (!tab_id) return;
+        var $nav = jQuery('.wt-nav-item[data-target="#' + tab_id + '"]');
+        var $panel = jQuery('.wt-tab-panel#' + tab_id);
+        if ($nav.length && $panel.length) {
+            jQuery('.wt-nav-item').removeClass('active').attr('aria-selected', 'false');
+            jQuery('.wt-tab-panel').removeClass('active').attr('aria-hidden', 'true');
+            $nav.addClass('active').attr('aria-selected', 'true');
+            $panel.addClass('active').attr('aria-hidden', 'false');
+        }
+    }
+    function init_tab_url() {
+        if (!jQuery('.wt-tab-panel').length) return;
+        var tab_id = get_tab_from_url();
+        if (tab_id) switch_to_tab(tab_id);
+        jQuery(document).on('click', '.wt-nav-item[data-target]', function() {
+            var target = jQuery(this).attr('data-target') || '';
+            var tab_id = target.replace(/^#/, '');
+            if (tab_id) set_tab_in_url(tab_id);
+        });
+    }
+    if (document.readyState === 'loading') {
+        jQuery(document).ready(init_tab_url);
+    } else {
+        init_tab_url();
+    }
+})();

@@ -26,7 +26,7 @@
 		
 		
 		$post_ID            = $attributes["post_id"] ?? "";
-		$class_name         = $attributes["className"] ?? "default-ycona";
+		$class_name         = $attributes["className"] ?? "default-wt-shop";
 		$section_layout     = $attributes["layout"] ?? "container";
 		$uid                = uniqid('testimonials_');
         $space_bottom       = $attributes["space_bottom"] ?? 'yes';

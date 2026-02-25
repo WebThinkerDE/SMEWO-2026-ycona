@@ -1,16 +1,15 @@
-domRdy(function() {
+dom_rdy(function() {
 // console.log('loaded');
     // event click for accordions
     jQuery(".acc-box .click-area").on("click", function (e) {
 
         console.log('clicker');
         // get/set vars
-        let allBoxes    = jQuery(".acc-block .accWrapper .acc-box");
-        let isBox       = jQuery(e.target).hasClass("acc-box");
+        let all_boxes   = jQuery(".acc-block .acc-wrapper .acc-box");
+        let is_box      = jQuery(e.target).hasClass("acc-box");
         let jbox = "";
-
         // check if target is the the accordion tab
-        if(isBox)
+        if(is_box)
         {
             jbox = jQuery(e.target);
         }
@@ -25,7 +24,7 @@ domRdy(function() {
         // toggle active class
         if(!check)
         {
-            allBoxes.removeClass("active");
+            all_boxes.removeClass("active");
             jbox.addClass("active");
         }
         else

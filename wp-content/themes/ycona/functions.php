@@ -30,6 +30,37 @@
             wp_enqueue_style("custom-styles", $theme_path . "/assets/custom-js-css/custom-styles.css", array("css-main"), filemtime($custom_css_file));
         }
 
+        // Mini-cart / basket in header (styled for both WC and non-WC)
+        wp_enqueue_style( "wt-shop-mini-cart", $theme_path . "/assets/css/mini-cart.css", array( "css-main" ), _S_VERSION );
+
+        if ( function_exists( 'WC' ) ) {
+            wp_enqueue_style( "wt-shop-woocommerce", $theme_path . "/assets/css/woocommerce.css", array( "css-main" ), _S_VERSION );
+
+            // Swiper for related / upsell / cross-sell carousels
+            wp_enqueue_style( "wt_swiper_css", $theme_path . "/assets/css/swiper/swiper-bundle.min.css", array( "css-main" ), _S_VERSION );
+            wp_enqueue_script( "wt_swiper_js", $theme_path . "/assets/js/swiper/swiper-bundle.min.js", array( "js-main" ), _S_VERSION, true );
+
+            wp_enqueue_script( "wt-shop-woocommerce-js", $theme_path . "/assets/js/woocommerce.min.js", array( "jquery", "js-main", "wt_swiper_js" ), _S_VERSION, true );
+
+            $options_all = get_option( 'wt_shop_theme_options_all', array() );
+            $recaptcha_site_key = isset( $options_all['recaptcha_site_key'] ) ? trim( (string) $options_all['recaptcha_site_key'] ) : '';
+            if ( $recaptcha_site_key !== '' ) {
+                wp_enqueue_script( 'wt-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), null, true );
+            }
+
+            // AJAX product search
+            wp_enqueue_style( "wt-shop-product-search", $theme_path . "/assets/css/product-search.css", array( "css-main" ), _S_VERSION );
+            wp_enqueue_script( "wt-shop-product-search-js", $theme_path . "/assets/js/product-search.min.js", array( "jquery" ), _S_VERSION, true );
+            wp_localize_script( "wt-shop-product-search-js", "wt_shop_search", array(
+                'ajaxurl'          => admin_url( 'admin-ajax.php' ),
+                'nonce'            => wp_create_nonce( 'wt_shop_product_search' ),
+                'i18n_searching'   => __( 'Searching...', 'ycona' ),
+                'i18n_no_results'  => __( 'No products found', 'webthinkershop' ),
+                'i18n_error'       => __( 'Something went wrong. Please try again.', 'webthinkershop' ),
+                'i18n_sku'         => __( 'SKU', 'webthinkershop' ),
+            ) );
+        }
+
         // JS
         wp_deregister_script("wp-embed");
         wp_enqueue_script("bootstrap-js", $theme_path . "/assets/js/bootstrap.min.js", array("jquery"), "5.2.2", true);
@@ -46,7 +77,7 @@
             wp_enqueue_script("custom-scripts", $theme_path . "/assets/custom-js-css/custom-scripts.js", array("jquery"), filemtime($custom_js_file), true);
         }
 
-        wp_localize_script("js-main", "wtAjax", array(
+        wp_localize_script("js-main", "wt_ajax", array(
             "ajaxurl" => admin_url("admin-ajax.php"),
         ));
 
@@ -71,7 +102,7 @@
         wp_enqueue_script("jquery");
         wp_enqueue_script("admin-js", $theme_path . "/assets/js/backend.min.js", array('jquery'));
 
-        wp_localize_script('admin-js', 'wtAjax', array(
+        wp_localize_script('admin-js', 'wt_ajax', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
         ));
 
@@ -81,6 +112,12 @@
 
     }
     add_action('admin_enqueue_scripts', 'add_backend_resources');
+
+    /* ── Load theme text domain for translations ── */
+    function wt_shop_load_textdomain() {
+        load_theme_textdomain( 'webthinkershop', get_template_directory() . '/languages' );
+    }
+    add_action( 'after_setup_theme', 'wt_shop_load_textdomain' );
 
     function register_my_menus()
     {
@@ -123,7 +160,7 @@
 
 
     // Editor-Typ WYSIWYG
-    function getWpEditor($content, $editor_id, string $name, bool $withoutOB = false, $wpautop = true ) {
+    function get_wp_editor($content, $editor_id, string $name, bool $without_ob = false, $wpautop = true ) {
         $settings = array(
             'media_buttons' => false,
             'teeny' => false,
@@ -136,7 +173,7 @@
             'wpautop' => $wpautop,
         );
 
-        if($withoutOB)
+        if($without_ob)
         {
             wp_editor( $content, $editor_id, $settings );
         }
@@ -242,7 +279,7 @@
             $item_output .= '<span class="link-drop-down">';  // Add a span tag to wrap the link text
             $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
             $item_output .= '</span>';  // Close the span tag
-            $item_output .= ($args->walker->has_children) ? ' <span class="arrow-ycona-desktop"></span></a>' : '</a>';
+            $item_output .= ($args->walker->has_children) ? ' <span class="arrow-wt-shop-desktop"></span></a>' : '</a>';
             $item_output .= $args->after;
 
             $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
@@ -331,8 +368,8 @@
 
             if ($args->walker->has_children) {
                 $item_output .= '<div class="' . $arrow_class . '">
-                        <img alt="menu-open" src="/wp-content/themes/ycona/assets/img/vectors/dropDownMenuClose.svg" class="arrow-menu-open" /> 
-                        <img alt="menu-close" src="/wp-content/themes/ycona/assets/img/vectors/dropDownMenu.svg" class="d-none arrow-menu-close" /> 
+                        <img alt="menu-open" src="/wp-content/themes/webthinkershop/assets/img/vectors/OpendropdownMenu.svg" class="arrow-menu-open" /> 
+                        <img alt="menu-close" src="/wp-content/themes/webthinkershop/assets/img/vectors/ClosedropdownMenu.svg" class="d-none arrow-menu-close" /> 
                 </div>';
                 $item_output .= '</span>';
             }
@@ -349,8 +386,8 @@
         return array_merge(
             array(
                 array(
-                    'slug' => 'ycona-blocks',
-                    'title' => __( 'ycona', 'ycona' ),
+                    'slug' => 'wt-shop-blocks',
+                    'title' => __( 'webthinkershop', 'webthinkershop' ),
                 ),
             ),
             $categories
@@ -359,8 +396,8 @@
     add_filter( 'block_categories_all', 'add_block_category', 10, 2);
 
 
-    // register ycona custom-blocks
-    function register_ycona_blocks() {
+    // register webthinkershop custom-blocks
+    function register_wt_shop_blocks() {
 
         // abort if gutenberg is not active
         if(!function_exists( 'register_block_type'))
@@ -380,7 +417,14 @@
             array("name" => "headline_block", "block-name" => "headline-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data")),
             array("name" => "video_block", "block-name" => "video-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data")),
             array("name" => "cards_block", "block-name" => "cards-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data")),
-      );
+            array("name" => "slider_block", "block-name" => "slider-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data")),
+            array("name" => "you_may_like_block", "block-name" => "you-may-like-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data","wp-components")),
+            array("name" => "grid_products_block", "block-name" => "grid-products-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data","wp-components")),
+            array("name" => "cta_block", "block-name" => "cta-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data")),
+            array("name" => "split_block", "block-name" => "split-block", "deps" => array("wp-block-editor","wp-blocks","wp-element","wp-data")),
+
+
+        );
 
         // iterate blocks
         foreach($blocks as $block) {
@@ -412,9 +456,22 @@
             include_once(dirname(__FILE__) . "/wt-blocks/" .$block["block-name"]."/".$block["name"].".php");
         }
     }
-    add_action('init', 'register_ycona_blocks');
+    add_action('init', 'register_wt_shop_blocks');
 
-
+/**
+ * Force apiVersion 3 for WPML blocks to remove block editor deprecation warnings.
+ * Only applies if WPML registers blocks via block.json; otherwise update WPML plugin.
+ */
+function wt_block_type_metadata_api3( $metadata ) {
+    if ( ! is_array( $metadata ) || empty( $metadata['name'] ) ) {
+        return $metadata;
+    }
+    if ( in_array( $metadata['name'], array( 'wpml/language-switcher', 'wpml/navigation-language-switcher' ), true ) ) {
+        $metadata['apiVersion'] = 3;
+    }
+    return $metadata;
+}
+add_filter( 'block_type_metadata', 'wt_block_type_metadata_api3', 10, 1 );
 
     /* use archive.php for posts */
     function use_archive_for_posts_page( $template ) {
@@ -429,7 +486,7 @@
 
 
     // saves metas for all CPT
-    function save_custom_post_metas( $post_id, $metaNonce, $saveFields, $fields ) {
+    function save_custom_post_metas( $post_id, $meta_nonce, $save_fields, $fields ) {
 
         // check if POST exist
         if( !$_POST )
@@ -437,13 +494,13 @@
             return $post_id;
         }
 
-        if( !isset( $_POST[$metaNonce] ) )
+        if( !isset( $_POST[$meta_nonce] ) )
         {
             return $post_id;
         }
 
         // verify nonce
-        if ( !wp_verify_nonce( $_POST[$metaNonce], $saveFields ) )
+        if ( !wp_verify_nonce( $_POST[$meta_nonce], $save_fields ) )
         {
             return $post_id;
         }
@@ -512,7 +569,7 @@
      *   audio_3_lang     (optional) — language code for third audio track
      *   audio_3_label    (optional) — display label for third audio track
      */
-    function ycona_custom_video_shortcode( $atts ) {
+    function wt_shop_custom_video_shortcode( $atts ) {
         $atts = shortcode_atts( array(
             'src'              => '',
             'poster'           => '',
@@ -543,7 +600,7 @@
         ), $atts, 'custom_video' );
 
         if ( empty( $atts['src'] ) ) {
-            return '<p class="video-block__empty">' . esc_html__( 'Please provide a video URL (src).', 'ycona' ) . '</p>';
+            return '<p class="video-block-empty">' . esc_html__( 'Please provide a video URL (src).', 'webthinkershop' ) . '</p>';
         }
 
         // Enqueue player assets (same as video block)
@@ -555,7 +612,7 @@
         $poster_attr = ! empty( $atts['poster'] ) ? ' poster="' . esc_url( $atts['poster'] ) . '"' : '';
         $title_attr  = ! empty( $atts['title'] )  ? ' title="' . esc_attr( $atts['title'] ) . '"' : '';
 
-        $skin_class  = ! empty( $atts['skin'] )  ? ' video-player--skin-' . sanitize_html_class( $atts['skin'] ) : '';
+        $skin_class  = ! empty( $atts['skin'] )  ? ' video-player-skin-' . sanitize_html_class( $atts['skin'] ) : '';
         $extra_class = ! empty( $atts['class'] ) ? ' ' . esc_attr( $atts['class'] ) : '';
 
         // Width & height — accept any CSS value (px, %, vw, auto, etc.)
@@ -568,7 +625,7 @@
         }
         $style_attr = $dimension_styles !== '' ? ' style="' . $dimension_styles . '"' : '';
 
-        $title_html  = ! empty( $atts['title'] ) ? '<h2 class="video-block__title">' . esc_html( $atts['title'] ) . '</h2>' : '';
+        $title_html  = ! empty( $atts['title'] ) ? '<h2 class="video-block-title">' . esc_html( $atts['title'] ) . '</h2>' : '';
 
         // Build subtitle <track> elements (up to 3)
         $track_html = '';
@@ -606,62 +663,62 @@
         }
 
         $markup = '<section class="video-block container">' . $title_html . '
-        <div class="video-player video-player--skeleton' . $skin_class . $extra_class . '" data-player' . $style_attr . $audio_tracks_attr . '>
+        <div class="video-player video-player-skeleton' . $skin_class . $extra_class . '" data-player' . $style_attr . $audio_tracks_attr . '>
 
             <div class="vp-skeleton" aria-hidden="true">
-                <div class="vp-skeleton__shimmer"></div>
-                <div class="vp-skeleton__play"></div>
-                <div class="vp-skeleton__controls">
-                    <div class="vp-skeleton__btn"></div>
-                    <div class="vp-skeleton__bar"></div>
-                    <div class="vp-skeleton__time"></div>
-                    <div class="vp-skeleton__btn"></div>
-                    <div class="vp-skeleton__btn-sm"></div>
-                    <div class="vp-skeleton__btn"></div>
+                <div class="vp-skeleton-shimmer"></div>
+                <div class="vp-skeleton-play"></div>
+                <div class="vp-skeleton-controls">
+                    <div class="vp-skeleton-btn"></div>
+                    <div class="vp-skeleton-bar"></div>
+                    <div class="vp-skeleton-time"></div>
+                    <div class="vp-skeleton-btn"></div>
+                    <div class="vp-skeleton-btn-sm"></div>
+                    <div class="vp-skeleton-btn"></div>
                 </div>
             </div>
 
             <video src="' . esc_url( $atts['src'] ) . '" preload="' . esc_attr( $atts['preload'] ) . '" playsinline' . $poster_attr . $title_attr . $crossorigin_attr . '>' . $track_html . '</video>
 
-            <div class="video-player-play-overlay" data-play-overlay aria-label="' . esc_attr__( 'Play Video', 'ycona' ) . '">
+            <div class="video-player-play-overlay" data-play-overlay aria-label="' . esc_attr__( 'Play Video', 'webthinkershop' ) . '">
                 <i class="bi bi-play-fill" aria-hidden="true"></i>
             </div>
 
             <div class="video-player-captions" data-captions aria-live="polite" aria-atomic="true"></div>
 
             <div class="video-player-controls" data-controls>
-                <button type="button" class="video-player-btn" data-play aria-label="' . esc_attr__( 'Play', 'ycona' ) . '">
+                <button type="button" class="video-player-btn" data-play aria-label="' . esc_attr__( 'Play', 'webthinkershop' ) . '">
                     <i class="bi bi-play-fill" aria-hidden="true"></i>
                     <i class="bi bi-pause-fill" aria-hidden="true"></i>
-                    <span class="sr-only">' . esc_html__( 'Play / Pause', 'ycona' ) . '</span>
+                    <span class="sr-only">' . esc_html__( 'Play / Pause', 'webthinkershop' ) . '</span>
                 </button>
                 <div class="video-player-progress-wrap" data-progress-wrap>
-                    <input type="range" class="video-player-progress" data-progress min="0" max="100" value="0" step="0.1" aria-label="' . esc_attr__( 'Seek', 'ycona' ) . '">
+                    <input type="range" class="video-player-progress" data-progress min="0" max="100" value="0" step="0.1" aria-label="' . esc_attr__( 'Seek', 'webthinkershop' ) . '">
                 </div>
                 <span class="video-player-time" data-time aria-live="off">0:00</span>
-                <button type="button" class="video-player-btn" data-mute aria-label="' . esc_attr__( 'Mute', 'ycona' ) . '">
+                <button type="button" class="video-player-btn" data-mute aria-label="' . esc_attr__( 'Mute', 'webthinkershop' ) . '">
                     <i class="bi bi-volume-up-fill" aria-hidden="true"></i>
                     <i class="bi bi-volume-mute-fill" aria-hidden="true"></i>
-                    <span class="sr-only">' . esc_html__( 'Mute / Unmute', 'ycona' ) . '</span>
+                    <span class="sr-only">' . esc_html__( 'Mute / Unmute', 'webthinkershop' ) . '</span>
                 </button>
-                <input type="range" class="video-player-volume" data-volume min="0" max="100" value="100" step="1" aria-label="' . esc_attr__( 'Volume', 'ycona' ) . '">
-                <button type="button" class="video-player-btn" data-cc aria-label="' . esc_attr__( 'Captions', 'ycona' ) . '">
+                <input type="range" class="video-player-volume" data-volume min="0" max="100" value="100" step="1" aria-label="' . esc_attr__( 'Volume', 'webthinkershop' ) . '">
+                <button type="button" class="video-player-btn" data-cc aria-label="' . esc_attr__( 'Captions', 'webthinkershop' ) . '">
                     <span>CC</span>
-                    <span class="sr-only">' . esc_html__( 'Toggle Captions', 'ycona' ) . '</span>
+                    <span class="sr-only">' . esc_html__( 'Toggle Captions', 'webthinkershop' ) . '</span>
                 </button>
-                <button type="button" class="video-player-btn" data-quality aria-label="' . esc_attr__( 'Quality', 'ycona' ) . '" style="display:none">
+                <button type="button" class="video-player-btn" data-quality aria-label="' . esc_attr__( 'Quality', 'webthinkershop' ) . '" style="display:none">
                     <i class="bi bi-gear-fill" aria-hidden="true"></i>
                     <span class="vp-quality-label">AUTO</span>
                 </button>
-                <button type="button" class="video-player-btn" data-fullscreen aria-label="' . esc_attr__( 'Fullscreen', 'ycona' ) . '">
+                <button type="button" class="video-player-btn" data-fullscreen aria-label="' . esc_attr__( 'Fullscreen', 'webthinkershop' ) . '">
                     <i class="bi bi-fullscreen" aria-hidden="true"></i>
                     <i class="bi bi-fullscreen-exit" aria-hidden="true"></i>
-                    <span class="sr-only">' . esc_html__( 'Toggle Fullscreen', 'ycona' ) . '</span>
+                    <span class="sr-only">' . esc_html__( 'Toggle Fullscreen', 'webthinkershop' ) . '</span>
                 </button>
             </div>
 
             <div class="video-player-loading" data-loading aria-hidden="true" role="status">
-                <span class="sr-only">' . esc_html__( 'Loading...', 'ycona' ) . '</span>
+                <span class="sr-only">' . esc_html__( 'Loading...', 'webthinkershop' ) . '</span>
             </div>
 
             <div class="video-player-error" data-error aria-live="assertive" hidden></div>
@@ -670,10 +727,10 @@
 
         return $markup;
     }
-    add_shortcode( 'custom_video', 'ycona_custom_video_shortcode' );
+    add_shortcode( 'custom_video', 'wt_shop_custom_video_shortcode' );
 
 
-    // include ycona utilities
+    // include webthinkershop utilities
     include_once("wt-utilities.php");
 
     // cpt
@@ -681,8 +738,31 @@
     require_once(get_stylesheet_directory() . '/wt-cpt/accordion.php');
 	require_once(get_stylesheet_directory() . '/wt-cpt/testimonials.php');
 	require_once(get_stylesheet_directory() . '/wt-cpt/cards.php');
+    require_once(get_stylesheet_directory() . '/wt-cpt/slider.php');
 
-    // load theme options
+    if ( class_exists( 'WooCommerce' ) ) {
+        /* Load from template (parent) theme so hooks work with or without child theme */
+        $woo_path = get_template_directory() . '/woocommerce/hooks/';
+
+        $files = [
+            'support-woocommerce.php',
+            'mini-cart.php',
+            'login-register.php',
+            'my-account-extra-menu-item.php',
+            'modal-login-register.php',
+            'ajax-product-search.php',
+            'product-custom-tabs.php',
+        ];
+
+        foreach ( $files as $file ) {
+            if ( file_exists( $woo_path . $file ) ) {
+                require_once $woo_path . $file;
+            }
+        }
+    }
+
+
+// load theme options
     require_once(get_stylesheet_directory() . '/theme-options.php');
 
     // Initialize dynamic files on theme activation
@@ -713,8 +793,7 @@
             theme_generate_dynamic_files();
         }
     }
-    add_action('update_option_ycona_theme_options_all', 'generate_files_on_save');
-    add_action('update_option_ycona_theme_options_en', 'generate_files_on_save');
-    add_action('update_option_ycona_theme_options_de', 'generate_files_on_save');
+    add_action('update_option_wt_shop_theme_options_all', 'generate_files_on_save');
+    add_action('update_option_wt_shop_theme_options_en', 'generate_files_on_save');
+    add_action('update_option_wt_shop_theme_options_de', 'generate_files_on_save');
 
- 
