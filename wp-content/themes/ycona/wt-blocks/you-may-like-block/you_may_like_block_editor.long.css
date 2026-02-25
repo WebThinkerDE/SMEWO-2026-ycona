@@ -1,0 +1,102 @@
+.wt-you-may-like-block-placeholder {
+    min-height: 80px;
+}
+.wt-you-may-like-block-placeholder { min-height: 80px; }
+
+/* Cross-Sells style: one grey box with chips (Product Name (ID)) and x to remove */
+.wt-you-may-like-products-box {
+    position: relative;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    padding: 12px;
+    min-height: 60px;
+}
+.wt-you-may-like-products-box-inner {
+    width: 100%;
+}
+
+.wt-you-may-like-search {
+    background: #fff !important;
+}
+.wt-you-may-like-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+.wt-you-may-like-chip {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 4px;
+    padding: 6px 8px 6px 6px;
+    font-size: 12px;
+    color: #1e1e1e;
+    line-height: 1.4;
+    box-sizing: border-box;
+
+}
+.wt-you-may-like-chip-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-right: 4px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #787c82;
+    border-radius: 2px;
+}
+.wt-you-may-like-chip-remove:hover {
+    color: #d63638;
+    background: rgba(0, 0, 0, 0.05);
+}
+.wt-you-may-like-chip-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Search + select dropdown option hover */
+.wt-you-may-like-search-dropdown .wt-you-may-like-search-option:hover {
+    background: #f0f0f0;
+}
+
+/* Block editor main area (same desiwt as Accordion/Cards) */
+.webthiker-block.wt-you-may-like-block-editor,
+#you-may-like-block.wt-you-may-like-block-editor {
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+#you-may-like-block.wt-you-may-like-block-editor h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+#you-may-like-block.wt-you-may-like-block-editor dl {
+    margin: 0;
+}
+#you-may-like-block dt {
+    margin: 0.5em 0 0.25em;
+    font-weight: 600;
+}
+#you-may-like-block dt:first-of-type {
+    margin-top: 0;
+}
+#you-may-like-block dt small {
+    font-weight: normal;
+    color: #757575;
+    margin-left: 4px;
+}
+#you-may-like-block dd {
+    margin: 0 0 0 1em;
+}
+#you-may-like-block dd input[type="text"] {
+    max-width: 100%;
+}

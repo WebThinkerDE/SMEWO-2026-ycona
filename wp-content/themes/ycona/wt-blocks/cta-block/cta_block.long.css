@@ -1,0 +1,254 @@
+/* CTA Block – Theme colors from :root (dynamic-colors.css) */
+.cta-block {
+  --cta-primary: var(--wt-shop-primary);
+  --cta-primary-hover: var(--wt-shop-primary-hover);
+  --cta-secondary: var(--wt-shop-secondary);
+  --cta-black: var(--wt-shop-black);
+  --cta-white: var(--wt-shop-white);
+  --cta-gray: var(--wt-shop-gray);
+  --cta-light-gray: var(--wt-shop-light-gray);
+  overflow: visible;
+}
+
+.cta-block .container {
+  overflow: visible;
+}
+
+/* Section background colors (theme) */
+.cta-block.bg-color-white {
+  background-color: var(--cta-white);
+}
+
+.cta-block.bg-color-light-gray {
+  background-color: var(--cta-light-gray);
+}
+
+.cta-block.bg-color-primary {
+  background-color: var(--cta-primary);
+}
+
+.cta-block.bg-color-primary-dark {
+  background-color: var(--wt-shop-primary-dark);
+}
+
+.cta-block.bg-color-secondary {
+  background-color: var(--cta-secondary);
+}
+
+.cta-block.bg-color-gray {
+  background-color: var(--cta-gray);
+}
+
+.cta-block.bg-color-black {
+  background-color: var(--cta-black);
+}
+
+.cta-block-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 2rem;
+  min-height: 280px;
+}
+
+.cta-block-content-col {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.cta-block-content {
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.cta-block-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  
+}
+
+/* Text colors (theme) – description, label, link, icon inherit */
+.cta-block.text-color-white .cta-block-description,
+.cta-block.text-color-white .cta-block-label,
+.cta-block.text-color-white .cta-block-link,
+.cta-block.text-color-white .cta-block-icon {
+  color: var(--cta-white);
+}
+
+.cta-block.text-color-black .cta-block-description,
+.cta-block.text-color-black .cta-block-label,
+.cta-block.text-color-black .cta-block-link,
+.cta-block.text-color-black .cta-block-icon {
+  color: var(--cta-black);
+}
+
+.cta-block.text-color-primary .cta-block-description,
+.cta-block.text-color-primary .cta-block-label,
+.cta-block.text-color-primary .cta-block-icon {
+  color: var(--cta-primary);
+}
+
+.cta-block.text-color-primary .cta-block-link {
+  color: var(--cta-primary);
+}
+
+.cta-block.text-color-primary .cta-block-link:hover {
+  color: var(--cta-primary-hover);
+}
+
+.cta-block.text-color-secondary .cta-block-description,
+.cta-block.text-color-secondary .cta-block-label,
+.cta-block.text-color-secondary .cta-block-link,
+.cta-block.text-color-secondary .cta-block-icon {
+  color: var(--cta-secondary);
+}
+
+.cta-block.text-color-gray .cta-block-description,
+.cta-block.text-color-gray .cta-block-label,
+.cta-block.text-color-gray .cta-block-link,
+.cta-block.text-color-gray .cta-block-icon {
+  color: var(--cta-gray);
+}
+
+/* Default / fallback text color when no class */
+.cta-block .cta-block-label,
+.cta-block .cta-block-description {
+  color: var(--cta-black);
+}
+
+.cta-block-description p {
+  margin: 0 0 0.75rem;
+}
+
+.cta-block-description p:last-child {
+  margin-bottom: 0;
+}
+
+.cta-block-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cta-block-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.cta-block-icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cta-block-icon .bi {
+  font-size: inherit;
+}
+
+.cta-block-label {
+  color: inherit;
+}
+
+.cta-block-link {
+  color: var(--cta-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.cta-block-link:hover {
+  color: var(--cta-primary-hover);
+  text-decoration: underline;
+}
+
+/* Image column – image can overflow top and bottom outside the section */
+.cta-block-image-col {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 260px;
+}
+
+.cta-block-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Image extends above and below the block (bleeds out of div) */
+.cta-block-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+  margin-top: -5rem;
+}
+
+/* Responsive: stack content first, then image; reduce overflow on small screens */
+@media (max-width: 991.98px) {
+  .cta-block-inner {
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+  }
+
+  .cta-block-content-col {
+    order: 1;
+    text-align: center;
+  }
+
+  .cta-block-content {
+    padding: 1rem 0;
+  }
+
+  .cta-block-contact {
+    align-items: center;
+  }
+
+  .cta-block-row {
+    justify-content: center;
+  }
+
+  .cta-block-image-col {
+    order: 2;
+    max-width: 280px;
+    min-height: 200px;
+  }
+
+  .cta-block-img {
+    margin-top: -1.5rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cta-block-inner {
+    gap: 1rem;
+  }
+
+  .cta-block-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-block-image-col {
+    max-width: 240px;
+    min-height: 160px;
+  }
+
+  .cta-block-img {
+    margin-top: -1rem;
+  }
+}

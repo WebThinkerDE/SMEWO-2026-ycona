@@ -1,0 +1,13 @@
+/* Slider block — editor-only (same design as Accordion/Cards/Video) */
+.webthiker-block.slider-block-editor {
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+.webthiker-block.slider-block-editor h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.webthiker-block.slider-block-editor dl { margin: 0; }
+.webthiker-block.slider-block-editor dt { margin-top: 0.75rem; margin-bottom: 0.25rem; font-weight: 600; }
+.webthiker-block.slider-block-editor dd { margin: 0; }

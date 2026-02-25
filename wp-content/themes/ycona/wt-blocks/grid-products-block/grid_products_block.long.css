@@ -1,0 +1,117 @@
+/* Grid products block – same product card style as you may like / thank you */
+.wt-shop-grid-products-block {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.wt-shop-grid-products-block .wt-shop-thankyou-also-like-title {
+    margin-bottom: 1.5rem;
+}
+
+.wt-shop-grid-products-block .products.wt-shop-products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 576px) {
+    .wt-shop-grid-products-block .products.wt-shop-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .wt-shop-grid-products-block .products.wt-shop-products-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Product cards – same as .wt-shop-thankyou-also-like */
+.wt-shop-grid-products-block .products li.product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border: 2px solid var(--wt-shop-black, #1a1a2e);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--wt-shop-white, #fff);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.wt-shop-grid-products-block .products li.product:hover {
+    border-color: rgba(15, 23, 42, 0.12);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.wt-shop-grid-products-block .products li.product .woocommerce-loop-product__link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #f1f5f9;
+}
+
+/* Variable + Out of stock hovers: see woocommerce.long.css (global product loop hovers) */
+
+.wt-shop-grid-products-block .products li.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.wt-shop-grid-products-block .products li.product:hover img {
+    transform: scale(1.05);
+}
+
+.wt-shop-grid-products-block .products li.product .woocommerce-loop-product__title {
+    margin: 0;
+    padding: 1rem 1.25rem 0.35rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.wt-shop-grid-products-block .products li.product .woocommerce-loop-product__title a {
+    color: var(--wt-shop-black, #1a1a2e);
+    text-decoration: none;
+}
+
+.wt-shop-grid-products-block .products li.product .woocommerce-loop-product__title a:hover {
+    color: var(--wt-shop-primary);
+}
+
+.wt-shop-grid-products-block .products li.product .price {
+    padding: 0 1.25rem 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--wt-shop-black, #1a1a2e);
+}
+
+.wt-shop-grid-products-block .products li.product .button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--wt-shop-white, #fff);
+    background: var(--wt-shop-primary, #0e7490);
+    border: 2px solid var(--wt-shop-primary, #0e7490);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.wt-shop-grid-products-block .products li.product .button:hover {
+    background: var(--wt-shop-primary-hover, #0f766e);
+    border-color: var(--wt-shop-primary-hover, #0f766e);
+    color: var(--wt-shop-white, #fff);
+}
