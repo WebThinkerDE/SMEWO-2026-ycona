@@ -2647,7 +2647,7 @@ div.body-options hr {
 }
 
 .auto-fold .interface-interface-skeleton {
-    margin-left: 25px;
+    margin-left: 25px !important;
 }
 /* cpt backend file column */
 form#posts-filter table.table-view-list td.tab_shortcode {

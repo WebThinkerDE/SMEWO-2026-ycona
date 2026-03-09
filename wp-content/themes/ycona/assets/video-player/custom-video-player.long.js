@@ -921,6 +921,8 @@
         this.controls.appendChild(this.audio_btn);
       }
 
+
+
       this.audio_btn.addEventListener('click', function () {
         player_instance._toggle_audio_menu();
       });
