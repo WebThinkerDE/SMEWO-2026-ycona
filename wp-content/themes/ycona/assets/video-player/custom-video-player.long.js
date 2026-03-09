@@ -43,6 +43,24 @@
   var HLS_CDN  = 'https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js';
   var DASH_CDN = 'https://cdn.dashjs.org/latest/dash.all.min.js';
 
+  /**
+   * Detect iOS / iPadOS reliably.
+   * iPadOS 13+ reports a desktop (Macintosh) user-agent but still has
+   * multi-touch, so we combine the classic check with a touch heuristic.
+   * Cached after first call.
+   * @returns {boolean}
+   */
+  var _is_ios_cached = null;
+  function is_ios_device() {
+    if (_is_ios_cached !== null) return _is_ios_cached;
+    var ua = navigator.userAgent || '';
+    _is_ios_cached = (
+      /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.maxTouchPoints > 1 && /Macintosh/.test(ua))
+    ) && !window.MSStream;
+    return _is_ios_cached;
+  }
+
   /** Keep track of script loading so we only inject once. */
   var _hls_loading  = false;
   var _dash_loading = false;
@@ -195,12 +213,19 @@
 
     // Skeleton state
     this._skeleton_removed = false;
+    this._skeleton_fallback_timeout = null;
 
     // Audio tracks state
     this._audio_tracks = [];           // {url, label, lang, audio_element}
     this._active_audio_track = -1;     // -1 = default (video built-in audio)
     this.audio_btn = null;
     this.audio_menu = null;
+
+    // Stall recovery (iOS)
+    this._stall_timer = null;
+    this._last_known_time = -1;
+    this._stall_recovery_attempts = 0;
+    this._ios_playback_prepared = false;
 
     // Initialize buffered progress elements if progress_wrap exists
     if (this.progress_wrap) {
@@ -218,9 +243,34 @@
     this._init_audio_tracks();
     this._sync_ui();
 
+    // iOS: volume is hardware-only (read-only in JS). Hide the slider.
+    if (is_ios_device() && this.volume_input) {
+      this.volume_input.style.display = 'none';
+    }
+    // iOS: metadata-only preload often stalls around 0-1s.
+    // Switch to preload=auto so Safari fetches media segments eagerly.
+    if (is_ios_device()) {
+      this.video.preload = 'auto';
+      this.video.setAttribute('preload', 'auto');
+    }
+
+    // On touch devices (e.g. iOS), show controls immediately when paused so play button is visible
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      if (this.video.paused) {
+        this.wrapper.classList.add('video-player-controls-visible');
+      }
+    }
+
     // If the video is already loaded (e.g. browser cache), remove skeleton instantly
     if (this.video.readyState >= 3) { // HAVE_FUTURE_DATA or better
       this._remove_skeleton(true);
+    } else if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      // iOS/touch: canplay often delayed or never fires. Remove skeleton after a short delay
+      // so the user sees the video/poster and play button instead of being stuck.
+      var player_ref = this;
+      this._skeleton_fallback_timeout = setTimeout(function () {
+        player_ref._remove_skeleton();
+      }, 2500);
     }
   }
 
@@ -383,9 +433,8 @@
     var video = this.video;
     var player_instance = this;
 
-    // iOS Safari has no MSE — DASH won't work
-    var is_ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (is_ios) {
+    // iOS / iPadOS Safari has no MSE — DASH won't work
+    if (is_ios_device()) {
       player_instance._show_error('DASH streaming is not supported on this device.');
       return;
     }
@@ -969,6 +1018,8 @@
 
     this._active_audio_track = index;
 
+    var player_instance = this;
+
     if (index === -1) {
       // Restore video's own audio
       this.video.muted = false;
@@ -982,30 +1033,48 @@
         selected.audio_element.volume = this.video.volume;
         selected.audio_element.playbackRate = this.video.playbackRate;
         if (!this.video.paused) {
-          selected.audio_element.play().catch(function () {});
+          selected.audio_element.play().catch(function (err) {
+            // Playback blocked (common on iOS) — revert to default audio
+            player_instance.video.muted = false;
+            player_instance._active_audio_track = -1;
+            player_instance._update_audio_menu_ui(-1);
+            player_instance._show_error('Audio track not available on this device');
+          });
         }
       }
     }
 
-    // Update menu UI
+    this._update_audio_menu_ui(index);
+    this._close_audio_menu();
+  };
+
+  /**
+   * Update audio menu UI to reflect the active track.
+   * @param {number} active_index  Currently active audio track index
+   */
+  CustomVideoPlayer.prototype._update_audio_menu_ui = function (active_index) {
     if (this.audio_menu) {
       var items = this.audio_menu.querySelectorAll('.video-player-audio-menu-item');
       for (var j = 0; j < items.length; j++) {
         var item_index = parseInt(items[j].getAttribute('data-audio-index'), 10);
-        items[j].classList.toggle('active', item_index === index);
+        items[j].classList.toggle('active', item_index === active_index);
       }
     }
-
-    this._close_audio_menu();
   };
 
   /** Sync helpers — keep active external audio in sync with video */
   CustomVideoPlayer.prototype._sync_audio_play = function () {
     if (this._active_audio_track < 0) return;
+    var player_instance = this;
     var track = this._audio_tracks[this._active_audio_track];
     if (track && track.audio_element) {
       track.audio_element.currentTime = this.video.currentTime;
-      track.audio_element.play().catch(function () {});
+      track.audio_element.play().catch(function () {
+        // Playback blocked — revert to default audio
+        player_instance.video.muted = false;
+        player_instance._active_audio_track = -1;
+        player_instance._update_audio_menu_ui(-1);
+      });
     }
   };
 
@@ -1084,19 +1153,55 @@
       player_instance._update_time_display();
     };
     handlers.progress = function () { player_instance._sync_buffered(); };
-    handlers.loadstart = function () { player_instance._set_loading(true); };
-    handlers.waiting = function () { player_instance._set_loading(true); };
-    handlers.stalled = function () { player_instance._set_loading(true); };
-    handlers.canplay = function () { player_instance._set_loading(false); player_instance._remove_skeleton(); };
+    handlers.loadstart = function () {
+      // Only show the loading spinner if the user has initiated playback.
+      // On iOS the video stays paused until a user gesture; showing a
+      // spinner over a paused video that will never auto-buffer is wrong.
+      // The skeleton loader handles the visual during the initial load.
+      if (!player_instance.video.paused) {
+        player_instance._set_loading(true);
+      }
+    };
+    handlers.loadedmetadata = function () {
+      // Metadata arrived — clear any loading state.
+      // On iOS/touch canplay may never fire until user plays, so this
+      // is the safety-net that hides the spinner after the initial load.
+      player_instance._set_loading(false);
+
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        player_instance._remove_skeleton();
+      }
+    };
+    handlers.waiting = function () {
+      player_instance._set_loading(true);
+      player_instance._start_stall_watchdog();
+    };
+    handlers.stalled = function () {
+      // Only show spinner for stall if video is actively playing/buffering.
+      // Stalls during initial preload on iOS shouldn't show a spinner.
+      if (!player_instance.video.paused) {
+        player_instance._set_loading(true);
+        player_instance._start_stall_watchdog();
+      }
+    };
+    handlers.canplay = function () {
+      player_instance._set_loading(false);
+      player_instance._remove_skeleton();
+    };
     handlers.canplaythrough = function () { player_instance._set_loading(false); };
     handlers.playing = function () { 
       player_instance._set_loading(false); 
-      player_instance._set_playing(true); 
+      player_instance._set_playing(true);
+      player_instance._start_stall_watchdog();
     };
-    handlers.pause = function () { player_instance._set_playing(false); };
+    handlers.pause = function () {
+      player_instance._set_playing(false);
+      player_instance._stop_stall_watchdog();
+    };
     handlers.ended = function () { 
       player_instance._set_playing(false); 
-      player_instance._sync_progress(); 
+      player_instance._sync_progress();
+      player_instance._stop_stall_watchdog();
     };
     handlers.error = function () { player_instance._show_error(); };
     handlers.keydown = function (event) { player_instance._on_keydown(event); };
@@ -1135,6 +1240,7 @@
     video_element.addEventListener('durationchange', handlers.durationchange);
     video_element.addEventListener('progress', handlers.progress);
     video_element.addEventListener('loadstart', handlers.loadstart);
+    video_element.addEventListener('loadedmetadata', handlers.loadedmetadata);
     video_element.addEventListener('waiting', handlers.waiting);
     video_element.addEventListener('stalled', handlers.stalled);
     video_element.addEventListener('canplay', handlers.canplay);
@@ -1168,11 +1274,26 @@
       }
     });
 
+    // Touch events for iOS/mobile: show controls on tap so play button and control bar are visible
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      wrapper_element.addEventListener('touchstart', function () {
+        player_instance._show_controls_temporarily();
+      }, { passive: true });
+    }
+
     // Fullscreen changes
     document.addEventListener('fullscreenchange', handlers.fullscreen_change);
     document.addEventListener('webkitfullscreenchange', handlers.fullscreen_change);
     document.addEventListener('mozfullscreenchange', handlers.fullscreen_change);
     document.addEventListener('MSFullscreenChange', handlers.fullscreen_change);
+
+    // iOS native video fullscreen events
+    video_element.addEventListener('webkitbeginfullscreen', function () {
+      player_instance.wrapper.classList.add('video-player-fullscreen');
+    });
+    video_element.addEventListener('webkitendfullscreen', function () {
+      player_instance.wrapper.classList.remove('video-player-fullscreen');
+    });
 
     // Click outside to close menus
     document.addEventListener('click', handlers.click_outside);
@@ -1189,13 +1310,115 @@
     }
   };
 
+  /* ===========================================
+     Stall Recovery (primarily for iOS)
+     ===========================================
+     iOS Safari with preload="metadata" often stalls after the user
+     presses play: the video reaches ~0-1 s and then stops advancing.
+     The watchdog checks every few seconds whether currentTime has
+     changed.  If not, it nudges the video with a small seek, and
+     as a last resort reloads the source.
+     =========================================== */
+
   /**
-   * Toggle play/pause
+   * Start the stall watchdog.  Called when the video enters a
+   * potentially-stalled state (waiting / playing).
+   */
+  CustomVideoPlayer.prototype._start_stall_watchdog = function () {
+    this._stop_stall_watchdog();
+
+    var player_instance = this;
+    this._last_known_time = this.video.currentTime;
+
+    this._stall_timer = setInterval(function () {
+      var vid = player_instance.video;
+      if (vid.paused || vid.ended) {
+        player_instance._stop_stall_watchdog();
+        return;
+      }
+
+      var current = vid.currentTime;
+      // If time hasn't changed by at least 0.1 s → video is stuck
+      if (Math.abs(current - player_instance._last_known_time) < 0.1) {
+        player_instance._stall_recovery_attempts++;
+
+        if (player_instance._stall_recovery_attempts <= 3) {
+          // Nudge: seek slightly forward to force a rebuffer
+          var nudge = current + 0.1;
+          if (isFinite(vid.duration) && nudge < vid.duration) {
+            vid.currentTime = nudge;
+          } else {
+            vid.currentTime = current;   // seek-to-self also triggers rebuffer
+          }
+        } else {
+          // Heavier recovery: reload the video source
+          player_instance._stop_stall_watchdog();
+          var src = vid.src || (vid.querySelector('source') || {}).src;
+          if (src) {
+            var resume_time = current;
+            vid.load();
+            vid.addEventListener('loadedmetadata', function onMeta() {
+              vid.removeEventListener('loadedmetadata', onMeta);
+              vid.currentTime = resume_time;
+              vid.play().catch(function () {});
+            });
+          }
+        }
+      } else {
+        // Making progress — reset counter
+        player_instance._stall_recovery_attempts = 0;
+      }
+      player_instance._last_known_time = current;
+    }, 4000);
+  };
+
+  /**
+   * Stop the stall watchdog timer.
+   */
+  CustomVideoPlayer.prototype._stop_stall_watchdog = function () {
+    if (this._stall_timer) {
+      clearInterval(this._stall_timer);
+      this._stall_timer = null;
+    }
+    this._stall_recovery_attempts = 0;
+  };
+
+  /**
+   * Prepare iOS playback before first user-initiated play.
+   * Helps avoid "stuck at 0:01" on local MP4 streams.
+   */
+  CustomVideoPlayer.prototype._prepare_ios_playback = function () {
+    if (!is_ios_device() || this._ios_playback_prepared) return;
+    this._ios_playback_prepared = true;
+
+    this.video.preload = 'auto';
+    this.video.setAttribute('preload', 'auto');
+
+    // Force iOS to start fetching playable media data.
+    // Safe in a user-gesture path (toggle_play click/tap).
+    if (this.video.readyState < 3) {
+      try { this.video.load(); } catch (e) { /* ignore */ }
+    }
+  };
+
+  /**
+   * Toggle play/pause.
+   * video.play() returns a Promise on modern browsers (including iOS Safari)
+   * which rejects if playback is not allowed (e.g. no user gesture).
    */
   CustomVideoPlayer.prototype.toggle_play = function () {
+    var player_instance = this;
     try {
       if (this.video.paused) {
-        this.video.play();
+        this._prepare_ios_playback();
+        var play_promise = this.video.play();
+        if (play_promise && typeof play_promise.catch === 'function') {
+          play_promise.catch(function (err) {
+            if (err.name !== 'AbortError') {
+              player_instance._show_error(err.message || 'Playback failed');
+            }
+          });
+        }
       } else {
         this.video.pause();
       }
@@ -1309,25 +1532,38 @@
   };
 
   /**
-   * Toggle fullscreen
+   * Toggle fullscreen.
+   * iOS Safari doesn't support the Fullscreen API on arbitrary elements —
+   * only <video>.webkitEnterFullscreen() works, so we fall back to that.
    */
   CustomVideoPlayer.prototype.toggle_fullscreen = function () {
     var wrapper_element = this.wrapper;
-    
+    var video_element = this.video;
+
     try {
       if (this._is_fullscreen()) {
         if (document.exitFullscreen) document.exitFullscreen();
         else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
         else if (document.msExitFullscreen) document.msExitFullscreen();
-      } else {
-        if (wrapper_element.requestFullscreen) wrapper_element.requestFullscreen();
-        else if (wrapper_element.webkitRequestFullscreen) wrapper_element.webkitRequestFullscreen();
-        else if (wrapper_element.mozRequestFullScreen) wrapper_element.mozRequestFullScreen();
-        else if (wrapper_element.msRequestFullscreen) wrapper_element.msRequestFullscreen();
+      } else if (wrapper_element.requestFullscreen) {
+        wrapper_element.requestFullscreen();
+      } else if (wrapper_element.webkitRequestFullscreen) {
+        wrapper_element.webkitRequestFullscreen();
+      } else if (wrapper_element.mozRequestFullScreen) {
+        wrapper_element.mozRequestFullScreen();
+      } else if (wrapper_element.msRequestFullscreen) {
+        wrapper_element.msRequestFullscreen();
+      } else if (video_element.webkitEnterFullscreen) {
+        // iOS Safari: Fullscreen API not available on wrappers,
+        // fall back to native video fullscreen.
+        video_element.webkitEnterFullscreen();
       }
     } catch (error) {
-      this._show_error('Fullscreen not supported');
+      // Last resort: try native video fullscreen (iOS)
+      if (video_element.webkitEnterFullscreen) {
+        try { video_element.webkitEnterFullscreen(); } catch (e) { /* ignore */ }
+      }
     }
   };
 
@@ -1379,6 +1615,10 @@
    * @param {boolean} [immediate] - Skip fade animation (e.g. video was cached)
    */
   CustomVideoPlayer.prototype._remove_skeleton = function (immediate) {
+    if (this._skeleton_fallback_timeout) {
+      clearTimeout(this._skeleton_fallback_timeout);
+      this._skeleton_fallback_timeout = null;
+    }
     if (this._skeleton_removed) return;
     this._skeleton_removed = true;
 
@@ -1632,6 +1872,8 @@
     // Clear timeouts
     if (this._controls_timeout) clearTimeout(this._controls_timeout);
     if (this._mouse_move_timeout) clearTimeout(this._mouse_move_timeout);
+    if (this._skeleton_fallback_timeout) clearTimeout(this._skeleton_fallback_timeout);
+    this._stop_stall_watchdog();
     
     // Remove button listeners
     if (this.play_btn) this.play_btn.removeEventListener('click', handlers.play);
@@ -1655,6 +1897,7 @@
     video_element.removeEventListener('durationchange', handlers.durationchange);
     video_element.removeEventListener('progress', handlers.progress);
     video_element.removeEventListener('loadstart', handlers.loadstart);
+    video_element.removeEventListener('loadedmetadata', handlers.loadedmetadata);
     video_element.removeEventListener('waiting', handlers.waiting);
     video_element.removeEventListener('stalled', handlers.stalled);
     video_element.removeEventListener('canplay', handlers.canplay);

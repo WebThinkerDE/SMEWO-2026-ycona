@@ -110,7 +110,7 @@ function wt_video_block_rc( $attributes, $content ) {
 			</div>
 		</div>
 
-		<video src="' . esc_url( $video_url ) . '" preload="metadata" playsinline' . $poster_attr . $title_attr . $crossorigin_attr . '>' . $track_html . '</video>
+		<video src="' . esc_url( $video_url ) . '" preload="metadata" playsinline webkit-playsinline' . $poster_attr . $title_attr . $crossorigin_attr . '>' . $track_html . '</video>
 		
 		<!-- Centered Play Button Overlay -->
 		<div class="video-player-play-overlay" data-play-overlay aria-label="' . esc_attr__( 'Play Video', 'ycona' ) . '">

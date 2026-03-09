@@ -71,6 +71,8 @@
   height: auto;
   vertical-align: middle;
   transition: opacity 0.3s ease;
+  /* Let overlay and controls receive taps on iOS; video must not capture touch */
+  pointer-events: none;
 }
 
 /* ============================================
@@ -273,6 +275,7 @@
 .video-player-skin-minimal .vp-skeleton {
   background: #0a0a0a;
   border-radius: 0;
+
 }
 .video-player-skin-minimal .vp-skeleton-play {
   width: 56px;
@@ -293,6 +296,7 @@
   .vp-skeleton-shimmer {
     animation: none;
   }
+
 }
 /* ============================================
    Centered Play Button Overlay
@@ -300,6 +304,7 @@
 .video-player-play-overlay {
   position: absolute;
   top: 50%;
+
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80px;

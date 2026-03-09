@@ -4,101 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22292b75-0460-4684-abad-fcbec4e43d39" name="Changes" comment="feat: cards block und gutenberg block (34030-339)">
-      <change afterPath="$PROJECT_DIR$/.cursor/rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CHANGES.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/mini-cart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/mini-cart.long.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/product-search.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/product-search.long.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/woocommerce.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/woocommerce.long.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/ClosedropdownMenu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/OpendropdownMenu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/elemntor.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/instagram.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/klarna.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/mastercard.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/paypal.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/responsive.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/shortcode.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/stripe.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/svg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/tiktok.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/twitter.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/visa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/wordpress.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/wpml.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/product-search.long.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/product-search.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/woocommerce.long.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/woocommerce.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/languages/compile-mo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/languages/de_DE.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/languages/de_DE.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/template-parts/mini-cart-panel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/archive-product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/cart/cart-empty.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/cart/cart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/checkout/form-checkout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/checkout/thankyou.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/content-product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/content-single-product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/hooks/ajax-product-search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/hooks/login-register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/hooks/mini-cart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/hooks/modal-login-register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/hooks/my-account-extra-menu-item.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/hooks/support-woocommerce.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/loop/orderby.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/myaccount/form-register-only.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/woocommerce/single-product.php" afterDir="false" />
+    <list default="true" id="22292b75-0460-4684-abad-fcbec4e43d39" name="Changes" comment="feat: Woocomerce Funtionality (34075-339)">
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/404.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/404.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/archive.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/archive.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.long.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/main.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/main.long.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/favicon/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/favicon/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/closeMenu.svg" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/closeMenu.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/openMenu.svg" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/img/vectors/openMenu.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/functions.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/functions.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/functions.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/functions.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.long.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.long.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/template-parts/mega-menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/template-parts/mega-menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/template-parts/search-header/search-destinations.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/template-parts/search-header/search-header-mobile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/template-parts/search-header/search-header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/theme-options.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/theme-options.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/accordion-block/accordion_block.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/accordion-block/accordion_block.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/accordion-block/accordion_block.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/accordion-block/accordion_block.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/accordion-block/accordion_block.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/accordion-block/accordion_block.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/multiple-buttons-block/multiple_buttons_block_editor.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/multiple-buttons-block/multiple_buttons_block_editor.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/text-block/text_block.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/text-block/text_block.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/text-block/text_block_editor.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/text-block/text_block_editor.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/text-block/text_block_editor.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/text-block/text_block_editor.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block.long.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/slider-block/slider_block.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/slider-block/slider_block.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/slider-block/slider_block.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/slider-block/slider_block.long.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.long.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-blocks/video-block/video_block_editor.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/accordion.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/accordion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/cards.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/cards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/testimonials.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/testimonials.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +42,7 @@
     <scope name="css" pattern="file[PAPLS-2026-ycona]:wp-content/themes/ycona/*.long.css" />
     <scope name="js" pattern="file[PAPLS-2026-ycona]:wp-content/themes/ycona/*.long.js" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -137,23 +53,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/grne23/Documents/workspace/PAPLS-2026-ycona/wp-content/themes/ycona/assets/img/vectors&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/grne23/Documents/workspace/SMEWO-2026-ycona",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.deploy.options",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grne23\Documents\workspace\PAPLS-2026-ycona\wp-content\themes\ycona\assets\img\vectors" />
@@ -169,8 +88,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PS-251.25410.148" />
-        <option value="bundled-php-predefined-a98d8de5180a-c5828cf854d9-com.jetbrains.php.sharedIndexes-PS-251.25410.148" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PS-251.29188.4" />
+        <option value="bundled-php-predefined-a98d8de5180a-e5747d4f5a45-com.jetbrains.php.sharedIndexes-PS-251.29188.4" />
       </set>
     </attachedChunks>
   </component>
@@ -194,6 +113,12 @@
       <workItem from="1771313613473" duration="6475000" />
       <workItem from="1771325585827" duration="650000" />
       <workItem from="1771326272349" duration="15000" />
+      <workItem from="1772023689018" duration="4677000" />
+      <workItem from="1772086557343" duration="480000" />
+      <workItem from="1772087061372" duration="411000" />
+      <workItem from="1772130921331" duration="112000" />
+      <workItem from="1772132552599" duration="7000" />
+      <workItem from="1773058878835" duration="2830000" />
     </task>
     <task id="LOCAL-00001" summary="feat: theme steup (33260-339)">
       <option name="closed" value="true" />
@@ -219,7 +144,63 @@
       <option name="project" value="LOCAL" />
       <updated>1770876883133</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772025721051</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772025721051</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772025733971</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772025733971</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772025755491</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772025755491</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772025788190</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772025788190</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772026069760</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1772026069760</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772026130200</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772026130200</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: Woocomerce Funtionality (34075-339)">
+      <option name="closed" value="true" />
+      <created>1772026196535</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1772026196535</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +211,7 @@
     <MESSAGE value="feat: github (33260-339)" />
     <MESSAGE value="feat: custom video player und gutenberg block (34030-339)" />
     <MESSAGE value="feat: cards block und gutenberg block (34030-339)" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: cards block und gutenberg block (34030-339)" />
+    <MESSAGE value="feat: Woocomerce Funtionality (34075-339)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Woocomerce Funtionality (34075-339)" />
   </component>
 </project>
