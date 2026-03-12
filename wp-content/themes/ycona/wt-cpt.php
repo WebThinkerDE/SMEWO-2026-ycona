@@ -310,4 +310,119 @@ function save_custom_post_slider_metas( $post_id ) {
 add_action( 'save_post', 'save_custom_post_slider_metas' );
 /* END - Add Custom Post Type - Slider */
 
+/* Add Custom Post Type - Program Builder */
+function add_custom_post_type_program_builder() {
+
+	$labels = array(
+		'name'                  => _x( 'Program Builder', 'Post Type General Name', 'webthinkershop' ),
+		'singular_name'         => _x( 'Program Builder', 'Post Type Singular Name', 'webthinkershop' ),
+		'menu_name'             => __( 'Program Builder', 'webthinkershop' ),
+		'name_admin_bar'        => __( 'Program Builder', 'webthinkershop' ),
+		'archives'              => __( 'Program Builder Archives', 'webthinkershop' ),
+		'attributes'            => __( 'Program Builder Attributes', 'webthinkershop' ),
+		'parent_item_colon'     => __( 'Parent Program Builder:', 'webthinkershop' ),
+		'all_items'             => __( 'All Program Builder Entries', 'webthinkershop' ),
+		'add_new_item'          => __( 'Add New Program', 'webthinkershop' ),
+		'add_new'               => __( 'Add New', 'webthinkershop' ),
+		'new_item'              => __( 'New Program', 'webthinkershop' ),
+		'edit_item'             => __( 'Edit Program', 'webthinkershop' ),
+		'update_item'           => __( 'Update Program', 'webthinkershop' ),
+		'view_item'             => __( 'View Program', 'webthinkershop' ),
+		'view_items'            => __( 'View Programs', 'webthinkershop' ),
+		'search_items'          => __( 'Search Program Builder', 'webthinkershop' ),
+		'not_found'             => __( 'Not found', 'webthinkershop' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'webthinkershop' ),
+		'featured_image'        => __( 'Program Image', 'webthinkershop' ),
+		'set_featured_image'    => __( 'Set Program image', 'webthinkershop' ),
+		'remove_featured_image' => __( 'Remove Program image', 'webthinkershop' ),
+		'use_featured_image'    => __( 'Use as Program image', 'webthinkershop' ),
+		'items_list'            => __( 'Program list', 'webthinkershop' ),
+		'items_list_navigation' => __( 'Program list navigation', 'webthinkershop' ),
+		'filter_items_list'     => __( 'Filter Program list', 'webthinkershop' ),
+	);
+
+	$args = array(
+		'label'               => __( 'Program Builder', 'webthinkershop' ),
+		'description'         => __( 'Program Builder', 'webthinkershop' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title' ),
+		'public'              => true,
+		'show_in_rest'        => true,
+		'show_ui'             => true,
+		'menu_position'       => 42,
+		'menu_icon'           => 'dashicons-welcome-learn-more',
+		'has_archive'         => false,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'show_in_nav_menus'   => true,
+		'rewrite'             => array( 'slug' => 'program' ),
+		'taxonomies'          => array( 'program_builder_type' ),
+	);
+
+	register_post_type( 'program_builder', $args );
+}
+add_action( 'init', 'add_custom_post_type_program_builder' );
+
+function register_program_builder_taxonomy() {
+	$labels = array(
+		'name'              => _x( 'Program Types', 'taxonomy general name', 'webthinkershop' ),
+		'singular_name'     => _x( 'Program Type', 'taxonomy singular name', 'webthinkershop' ),
+		'search_items'      => __( 'Search Program Types', 'webthinkershop' ),
+		'all_items'         => __( 'All Program Types', 'webthinkershop' ),
+		'edit_item'         => __( 'Edit Program Type', 'webthinkershop' ),
+		'update_item'       => __( 'Update Program Type', 'webthinkershop' ),
+		'add_new_item'      => __( 'Add New Program Type', 'webthinkershop' ),
+		'new_item_name'     => __( 'New Program Type Name', 'webthinkershop' ),
+		'menu_name'         => __( 'Program Type', 'webthinkershop' ),
+	);
+
+	register_taxonomy(
+		'program_builder_type',
+		array( 'program_builder' ),
+		array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'program-type' ),
+			'show_in_rest'      => true,
+		)
+	);
+}
+add_action( 'init', 'register_program_builder_taxonomy' );
+
+// add HTML for Program Builder CPT
+function add_program_builder_meta_box() {
+	$text = __( 'Program Builder', 'webthinkershop' );
+	add_meta_box(
+		'program_builder_fields_meta_box',
+		$text,
+		'show_program_builder_custom_fields',
+		'program_builder'
+	);
+}
+add_action( 'add_meta_boxes', 'add_program_builder_meta_box' );
+
+// saves metas for CPT Program Builder
+function save_custom_post_program_builder_metas( $post_id ) {
+	$meta_nonce  = 'programBuilderMetaNonce';
+	$save_fields = 'saveProgramBuilderFields';
+	$fields      = 'program_builder_fields';
+
+	$saved = save_custom_post_metas( $post_id, $meta_nonce, $save_fields, $fields );
+	if ( empty( $_POST['program_builder_fields']['program_type'] ) ) {
+		return $saved;
+	}
+
+	$program_type = sanitize_text_field( wp_unslash( $_POST['program_builder_fields']['program_type'] ) );
+	if ( $program_type !== '' ) {
+		wp_set_object_terms( $post_id, array( $program_type ), 'program_builder_type', false );
+	}
+
+	return $saved;
+}
+add_action( 'save_post', 'save_custom_post_program_builder_metas' );
+/* END - Add Custom Post Type - Program Builder */
+
 	

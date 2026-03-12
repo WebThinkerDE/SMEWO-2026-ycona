@@ -901,6 +901,7 @@
         lang:  entry.lang  || '',
         audio_element: audio_el
       });
+
     }
 
     if (this._audio_tracks.length === 0) return;
@@ -930,6 +931,9 @@
 
     // Build the audio track menu
     this._build_audio_menu();
+
+    // Auto-select Audio Track 1 as default when external tracks are provided
+    this._select_audio_track(0);
 
     // Sync audio elements with the main video (play/pause/seek/volume/rate)
     this.video.addEventListener('play', function () {

@@ -9,6 +9,65 @@
     global $theme_path;
     $theme_path = get_template_directory_uri();
 
+    function wt_shop_get_wpml_language_labels() {
+        static $labels = null;
+        if ( null !== $labels ) {
+            return $labels;
+        }
+
+        $labels = array();
+        $langs = apply_filters(
+            'wpml_active_languages',
+            null,
+            array(
+                'skip_missing' => 0,
+                'orderby' => 'code',
+            )
+        );
+
+        if ( is_array( $langs ) ) {
+            foreach ( $langs as $code => $info ) {
+                if ( ! empty( $info['translated_name'] ) ) {
+                    $labels[ $code ] = $info['translated_name'];
+                } elseif ( ! empty( $info['native_name'] ) ) {
+                    $labels[ $code ] = $info['native_name'];
+                }
+            }
+        }
+
+        return $labels;
+    }
+
+    function wt_shop_get_language_label( $code, $fallback = '' ) {
+        $labels = wt_shop_get_wpml_language_labels();
+        if ( $code && ! empty( $labels[ $code ] ) ) {
+            return $labels[ $code ];
+        }
+
+        return $fallback !== '' ? $fallback : $code;
+    }
+
+    function wt_shop_get_current_language_code() {
+        $code = apply_filters( 'wpml_current_language', null );
+        if ( ! $code && defined( 'ICL_LANGUAGE_CODE' ) ) {
+            $code = ICL_LANGUAGE_CODE;
+        }
+
+        return $code ? $code : '';
+    }
+
+    function wt_shop_get_current_language_label( $fallback = '' ) {
+        $code = wt_shop_get_current_language_code();
+        if ( $code ) {
+            $label = wt_shop_get_language_label( $code, '' );
+            if ( $label !== '' ) {
+                return $label;
+            }
+        }
+
+        return $fallback;
+    }
+
     function add_frontend_resources() {
         global $theme_path; // Correct global variable usage
 
@@ -80,6 +139,41 @@
         wp_localize_script("js-main", "wt_ajax", array(
             "ajaxurl" => admin_url("admin-ajax.php"),
         ));
+
+        if ( is_singular( 'program_builder' ) ) {
+            wp_enqueue_style( "pb-front-css", $theme_path . "/assets/css/program-builder-front.css", array( "css-main", "custom-video-player" ), _S_VERSION );
+            wp_enqueue_script( "pb-front-js", $theme_path . "/assets/js/program-builder-front.min.js", array( "custom-video-player" ), _S_VERSION, true );
+
+            $language_labels = wt_shop_get_wpml_language_labels();
+            if ( empty( $language_labels['en'] ) ) {
+                $language_labels['en'] = esc_html__( 'English', 'webthinkershop' );
+            }
+
+            $current_lang = wt_shop_get_current_language_code();
+            if ( $current_lang === '' ) {
+                $current_lang = 'en';
+            }
+
+            $current_label = wt_shop_get_current_language_label( esc_html__( 'English', 'webthinkershop' ) );
+            $english_label = wt_shop_get_language_label( 'en', esc_html__( 'English', 'webthinkershop' ) );
+
+            wp_localize_script(
+                "pb-front-js",
+                "pbFrontI18n",
+                array(
+                    "noVideo"          => esc_html__( "No video available", "webthinkershop" ),
+                    "languageLabels"   => $language_labels,
+                    "currentLanguage"  => $current_lang,
+                    "currentLanguageLabel" => $current_label,
+                    "subtitle1Lang"    => $current_lang,
+                    "subtitle2Lang"    => "en",
+                    "subtitle1Label"   => $current_label,
+                    "subtitle2Label"   => $english_label,
+                    "audioTrack1Label" => $current_label,
+                    "audioTrack2Label" => $english_label,
+                )
+            );
+        }
 
     }
 
@@ -739,6 +833,7 @@ add_filter( 'block_type_metadata', 'wt_block_type_metadata_api3', 10, 1 );
 	require_once(get_stylesheet_directory() . '/wt-cpt/testimonials.php');
 	require_once(get_stylesheet_directory() . '/wt-cpt/cards.php');
     require_once(get_stylesheet_directory() . '/wt-cpt/slider.php');
+    require_once(get_stylesheet_directory() . '/wt-cpt/program_builder.php');
     require_once(get_stylesheet_directory() . '/template-parts/wt-login.php');
     require_once(get_stylesheet_directory() . '/template-parts/wt-backend.php');
 
