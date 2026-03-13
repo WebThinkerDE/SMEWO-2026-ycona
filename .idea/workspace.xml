@@ -5,26 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22292b75-0460-4684-abad-fcbec4e43d39" name="Changes" comment="fix: fixes (34502-345)">
-      <change afterPath="$PROJECT_DIR$/.idea/SMEWO-2026-ycona.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_03_2026_14_27_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_03_2026_14_27__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/program-builder-front.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/program-builder-front.long.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/program-builder-front.long.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/program-builder-front.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/single-program_builder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/program_builder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.long.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/css/backend.long.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.long.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.long.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/single-program_builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/single-program_builder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/program_builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/ycona/wt-cpt/program_builder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +116,7 @@
       <workItem from="1773058878835" duration="9098000" />
       <workItem from="1773086257020" duration="8000" />
       <workItem from="1773209503220" duration="12496000" />
-      <workItem from="1773300943062" duration="5213000" />
+      <workItem from="1773300943062" duration="17241000" />
     </task>
     <task id="LOCAL-00001" summary="feat: theme steup (33260-339)">
       <option name="closed" value="true" />
@@ -230,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773064023565</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix: fixes (34502-345)">
+      <option name="closed" value="true" />
+      <created>1773311205172</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1773311205172</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

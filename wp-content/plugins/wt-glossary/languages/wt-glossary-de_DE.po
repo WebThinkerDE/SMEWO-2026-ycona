@@ -1,0 +1,448 @@
+# Copyright (C) 2025 WebThinker / Granit Nebiu
+# This file is distributed under the same license as the WebThinker Glossary package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WebThinker Glossary 1.0.0\n"
+"Report-Msgid-Bugs-To: https://webthinker.de\n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: 2026-03-12 16:16+0100\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Domain: wt-glossary\n"
+
+#: includes/wt-glossary-shortcode.php
+msgid "Search"
+msgstr "Suche"
+
+#: includes/wt-glossary-shortcode.php
+msgid "Clear search"
+msgstr "Suche löschen"
+
+#: includes/wt-glossary-shortcode.php
+msgid "Top searched:"
+msgstr "Meist gesucht:"
+
+#: includes/wt-glossary-shortcode.php
+msgid "Alphabetical navigation"
+msgstr "Alphabetische Navigation"
+
+#: includes/wt-glossary-shortcode.php wt-glossary.php
+msgid "All"
+msgstr "Alle"
+
+#: includes/wt-glossary-shortcode.php
+msgid "No glossary terms found."
+msgstr "Keine Glossar-Begriffe gefunden."
+
+#: includes/wt-glossary-shortcode.php
+msgid "Know More"
+msgstr "Mehr erfahren"
+
+#: includes/wt-glossary-shortcode.php wt-glossary.php
+msgid "Searching…"
+msgstr "Suche…"
+
+#: includes/wt-glossary-cpt.php
+msgid "Glossary"
+msgstr "Glossar"
+
+#: includes/wt-glossary-cpt.php
+msgid "Glossary Term"
+msgstr "Glossar-Begriff"
+
+#: includes/wt-glossary-cpt.php
+msgid "Add New"
+msgstr "Hinzufügen"
+
+#: includes/wt-glossary-cpt.php
+msgid "Add New Term"
+msgstr "Neuen Begriff hinzufügen"
+
+#: includes/wt-glossary-cpt.php
+msgid "Edit Term"
+msgstr "Begriff bearbeiten"
+
+#: includes/wt-glossary-cpt.php
+msgid "New Term"
+msgstr "Neuer Begriff"
+
+#: includes/wt-glossary-cpt.php
+msgid "View Term"
+msgstr "Begriff anzeigen"
+
+#: includes/wt-glossary-cpt.php
+msgid "View Glossary"
+msgstr "Glossar anzeigen"
+
+#: includes/wt-glossary-cpt.php
+msgid "Search Terms"
+msgstr "Begriffe suchen"
+
+#: includes/wt-glossary-cpt.php wt-glossary.php includes/wt-glossary-ajax.php
+msgid "No terms found."
+msgstr "Keine Begriffe gefunden."
+
+#: includes/wt-glossary-cpt.php
+msgid "No terms found in Trash."
+msgstr "Keine Begriffe im Papierkorb gefunden."
+
+#: includes/wt-glossary-cpt.php
+msgid "All Terms"
+msgstr "Alle Begriffe"
+
+#: includes/wt-glossary-cpt.php
+msgid "Menu name"
+msgstr "Glossar"
+
+#: includes/wt-glossary-cpt.php
+msgid "Glossary Details"
+msgstr "Glossar-Details"
+
+#: includes/wt-glossary-cpt.php
+msgid "Short Description"
+msgstr "Kurzbeschreibung"
+
+#: includes/wt-glossary-cpt.php
+msgid "Brief summary of the term…"
+msgstr "Kurze Zusammenfassung des Begriffs…"
+
+#: includes/wt-glossary-cpt.php
+msgid "Synonyms"
+msgstr "Synonyme"
+
+#: includes/wt-glossary-cpt.php
+msgid "Comma-separated, e.g. Term A, Term B"
+msgstr "Kommagetrennt, z. B. Begriff A, Begriff B"
+
+#: includes/wt-glossary-cpt.php templates/single-wt_glossary_term.php
+msgid "Related Terms"
+msgstr "Verwandte Begriffe"
+
+#: includes/wt-glossary-cpt.php
+msgid "Hold Ctrl / Cmd to select multiple terms."
+msgstr "Strg / Cmd gedrückt halten, um mehrere Begriffe auszuwählen."
+
+#: import-demo-data.php
+msgid "Import Demo Data"
+msgstr "Demo-Daten importieren"
+
+#: import-demo-data.php
+msgid "Import Glossary Demo Data"
+msgstr "Glossar-Demo-Daten importieren"
+
+#: import-demo-data.php
+#, php-format
+msgid "Successfully imported %d glossary terms."
+msgstr "Es wurden %d Glossar-Begriffe erfolgreich importiert."
+
+#: import-demo-data.php
+msgid ""
+"Click the button below to import sample glossary terms for testing and "
+"demonstration purposes."
+msgstr ""
+"Klicken Sie auf die Schaltfläche unten, um Beispiel-Glossar-Begriffe zu "
+"Test- und Demonstrationszwecken zu importieren."
+
+#: import-demo-data.php
+msgid "Import Demo Terms"
+msgstr "Demo-Begriffe importieren"
+
+#: includes/wt-glossary-settings.php
+msgid "Glossary Settings"
+msgstr "Glossar-Einstellungen"
+
+#: includes/wt-glossary-settings.php
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/wt-glossary-settings.php
+msgid "Colors"
+msgstr "Farben"
+
+#: includes/wt-glossary-settings.php
+msgid "General"
+msgstr "Allgemein"
+
+#: includes/wt-glossary-settings.php
+msgid "Archive Page"
+msgstr "Archivseite"
+
+#: includes/wt-glossary-settings.php
+msgid "Features"
+msgstr "Funktionen"
+
+#: includes/wt-glossary-settings.php
+msgid "Primary Color"
+msgstr "Hauptfarbe"
+
+#: includes/wt-glossary-settings.php
+msgid "Primary Hover"
+msgstr "Hauptfarbe (Hover)"
+
+#: includes/wt-glossary-settings.php
+msgid "Primary Light (backgrounds)"
+msgstr "Hauptfarbe hell (Hintergründe)"
+
+#: includes/wt-glossary-settings.php
+msgid "Card Accent / Gradient End"
+msgstr "Karten-Akzent / Verlauf Ende"
+
+#: includes/wt-glossary-settings.php
+msgid "Dark (headings)"
+msgstr "Dunkel (Überschriften)"
+
+#: includes/wt-glossary-settings.php
+msgid "Text Color"
+msgstr "Textfarbe"
+
+#: includes/wt-glossary-settings.php
+msgid "Text Light (secondary)"
+msgstr "Textfarbe hell (sekundär)"
+
+#: includes/wt-glossary-settings.php
+msgid "Border Color"
+msgstr "Rahmenfarbe"
+
+#: includes/wt-glossary-settings.php
+msgid "Background"
+msgstr "Hintergrund"
+
+#: includes/wt-glossary-settings.php
+msgid "Background Subtle"
+msgstr "Hintergrund dezent"
+
+#: includes/wt-glossary-settings.php
+msgid "Border Radius (px)"
+msgstr "Eckenradius (px)"
+
+#: includes/wt-glossary-settings.php
+msgid "Cards, search bar, navigation buttons."
+msgstr "Karten, Suchfeld, Navigationsschaltflächen."
+
+#: includes/wt-glossary-settings.php
+msgid "Small Border Radius (px)"
+msgstr "Kleiner Eckenradius (px)"
+
+#: includes/wt-glossary-settings.php
+msgid "Nav buttons, tooltips, badges."
+msgstr "Nav-Schaltflächen, Tooltips, Badges."
+
+#: includes/wt-glossary-settings.php
+msgid "Top Searched Limit"
+msgstr "Top-Suchbegriff"
+
+#: includes/wt-glossary-settings.php
+msgid "Max items shown in \"Top searched\" tags. Set 0 to disable."
+msgstr ""
+"Maximale Anzahl der in den Tags „Top gesucht“ angezeigten Elemente. Setzen "
+"Sie den Wert auf 0, um diese Funktion zu deaktivieren."
+
+#: includes/wt-glossary-settings.php
+msgid ""
+"These defaults apply to the /glossary/ archive page. The Gutenberg block has "
+"its own per-block settings."
+msgstr ""
+"Diese Vorgaben gelten für die /glossary/ Archivseite. Der Gutenberg-Block "
+"hat eigene Einstellungen pro Block."
+
+#: includes/wt-glossary-settings.php
+msgid "Title"
+msgstr "Titel"
+
+#: includes/wt-glossary-settings.php
+msgid "Description"
+msgstr "Beschreibung"
+
+#: includes/wt-glossary-settings.php
+msgid "Shows below the title on the archive page."
+msgstr "Wird unter dem Titel auf der Archivseite angezeigt."
+
+#: includes/wt-glossary-settings.php
+msgid "Search Label"
+msgstr "Suchfeld-Beschriftung"
+
+#: includes/wt-glossary-settings.php
+msgid "Text above the search bar, e.g. \"What word are you interested in?\""
+msgstr "Text über der Suchleiste, z. B. „Welches Wort interessiert Sie?“"
+
+#: includes/wt-glossary-settings.php
+msgid "Read More Text"
+msgstr "Weiterlesen Text"
+
+#: includes/wt-glossary-settings.php
+msgid "Columns"
+msgstr "Spalten"
+
+#: includes/wt-glossary-settings.php
+#, php-format
+msgid "%d Column(s)"
+msgstr "%d Spalte(n)"
+
+#: includes/wt-glossary-settings.php
+msgid "Auto-link Terms"
+msgstr "Begriffe automatisch verlinken"
+
+#: includes/wt-glossary-settings.php
+msgid "Automatically link glossary terms found in post/page content."
+msgstr "Glossar-Begriffe in Beiträgen/Seiten automatisch verlinken."
+
+#: includes/wt-glossary-settings.php
+msgid "Tooltips"
+msgstr "Tooltips"
+
+#: includes/wt-glossary-settings.php
+msgid "Show tooltip with short description on hover over auto-linked terms."
+msgstr ""
+"Kurzbeschreibung als Tooltip beim Überfahren auto-verlinkter Begriffe "
+"anzeigen."
+
+#: includes/wt-glossary-settings.php
+msgid "Reset All Colors to Defaults"
+msgstr "Alle Farben auf Standard zurücksetzen"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Letters"
+msgstr "Buchstaben"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Letter"
+msgstr "Buchstabe"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Search Letters"
+msgstr "Buchstaben suchen"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "All Letters"
+msgstr "Alle Buchstaben"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Edit Letter"
+msgstr "Buchstabe bearbeiten"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Update Letter"
+msgstr "Buchstabe aktualisieren"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Add New Letter"
+msgstr "Neuen Buchstaben hinzufügen"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "New Letter Name"
+msgstr "Neuer Buchstabenname"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Glossary Categories"
+msgstr "Glossar-Kategorien"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Glossary Category"
+msgstr "Glossar-Kategorie"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Search Categories"
+msgstr "Kategorien suchen"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "All Categories"
+msgstr "Alle Kategorien"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Parent Category"
+msgstr "Übergeordnete Kategorie"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Parent Category:"
+msgstr "Übergeordnete Kategorie:"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Edit Category"
+msgstr "Kategorie bearbeiten"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Update Category"
+msgstr "Kategorie aktualisieren"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Add New Category"
+msgstr "Neue Kategorie hinzufügen"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "New Category Name"
+msgstr "Neuer Kategorienname"
+
+#: includes/wt-glossary-taxonomy.php
+msgid "Categories"
+msgstr "Kategorien"
+
+#: templates/single-wt_glossary_term.php
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
+#: templates/single-wt_glossary_term.php
+msgid "Also known as:"
+msgstr "Auch bekannt als:"
+
+#: templates/single-wt_glossary_term.php includes/wt-glossary-ajax.php
+#: wt-glossary.php
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: templates/single-wt_glossary_term.php
+msgid "Back to Glossary"
+msgstr "Zurück zum Glossar"
+
+#: templates/archive-wt_glossary_term.php
+msgid "What word are you interested in?"
+msgstr "An welchem Begriff sind Sie interessiert?"
+
+#: wt-glossary.php
+msgid "WebThinker Blocks"
+msgstr "WebThinker-Blöcke"
+
+#: wt-glossary.php (editor i18n)
+msgid "Content"
+msgstr "Inhalt"
+
+#: wt-glossary.php (editor i18n)
+msgid "Display Settings"
+msgstr "Anzeige-Einstellungen"
+
+#: wt-glossary.php (editor i18n)
+msgid "Show Search"
+msgstr "Suche anzeigen"
+
+#: wt-glossary.php (editor i18n)
+msgid "Show A–Z Navigation"
+msgstr "A–Z-Navigation anzeigen"
+
+#: wt-glossary.php (editor i18n)
+msgid "1 Column"
+msgstr "1 Spalte"
+
+#: wt-glossary.php (editor i18n)
+msgid "2 Columns"
+msgstr "2 Spalten"
+
+#: wt-glossary.php (editor i18n)
+msgid "3 Columns"
+msgstr "3 Spalten"
+
+#: wt-glossary.php (editor i18n)
+msgid "4 Columns"
+msgstr "4 Spalten"
+
+#: wt-glossary.php (editor i18n)
+msgid "Category Slug (optional)"
+msgstr "Kategorie-Slug (optional)"
+
+#: wt-glossary.php (editor i18n)
+msgid "e.g. logistics"
+msgstr "z.B. Logistik"

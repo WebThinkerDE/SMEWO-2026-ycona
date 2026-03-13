@@ -13,6 +13,7 @@ function show_program_builder_custom_fields() {
 	$program_image_id   = isset( $meta['program_image_id'] ) ? $meta['program_image_id'] : '';
 	$program_type       = isset( $meta['program_type'] ) ? $meta['program_type'] : 'Schulungen';
 	$general_description = isset( $meta['general_description'] ) ? $meta['general_description'] : '';
+	$glossary_display    = isset( $meta['glossary_display'] ) ? $meta['glossary_display'] : '';
 	$chapters           = isset( $meta['chapters'] ) && is_array( $meta['chapters'] ) ? $meta['chapters'] : array();
 	$initial_chapter    = ! empty( $chapters ) ? reset( $chapters ) : array();
 	$initial_video_mp4  = isset( $initial_chapter['video_mp4'] ) ? $initial_chapter['video_mp4'] : '';
@@ -230,6 +231,29 @@ function show_program_builder_custom_fields() {
 				);
 				?>
 			</div>
+			<?php if ( function_exists( 'wt_glossary_render_output' ) && post_type_exists( 'wt_glossary_term' ) ) : ?>
+			<div class="pb-glossary-select-wrap" style="margin-top:1.5rem;">
+				<label for="pb_glossary_display"><?php esc_html_e( 'Glossar anzeigen', 'webthinkershop' ); ?></label>
+				<select id="pb_glossary_display" name="program_builder_fields[glossary_display]" class="widefat">
+					<option value="" <?php selected( $glossary_display, '' ); ?>><?php esc_html_e( '— Keins —', 'webthinkershop' ); ?></option>
+					<option value="all" <?php selected( $glossary_display, 'all' ); ?>><?php esc_html_e( 'Vollständiges Glossar', 'webthinkershop' ); ?></option>
+					<?php
+					$glossary_cats = get_terms( array(
+						'taxonomy'   => 'wt_glossary_category',
+						'hide_empty' => false,
+					) );
+					if ( ! is_wp_error( $glossary_cats ) && ! empty( $glossary_cats ) ) :
+						foreach ( $glossary_cats as $term ) :
+							?>
+							<option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( $glossary_display, $term->slug ); ?>><?php echo esc_html( $term->name ); ?></option>
+							<?php
+						endforeach;
+					endif;
+					?>
+				</select>
+				<p class="description"><?php esc_html_e( 'Wählen Sie, welches Glossar unter der Schulung angezeigt werden soll.', 'webthinkershop' ); ?></p>
+			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 

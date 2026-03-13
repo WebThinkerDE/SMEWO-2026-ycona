@@ -2,12 +2,14 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/wp-content/plugins/wt-glossary/blocks/glossary-block/glossary_block_editor.min.js" />
         <item url="file://$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.min.js" />
         <item url="file://$PROJECT_DIR$/wp-content/themes/ycona/assets/js/program-builder-front.min.js" />
         <item url="file://$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/wp-content/plugins/wt-glossary/blocks/glossary-block/glossary_block_editor.min.js" />
       <root url="file://$PROJECT_DIR$/wp-content/themes/ycona/assets/js/backend.min.js" />
       <root url="file://$PROJECT_DIR$/wp-content/themes/ycona/assets/js/program-builder-front.min.js" />
       <root url="file://$PROJECT_DIR$/wp-content/themes/ycona/assets/video-player/custom-video-player.min.js" />

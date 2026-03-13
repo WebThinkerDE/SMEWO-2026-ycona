@@ -18,6 +18,7 @@ while ( have_posts() ) :
 	$program_type       = ! empty( $meta['program_type'] ) ? $meta['program_type'] : '';
 	$program_image      = ! empty( $meta['program_image'] ) ? $meta['program_image'] : '';
 	$general_description = ! empty( $meta['general_description'] ) ? $meta['general_description'] : '';
+	$glossary_display    = ! empty( $meta['glossary_display'] ) ? $meta['glossary_display'] : '';
 	$chapters           = ! empty( $meta['chapters'] ) && is_array( $meta['chapters'] ) ? $meta['chapters'] : array();
 
 	$first_chapter      = ! empty( $chapters ) ? reset( $chapters ) : array();
@@ -265,6 +266,25 @@ while ( have_posts() ) :
 			</div>
 		</div>
 		<?php endif; ?>
+
+		<!-- Glossary (when plugin active and option set) -->
+		<?php
+		if ( ! empty( $glossary_display ) && function_exists( 'wt_glossary_render_output' ) ) {
+			$glossary_settings = function_exists( 'wt_glossary_get_settings' ) ? wt_glossary_get_settings() : array();
+			$glossary_atts = array(
+				'title'        => $glossary_settings['archive_title'] ?? __( 'Glossary', 'wt-glossary' ),
+				'description'  => $glossary_settings['archive_description'] ?? '',
+				'search_label' => $glossary_settings['archive_search_label'] ?? __( 'What word are you interested in?', 'wt-glossary' ),
+				'show_search'  => 'yes',
+				'show_nav'     => 'yes',
+				'columns'      => $glossary_settings['archive_columns'] ?? '2',
+				'category'     => ( $glossary_display === 'all' ) ? '' : $glossary_display,
+			);
+			echo '<div class="pb-front-glossary-section">';
+			echo wt_glossary_render_output( $glossary_atts );
+			echo '</div>';
+		}
+		?>
 
 	</div>
 </div>
